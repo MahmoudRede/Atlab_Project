@@ -24,9 +24,11 @@ class MyApp extends StatelessWidget {
                 ),
           ),
       ),
-
       debugShowCheckedModeBanner: false,
-      home: MainSplashScreen(),
+      home: Directionality(
+        textDirection: TextDirection.rtl,
+          child: MainSplashScreen()
+      ),
     );
   }
 }
