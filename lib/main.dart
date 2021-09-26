@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:talabatak/LoginScreen/login_screen.dart';
 import 'package:talabatak/home_page/HomePageScreen.dart';
 import 'package:talabatak/splash/SplashScreen.dart';
 import 'Componants/constants.dart';
@@ -35,8 +36,8 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Directionality(
-        textDirection: TextDirection.rtl,
-          child: MainSplashScreen()
+        textDirection: TextDirection.ltr,
+          child: HomePageScreen()
       ),
     );
   }
