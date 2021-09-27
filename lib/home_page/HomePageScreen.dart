@@ -33,7 +33,7 @@ class HomePageScreen extends StatelessWidget {
           'الحساب الشخصي',
           Icons.person,
               (){
-            print('الحساب الشخصي');
+                print('الحساب الشخصي');
           }
       ),
 
@@ -95,7 +95,6 @@ class HomePageScreen extends StatelessWidget {
           return  Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.amber,
-              elevation: 4,
               title: Row(
                 children: [
                   Spacer(),
@@ -197,14 +196,16 @@ class HomePageScreen extends StatelessWidget {
                        ],
                      ),
                    ),
-                   SizedBox(height: 10,),
                    Expanded(
-                     child: GridView.count(
-                         crossAxisCount: 2,
-                         mainAxisSpacing: 2,
-                         crossAxisSpacing: 2,
-                         childAspectRatio: 1/1.25,
-                         children: List.generate(8, (index)=> Block_Item()) ,
+                     child: Container(
+                       color: Colors.grey[300],
+                       child: GridView.count(
+                           crossAxisCount: 2,
+                           mainAxisSpacing: 3,
+                           crossAxisSpacing: 3,
+                           childAspectRatio: 1/1.3,
+                           children: List.generate(8, (index)=> Block_Item()) ,
+                       ),
                      ),
                    ),
                 ],
@@ -278,53 +279,55 @@ Widget Block_Line_Drawer(Items_Drawer model){
 
 
 Widget Block_Item(){
-  return Container(
-    padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-    clipBehavior: Clip.antiAliasWithSaveLayer,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        )
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Image(
-            image: NetworkImage('https://image.freepik.com/free-photo/kebab-platter-with-lamb-chicken-lula-tikka-kebabs-grilled-vegetables-with-red-onion-salad_141793-2251.jpg')
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 15),
-          child: Text('مشويات الريس',style: TextStyle(fontSize: 20),),
-        ),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('مفتوح',style: TextStyle(color: Colors.white,backgroundColor: Colors.green,fontWeight: FontWeight.bold),),
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Text('مشويات',style: TextStyle(fontSize: 17),),
-            ),
-          ],
-        ),
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(2, 5, 2, 0),
+    child: Container(
+      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: BoxDecoration(
+        color: Colors.white,
+          borderRadius: BorderRadius.circular(10)
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Image(
+              fit: BoxFit.cover,
+              image: NetworkImage('https://image.freepik.com/free-photo/kebab-platter-with-lamb-chicken-lula-tikka-kebabs-grilled-vegetables-with-red-onion-salad_141793-2251.jpg')
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Text('مشويات الريس',style: TextStyle(fontSize: 20),),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('مفتوح',style: TextStyle(color: Colors.white,backgroundColor: Colors.green,fontWeight: FontWeight.bold),),
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Text('مشويات',style: TextStyle(fontSize: 17),),
+              ),
+            ],
+          ),
 
-        Row(
-          children: [
+          Row(
+            children: [
 
-            Text('10Km',style: TextStyle(fontSize: 17,color: Colors.red)),
-            Spacer(),
+              Text('10Km',style: TextStyle(fontSize: 17,color: Colors.red)),
+              Spacer(),
 
-            Text(
-              'المسافه',style: TextStyle(fontSize: 17),
-            ),
-          ],
-        )
+              Text(
+                'المسافه',style: TextStyle(fontSize: 17),
+              ),
+            ],
+          )
 
 
-      ],
+        ],
+      ),
     ),
   );
 }
