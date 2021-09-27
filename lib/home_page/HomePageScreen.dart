@@ -198,7 +198,7 @@ class HomePageScreen extends StatelessWidget {
                    ),
                    Expanded(
                      child: Container(
-                       color: Colors.grey[300],
+                       color: Colors.grey[200],
                        child: GridView.count(
                            crossAxisCount: 2,
                            mainAxisSpacing: 3,
