@@ -280,9 +280,8 @@ Widget Block_Line_Drawer(Items_Drawer model){
 
 Widget Block_Item(){
   return Padding(
-    padding: const EdgeInsets.fromLTRB(2, 5, 2, 0),
+    padding: const EdgeInsets.fromLTRB(3, 5, 2, 0),
     child: Container(
-      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -296,7 +295,7 @@ Widget Block_Item(){
               image: NetworkImage('https://image.freepik.com/free-photo/kebab-platter-with-lamb-chicken-lula-tikka-kebabs-grilled-vegetables-with-red-onion-salad_141793-2251.jpg')
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 18),
             child: Text('مشويات الريس',style: TextStyle(fontSize: 20),),
           ),
           Row(
@@ -307,7 +306,7 @@ Widget Block_Item(){
               ),
               Spacer(),
               Padding(
-                padding: const EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.only(right: 15),
                 child: Text('مشويات',style: TextStyle(fontSize: 17),),
               ),
             ],
@@ -319,8 +318,11 @@ Widget Block_Item(){
               Text('10Km',style: TextStyle(fontSize: 17,color: Colors.red)),
               Spacer(),
 
-              Text(
-                'المسافه',style: TextStyle(fontSize: 17),
+              Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: Text(
+                  'المسافه',style: TextStyle(fontSize: 17),
+                ),
               ),
             ],
           )
