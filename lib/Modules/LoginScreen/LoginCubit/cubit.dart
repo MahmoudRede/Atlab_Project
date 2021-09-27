@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
-import 'package:talabatak/LoginScreen/LoginCubit/state.dart';
+import 'package:talabatak/Modules/LoginScreen/LoginCubit/state.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(AppLoginInitialState());

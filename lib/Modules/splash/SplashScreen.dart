@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:talabatak/LoginScreen/login_screen.dart';
-import 'package:talabatak/home_page/HomePageScreen.dart';
+import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 
 
 class MainSplashScreen extends StatefulWidget {

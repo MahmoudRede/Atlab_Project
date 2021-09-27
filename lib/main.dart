@@ -2,7 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:talabatak/home_page/HomePageScreen.dart';
+import 'Modules/home_page/HomePageScreen.dart';
 import 'SharedPreference/CacheHelper.dart';
 
 void main() async {
@@ -23,12 +23,12 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
         elevation: 0.0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.amber,
         backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark
-                ),
+        statusBarColor: Colors.amber,
+        statusBarIconBrightness: Brightness.light,
+        ),
           ),
       ),
       debugShowCheckedModeBanner: false,

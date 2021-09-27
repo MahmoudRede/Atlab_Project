@@ -5,11 +5,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
-import 'package:talabatak/LoginScreen/LoginCubit/cubit.dart';
-import 'package:talabatak/LoginScreen/LoginCubit/state.dart';
-import 'package:talabatak/RegisterScreen/register_Screen.dart';
+import 'package:talabatak/Modules/RegisterScreen/register_Screen.dart';
+import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
-import 'package:talabatak/home_page/HomePageScreen.dart';
+import 'LoginCubit/cubit.dart';
+import 'LoginCubit/state.dart';
 
 class LoginScreen extends StatelessWidget {
   var phoneController = TextEditingController();

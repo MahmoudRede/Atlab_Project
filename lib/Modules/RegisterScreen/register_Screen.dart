@@ -2,16 +2,17 @@ import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
-import 'package:talabatak/LoginScreen/LoginCubit/cubit.dart';
-import 'package:talabatak/LoginScreen/login_screen.dart';
-import 'package:talabatak/RegisterScreen/RegisterCubit/cubit.dart';
-import 'package:talabatak/RegisterScreen/RegisterCubit/state.dart';
+import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
+import 'RegisterCubit/cubit.dart';
+import 'RegisterCubit/state.dart';
 
 class RegisterScreen extends StatelessWidget {
+
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var addressController = TextEditingController();
   var formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

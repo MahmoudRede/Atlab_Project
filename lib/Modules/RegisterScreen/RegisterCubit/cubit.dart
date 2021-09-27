@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Models/UserModel.dart';
-import 'package:talabatak/RegisterScreen/RegisterCubit/state.dart';
+import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/state.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
   RegisterCubit() : super(AppRegisterInitialState());
