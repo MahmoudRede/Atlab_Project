@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class Screen1 extends StatelessWidget {
       child: Scaffold(
         body: ListView.separated(
           physics: BouncingScrollPhysics(),
-            itemBuilder: (context , index) => menuListItem(),
+            itemBuilder: (context , index) => menuListItem(context),
             separatorBuilder: (context , index) => SizedBox(
               height: 1.0,
             ),
@@ -21,10 +23,12 @@ class Screen1 extends StatelessWidget {
     );
   }
 
-  Widget menuListItem ()
+  Widget menuListItem (context)
   {
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+        navigateTo(context: context, widget: ItemScreen());
+      },
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Material(

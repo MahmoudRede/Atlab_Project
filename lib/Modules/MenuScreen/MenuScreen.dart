@@ -16,13 +16,13 @@ class MenuScreen extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-             toolbarHeight: 180.0,
+             toolbarHeight: MediaQuery.of(context).size.height*.30,
             title: Container(
               child: Center(
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 50.0,
+                      height: 20.0,
                     ),
                     CircleAvatar(
                       radius: 50.0,

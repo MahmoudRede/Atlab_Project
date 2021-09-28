@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/MenuScreen/MenuScreen.dart';
+import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
@@ -32,14 +34,14 @@ class HomePageScreen extends StatelessWidget {
           'الحساب الشخصي',
           Icons.person,
               (){
-                print('الحساب الشخصي');
-          }
+                AppCubit.get(context).getUser(context);
+              }
       ),
       Items_Drawer(
           'السله',
           Icons.add_shopping_cart,
               (){
-                print('السله');
+                navigateTo(context: context, widget: ProfileScreen());
            }
       ),
       Items_Drawer(
@@ -79,9 +81,7 @@ class HomePageScreen extends StatelessWidget {
       ),
     ];
 
-    return BlocProvider(
-      create: (BuildContext context) =>AppCubit(),
-      child: BlocConsumer<AppCubit,AppStates>(
+    return BlocConsumer<AppCubit,AppStates>(
         listener: (context,state){},
         builder: (context,state){
           return  Scaffold(
@@ -261,8 +261,7 @@ class HomePageScreen extends StatelessWidget {
             ),
           );
         },
-      )
-    );
+      );
   }
 }
 

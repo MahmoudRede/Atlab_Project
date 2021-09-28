@@ -18,7 +18,6 @@ class AppCreateUserErrorState extends RegisterStates {
   AppCreateUserErrorState(this.error);
 }
 
-
 class AppRegisterChangePasswordState extends RegisterStates{}
 
 

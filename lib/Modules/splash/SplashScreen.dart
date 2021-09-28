@@ -29,6 +29,13 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          backwardsCompatibility: false,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark,
+          ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -36,7 +43,7 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
           alignment: Alignment.center,
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height*.02,),
+              SizedBox(height: MediaQuery.of(context).size.height*.018,),
               Text('طلباتك',
                 style: TextStyle(
                 fontSize: 45,
@@ -61,7 +68,7 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
               SizedBox(height: MediaQuery.of(context).size.height*.13,),
               Text('يتم تسجيل بيناتك لمره واحده فقط*',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 13,
                   fontFamily: 'Lemonada',
                   fontWeight: FontWeight.bold
 

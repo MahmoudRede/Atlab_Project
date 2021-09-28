@@ -38,7 +38,15 @@ class LoginScreen extends StatelessWidget {
         },
         builder: (context , state){
           return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              elevation: 0.0,
+              backgroundColor: Colors.white,
+              backwardsCompatibility: false,
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Colors.white,
+                statusBarIconBrightness: Brightness.dark,
+              ),
+            ),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
