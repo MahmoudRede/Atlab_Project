@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
@@ -264,15 +265,15 @@ class HomePageScreen extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 3.0,
+                            horizontal: 8.0,
                           ),
                           child: GridView.count(
                             physics: BouncingScrollPhysics(),
                             crossAxisCount: 2,
-                            mainAxisSpacing: 4,
-                            crossAxisSpacing: 1,
-                            childAspectRatio: 1/1.4,
-                            children: List.generate(AppCubit.get(context).detail.length, (index)=> Block_Item(context,(AppCubit.get(context)!.detail[index])!)) ,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 4,
+                            childAspectRatio: 1/1.3,
+                            children: List.generate(AppCubit.get(context).detail.length, (index)=> Block_Item(context,(AppCubit.get(context).detail[index]))) ,
                           ),
                         ),
                       ),
@@ -334,10 +335,13 @@ Widget Block_Line_Drawer(Items_Drawer model){
           SizedBox(width: 15,),
           Icon(model.icon),
           SizedBox(width: 12,),
-          Text('${model.text}',style: TextStyle(
+          Text(
+            '${model.text}',
+            style: TextStyle(
             fontSize: 13,
             fontFamily: 'Lemonada',
-          ),),
+            ),
+          ),
 
 
         ],
@@ -363,45 +367,64 @@ Widget Block_Item(context,ItemModel model){
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Image(
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 image: NetworkImage('https://image.freepik.com/free-photo/kebab-platter-with-lamb-chicken-lula-tikka-kebabs-grilled-vegetables-with-red-onion-salad_141793-2251.jpg')
             ),
-              Container(
-                alignment: Alignment.topCenter,
-                  child:
-                  Text((model.name)!,style: TextStyle(fontSize: 17),textAlign: TextAlign.center,)
+            Container(
+                alignment: Alignment.topRight,
+                  padding: EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Text(
+                    (model.name)!,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.end,
+                  )
               ),
-              Row(
+            SizedBox(
+                height: 8.0,
+              ),
+            Row(
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 15),
-                    child: Text((model.title)!,style: TextStyle(fontSize: 17),),
+                    child: Text(
+                      (model.title)!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
                   Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('مفتوح',style: TextStyle(color: Colors.white,backgroundColor: Colors.green,fontWeight: FontWeight.bold),),
-                  ),
+                  Text('مفتوح',style: TextStyle(color: Colors.white,backgroundColor: Colors.green,fontWeight: FontWeight.bold),),
 
 
               ],
+            ),
+            SizedBox(
+              height: 10.0,
             ),
             Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
                   child: Text(
-                    'المسافه',style: TextStyle(fontSize: 17),
+                    'المسافه',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
                 ),
                 Spacer(),
-                Text('KM ',style: TextStyle(fontSize: 17,color: Colors.red)),
+                Text('KM ',style: TextStyle(fontSize: 16,color: Colors.red)),
                 Text((model.street)!,style: TextStyle(fontSize: 17,color: Colors.red)),
-                SizedBox(width: 5,),
-
-
+                SizedBox(
+                  width: 2.0,
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
