@@ -71,9 +71,9 @@ class AppCubit extends Cubit<AppStates>{
     });
   }
 
-  ItemModel ?itemModel;
+  RestaurantModel ?itemModel;
 
-  List <ItemModel> detail=[];
+  List <RestaurantModel> restaurantsDetails=[];
 
   void getItemKafrShaben({
     required String resName,
@@ -90,11 +90,11 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('كل الفئات')
             .collection('الاصيل')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
           print('Error when Get : ${error.toString()}');
@@ -106,12 +106,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('كل الفئات')
             .collection('حضرموت المهندسين')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!));
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -124,12 +124,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('كل الفئات')
             .collection('مطعم و كشري حماده المحطه')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!));
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -143,12 +143,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('اسماك')
             .collection('اسماك ابو مريم')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -161,12 +161,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('كشري و طواجن')
             .collection('كشري حماده')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -179,12 +179,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('مشويات')
             .collection('حاتي التكيه')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -200,12 +200,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا المهدي')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -218,12 +218,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا هم')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -235,12 +235,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا الاميره')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -252,12 +252,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا الحوت')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -270,12 +270,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا السفير')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -288,12 +288,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا البوله')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -306,12 +306,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('بيتزا بوله')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -324,12 +324,12 @@ class AppCubit extends Cubit<AppStates>{
             .collection('كفر شبين')
             .doc('بيتزا')
             .collection('Crazy Pizza')
-            .doc('detail')
+            .doc('details')
             .get()
             .then((value) {
 
           print(value.data());
-          detail.add(ItemModel.fromFire(value.data()!)) ;
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
@@ -338,7 +338,7 @@ class AppCubit extends Cubit<AppStates>{
         });
 
 
-        detail=[];
+        restaurantsDetails=[];
 
     }
 
@@ -351,12 +351,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('كل الفئات')
           .collection('الاصيل')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -369,12 +369,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('كل الفئات')
           .collection('حضرموت المهندسين')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!));
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -387,12 +387,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('كل الفئات')
           .collection('مطعم و كشري حماده المحطه')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!));
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -400,7 +400,7 @@ class AppCubit extends Cubit<AppStates>{
         emit(AppGetItemDetailErrorState(error.toString()));
       });
 
-      detail=[];
+      restaurantsDetails=[];
 
 
 
@@ -414,12 +414,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('اسماك')
           .collection('اسماك ابو مريم')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -427,7 +427,7 @@ class AppCubit extends Cubit<AppStates>{
         emit(AppGetItemDetailErrorState(error.toString()));
       });
 
-      detail=[];
+      restaurantsDetails=[];
 
     }
 
@@ -439,12 +439,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('كشري و طواجن')
           .collection('كشري حماده')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -452,7 +452,7 @@ class AppCubit extends Cubit<AppStates>{
         emit(AppGetItemDetailErrorState(error.toString()));
       });
 
-      detail=[];
+      restaurantsDetails=[];
 
     }
 
@@ -464,12 +464,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('مشويات')
           .collection('حاتي التكيه')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -477,7 +477,7 @@ class AppCubit extends Cubit<AppStates>{
         emit(AppGetItemDetailErrorState(error.toString()));
       });
 
-      detail=[];
+      restaurantsDetails=[];
 
     }
 
@@ -490,12 +490,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا المهدي')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -508,12 +508,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا هم')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -525,12 +525,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا الاميره')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -542,12 +542,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا الحوت')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -560,12 +560,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا السفير')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -578,12 +578,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا البوله')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -596,12 +596,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('بيتزا بوله')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -614,12 +614,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر شبين')
           .doc('بيتزا')
           .collection('Crazy Pizza')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -629,15 +629,7 @@ class AppCubit extends Cubit<AppStates>{
 
 
 
-
-
-
-
-
-
-      detail=[];
-
-
+      restaurantsDetails=[];
 
     }
 
@@ -659,12 +651,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر الشوبك')
           .doc('بينزا')
           .collection('بينزا العمده')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -673,7 +665,7 @@ class AppCubit extends Cubit<AppStates>{
       });
 
 
-      detail=[];
+      restaurantsDetails=[];
 
 
     }
@@ -687,12 +679,12 @@ class AppCubit extends Cubit<AppStates>{
           .collection('كفر الشوبك')
           .doc('بينزا')
           .collection('بينزا العمده')
-          .doc('detail')
+          .doc('details')
           .get()
           .then((value) {
 
         print(value.data());
-        detail.add(ItemModel.fromFire(value.data()!)) ;
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
 
         emit(AppGetItemDetailSuccessState());
       }).catchError((error) {
@@ -701,7 +693,7 @@ class AppCubit extends Cubit<AppStates>{
       });
 
 
-      detail=[];
+      restaurantsDetails=[];
 
     }
 
@@ -710,7 +702,7 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
-  List<RestaurantModel> restaurantsDetails = [];
+  //List<RestaurantModel> restaurantsDetails = [];
 
   void getShbinRestaurantDetails ()
   {

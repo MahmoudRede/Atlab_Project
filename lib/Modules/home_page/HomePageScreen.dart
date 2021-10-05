@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
@@ -227,15 +228,15 @@ class HomePageScreen extends StatelessWidget {
                                                   }
 
                                                   if(item=='Restaurant'){
-                                                    AppCubit.get(context).detail=[];
+                                                    AppCubit.get(context).restaurantsDetails=[];
                                                   }
 
                                                   if(item=='لحوم و خضروات'){
-                                                    AppCubit.get(context).detail=[];
+                                                    AppCubit.get(context).restaurantsDetails=[];
                                                   }
 
                                                   if(item=='كريب/سوري'){
-                                                    AppCubit.get(context).detail=[];
+                                                    AppCubit.get(context).restaurantsDetails=[];
                                                   }
 
 
@@ -273,7 +274,7 @@ class HomePageScreen extends StatelessWidget {
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 4,
                             childAspectRatio: 1/1.4,
-                            children: List.generate(AppCubit.get(context).detail.length, (index)=> Block_Item(context,(AppCubit.get(context).detail[index]))) ,
+                            children: List.generate(AppCubit.get(context).restaurantsDetails.length, (index)=> Block_Item(context,(AppCubit.get(context).restaurantsDetails[index]))) ,
                           ),
                         ),
                       ),
@@ -351,7 +352,7 @@ Widget Block_Line_Drawer(Items_Drawer model){
 }
 
 
-Widget Block_Item(context,ItemModel model){
+Widget Block_Item(context,RestaurantModel model){
   return GestureDetector(
     onTap: (){
       navigateTo(context: context, widget: MenuScreen());
@@ -395,7 +396,7 @@ Widget Block_Item(context,ItemModel model){
                   Padding(
                     padding: const EdgeInsets.only(right: 15),
                     child: Text(
-                      (model.title)!,
+                      (model.category)!,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
@@ -403,9 +404,14 @@ Widget Block_Item(context,ItemModel model){
                     ),
                   ),
                   Spacer(),
-                  Text('مفتوح',style: TextStyle(color: Colors.white,backgroundColor: Colors.green,fontWeight: FontWeight.bold),),
-
-
+                  Text(
+                    'مفتوح',
+                    style: TextStyle(
+                        color: Colors.white,
+                        backgroundColor: Colors.green,
+                        fontWeight: FontWeight.bold,
+                    ),
+                  ),
               ],
             ),
             SizedBox(
@@ -424,7 +430,7 @@ Widget Block_Item(context,ItemModel model){
                 ),
                 Spacer(),
                 Text('KM ',style: TextStyle(fontSize: 15,color: Colors.red)),
-                Text((model.street)!,style: TextStyle(fontSize: 15,color: Colors.red)),
+                Text((model.distance)!,style: TextStyle(fontSize: 15,color: Colors.red)),
                 SizedBox(
                   width: 2.0,
                 ),
