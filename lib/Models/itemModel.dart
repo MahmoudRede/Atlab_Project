@@ -7,7 +7,6 @@ class ItemModel {
     this.name,
     this.title,
     this.street,
-
   });
 
   ItemModel.fromFire(Map <String, dynamic> fire){
@@ -22,7 +21,6 @@ class ItemModel {
       'name': name,
       'title': title,
       'street': street,
-
     };
   }
 

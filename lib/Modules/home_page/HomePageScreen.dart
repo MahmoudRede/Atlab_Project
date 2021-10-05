@@ -369,13 +369,13 @@ Widget Block_Item(context,ItemModel model){
               Container(
                 alignment: Alignment.topCenter,
                   child:
-                  Text((model!.name)!,style: TextStyle(fontSize: 17),textAlign: TextAlign.center,)
+                  Text((model.name)!,style: TextStyle(fontSize: 17),textAlign: TextAlign.center,)
               ),
               Row(
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 15),
-                    child: Text((model!.title)!,style: TextStyle(fontSize: 17),),
+                    child: Text((model.title)!,style: TextStyle(fontSize: 17),),
                   ),
                   Spacer(),
                   Padding(
@@ -396,7 +396,7 @@ Widget Block_Item(context,ItemModel model){
                 ),
                 Spacer(),
                 Text('KM ',style: TextStyle(fontSize: 17,color: Colors.red)),
-                Text((model!.street)!,style: TextStyle(fontSize: 17,color: Colors.red)),
+                Text((model.street)!,style: TextStyle(fontSize: 17,color: Colors.red)),
                 SizedBox(width: 5,),
 
 

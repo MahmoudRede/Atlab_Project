@@ -91,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold
                               ),),
                               SizedBox(width: 5,),
-                              Text((model!.phone)!,style: TextStyle(
+                              Text((model.phone)!,style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold
                               ),),
@@ -106,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold
                               ),),
                               SizedBox(width: 5,),
-                              Text((model!.address)!,style: TextStyle(
+                              Text((model.address)!,style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold
                               ),),

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
+import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Models/UserModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
@@ -92,10 +93,8 @@ class AppCubit extends Cubit<AppStates>{
             .doc('detail')
             .get()
             .then((value) {
-
           print(value.data());
           detail.add(ItemModel.fromFire(value.data()!)) ;
-
           emit(AppGetItemDetailSuccessState());
         }).catchError((error) {
           print('Error when Get : ${error.toString()}');
@@ -137,7 +136,6 @@ class AppCubit extends Cubit<AppStates>{
           print('Error when Get : ${error.toString()}');
           emit(AppGetItemDetailErrorState(error.toString()));
         });
-
 
 
 
@@ -712,5 +710,179 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
+  List<RestaurantModel> restaurantsDetails = [];
+
+  void getShbinRestaurantDetails ()
+  {
+    // مطعم Wings
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('details')
+        .get()
+        .then((value) {
+          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+          print(value.data());
+          emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get Wings : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('Restaurant')
+        .collection('البيك')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get البيك : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بريمو')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get بيتزا بريمو : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('كريب')
+        .collection('طبوش السورى')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get طبوش السورى  : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('كشرى')
+        .collection('كشرى هند')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get كشرى هند  : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('كل الفئات')
+        .collection('fresco')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get fresco  : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('كل الفئات')
+        .collection('السلطان')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get السلطان  : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('كل الفئات')
+        .collection('بيت الكنافة')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get بيت الكنافة  : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+    FirebaseFirestore.instance
+        .collection('شبين')
+        .doc('كل الفئات')
+        .collection('مطعم الأندلس')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get مطعم الأندلس  : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+
+
   }
+
+
+  void getTahaRestaurantDetails ()
+  {
+    FirebaseFirestore.instance
+        .collection('طحا')
+        .doc('Restaurant')
+        .collection('مشويات حمزه')
+        .doc('details')
+        .get()
+        .then((value) {
+      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+      print(value.data());
+      emit(AppGetItemDetailSuccessState());
+    }).catchError((error){
+      print('Error when get مشويات حمزه : ${error.toString()}');
+      emit(AppGetItemDetailErrorState(error.toString()));
+    });
+  }
+
+
+}
+
+
+
+
 
