@@ -35,3 +35,17 @@ class AppGetUserErrorState extends AppStates {
 
   AppGetUserErrorState(this.error);
 }
+
+class AppGetItemDetailLoadingState extends AppStates {
+
+
+}
+class AppGetItemDetailSuccessState extends AppStates {
+
+
+}
+class AppGetItemDetailErrorState extends AppStates {
+  final String error;
+
+  AppGetItemDetailErrorState(this.error);
+}
