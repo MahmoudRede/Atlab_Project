@@ -272,7 +272,7 @@ class HomePageScreen extends StatelessWidget {
                             crossAxisCount: 2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 4,
-                            childAspectRatio: 1/1.3,
+                            childAspectRatio: 1/1.4,
                             children: List.generate(AppCubit.get(context).detail.length, (index)=> Block_Item(context,(AppCubit.get(context).detail[index]))) ,
                           ),
                         ),
@@ -370,16 +370,21 @@ Widget Block_Item(context,ItemModel model){
                 fit: BoxFit.fill,
                 image: NetworkImage('https://image.freepik.com/free-photo/kebab-platter-with-lamb-chicken-lula-tikka-kebabs-grilled-vegetables-with-red-onion-salad_141793-2251.jpg')
             ),
+            SizedBox(
+              height: 5.0,
+            ),
             Container(
                 alignment: Alignment.topRight,
                   padding: EdgeInsets.symmetric(horizontal: 15.0),
-                  child: Text(
-                    (model.name)!,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  child: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(
+                      (model.name)!,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    textAlign: TextAlign.end,
                   )
               ),
             SizedBox(
@@ -418,8 +423,8 @@ Widget Block_Item(context,ItemModel model){
                   ),
                 ),
                 Spacer(),
-                Text('KM ',style: TextStyle(fontSize: 16,color: Colors.red)),
-                Text((model.street)!,style: TextStyle(fontSize: 17,color: Colors.red)),
+                Text('KM ',style: TextStyle(fontSize: 15,color: Colors.red)),
+                Text((model.street)!,style: TextStyle(fontSize: 15,color: Colors.red)),
                 SizedBox(
                   width: 2.0,
                 ),
