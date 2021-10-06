@@ -572,7 +572,7 @@ class HomePageScreen extends StatelessWidget {
                                             );
                                           }).toList(),
                                           onChanged: (val){
-                                            AppCubit.get(context).SelectedArea(val);
+                                            AppCubit.get(context).selectedArea(val);
                                           },
                                           onTap: (){
                                             // Set logic of item
@@ -594,8 +594,8 @@ class HomePageScreen extends StatelessWidget {
 
                                           ),
                                           icon: Icon(Icons.arrow_drop_down_sharp,color: Colors.black,),
-                                          value: AppCubit.get(context).selectedplace,
-                                          items: AppCubit.get(context).Places.map((item) {
+                                          value: AppCubit.get(context).selectedPlace,
+                                          items: AppCubit.get(context).places.map((item) {
                                             return DropdownMenuItem(
                                                 child: Text(item),
                                                 value: item,

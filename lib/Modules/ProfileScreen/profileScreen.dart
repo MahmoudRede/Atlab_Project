@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
         listener: (context,state){},
          builder: (context,state){
 
-          var model=AppCubit.get(context).usermodel;
+          var model=AppCubit.get(context).userModel;
 
           return Directionality(
             textDirection: TextDirection.rtl,

@@ -16,26 +16,26 @@ class AppCubit extends Cubit<AppStates>{
 
   static AppCubit get(context)=> BlocProvider.of(context);
 
-  UserModel ?usermodel;
+  UserModel ?userModel;
 
 
-  List <String>Places=['كشري و طواجن','مشويات','اسماك','كل الفئات','لحوم و خضروات','كريب/سوري','بيتزا','Restaurant','كل المطاعم'];
+  List <String> places = ['كشري و طواجن','مشويات','اسماك','كل الفئات','لحوم و خضروات','كريب/سوري','بيتزا','Restaurant','كل المطاعم'];
 
-  String ?selectedplace='كل المطاعم';
+  String ?selectedPlace='كل المطاعم';
 
   void SelectedPlace(newvalue){
 
-    selectedplace=newvalue;
+    selectedPlace=newvalue;
     emit(SelectedPlaceState());
   }
 
-  List <String>Areas=['كفر الشوبك','كفر شبين','طحا','شبين','كل المناطق'];
+  List <String>Areas = ['كفر الشوبك','كفر شبين','طحا','شبين','كل المناطق'];
 
-  String ?selectedarea='كل المناطق';
+  String? selectedarea = 'كل المناطق';
 
-  void SelectedArea(newvalue){
+  void selectedArea(newValue){
 
-    selectedarea=newvalue;
+    selectedarea = newValue;
     emit(SelectedAreaState());
   }
 
@@ -62,7 +62,7 @@ class AppCubit extends Cubit<AppStates>{
         .doc(CacheHelper.getData(key: 'uId'))
         .get()
         .then((value) {
-         usermodel=UserModel.fromFire(value.data()!);
+         userModel=UserModel.fromFire(value.data()!);
          navigateTo(context: context, widget: ProfileScreen());
          emit(AppGetUserSuccessState());
     }).catchError((error) {
