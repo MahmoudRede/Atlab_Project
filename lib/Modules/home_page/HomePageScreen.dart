@@ -977,7 +977,7 @@ Widget Block_Item(context,RestaurantModel model){
           children: [
             Image(
                 fit: BoxFit.fill,
-                image: NetworkImage('https://image.freepik.com/free-photo/kebab-platter-with-lamb-chicken-lula-tikka-kebabs-grilled-vegetables-with-red-onion-salad_141793-2251.jpg')
+                image: NetworkImage('${model.image}'),
             ),
             SizedBox(
               height: 5.0,
