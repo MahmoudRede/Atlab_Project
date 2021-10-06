@@ -11,6 +11,9 @@ import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
+String ?areaName='كل المناطق';
+String ?restaurantName='كل المطاعم';
+
 class Items_Drawer{
   String ?text;
   IconData ?icon;
@@ -22,7 +25,6 @@ class Items_Drawer{
 
 class HomePageScreen extends StatelessWidget {
 
-  String ?areaName;
 
 
   @override
@@ -168,8 +170,403 @@ class HomePageScreen extends StatelessWidget {
                                               child: Text(item),
                                               value: item,
                                               onTap: (){
+                                                areaName=item.toString();
+
+                                                if(item=='كل المناطق' ){
+
+                                                  if(restaurantName=='اسماك' ){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'اسماك');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'اسماك');
+
+                                                  }
+
+                                                  else if(restaurantName=='مشويات'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'مشويات');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'مشويات');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'مشويات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل الفئات'){
+
+
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل الفئات');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل الفئات');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل الفئات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كشري و طواجن'){
+
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كشري و طواجن');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كشري و طواجن');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كشري و طواجن');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل المطاعم'){
+
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل المطاعم');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل المطاعم');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل المطاعم');
+
+                                                  }
+
+                                                  else if(restaurantName=='بيتزا'){
+
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'بيتزا');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'بيتزا');
+
+                                                  }
+
+                                                  else if(restaurantName=='Restaurant'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'Restaurant');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'Restaurant');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'Restaurant');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'Restaurant');
+
+                                                  }
+
+                                                  else if(restaurantName=='لحوم و خضروات'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'لحوم و خضروات');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'لحوم و خضروات');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'لحوم و خضروات');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'لحوم و خضروات');
+
+                                                    }
+
+
+                                                  else if(restaurantName=='كريب/سوري'){
+
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كريب/سوري');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كريب/سوري');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كريب/سوري');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كريب/سوري');
+
+
+
+                                                  }
+
+                                                  else{
+                                                    print('Error');
+                                                  }
+
+
+                                                }
+
+                                                else if(item=='كفر شبين' ){
+
+                                                  if(restaurantName=='اسماك' ){
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+
+                                                  }
+
+                                                  else if(restaurantName=='مشويات'){
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل الفئات'){
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كشري و طواجن'){
+
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='كل المطاعم'){
+
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='بيتزا'){
+
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='Restaurant'){
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'Restaurant');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='لحوم و خضروات'){
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'لحوم و خضروات');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='كريب/سوري'){
+
+
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كريب/سوري');
+
+
+
+                                                  }
+
+                                                  else{
+                                                    print('Error');
+                                                  }
+
+                                                }
+
+                                                else if(item=='شبين' ){
+
+                                                  if(restaurantName=='اسماك' ){
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='مشويات'){
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'مشويات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل الفئات'){
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل الفئات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كشري و طواجن'){
+
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كشري و طواجن');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل المطاعم'){
+
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل المطاعم');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='بيتزا'){
+
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'بيتزا');
+
+                                                  }
+
+                                                  else if(restaurantName=='Restaurant'){
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'Restaurant');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='لحوم و خضروات'){
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'لحوم و خضروات');
+
+
+                                                  }
+
+                                                  else if(restaurantName=='كريب/سوري'){
+
+
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كريب/سوري');
+
+
+
+
+                                                  }
+
+                                                  else{
+                                                    print('Error');
+                                                  }
+
+
+                                                }
+
+                                                else if(item=='كفر الشوبك' ){
+
+                                                  if(restaurantName=='اسماك' ){
+
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'اسماك');
+
+                                                  }
+
+                                                  else if(restaurantName=='مشويات'){
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'مشويات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل الفئات'){
+
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كل الفئات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كشري و طواجن'){
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كشري و طواجن');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل المطاعم'){
+
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كل المطاعم');
+
+                                                  }
+
+                                                  else if(restaurantName=='بيتزا'){
+
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
+
+                                                  }
+
+                                                  else if(restaurantName=='Restaurant'){
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'Restaurant');
+
+                                                  }
+
+                                                  else if(restaurantName=='لحوم و خضروات'){
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'لحوم و خضروات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كريب/سوري'){
+
+
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كريب/سوري');
+
+
+
+                                                  }
+
+                                                  else{
+                                                    print('Error');
+                                                  }
+
+
+                                                }
+
+                                                else if(item=='طحا' ){
+
+                                                  if(restaurantName=='اسماك' ){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'اسماك');
+
+                                                  }
+
+                                                  else if(restaurantName=='مشويات'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'مشويات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل الفئات'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل الفئات');
+
+                                                  }
+
+                                                  else if(restaurantName=='كشري و طواجن'){
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كشري و طواجن');
+
+                                                  }
+
+                                                  else if(restaurantName=='كل المطاعم'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل المطاعم');
+
+                                                  }
+
+                                                  else if(restaurantName=='بيتزا'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'بيتزا');
+
+                                                  }
+
+                                                  else if(restaurantName=='Restaurant'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'Restaurant');
+
+                                                  }
+
+                                                  else if(restaurantName=='لحوم و خضروات'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'لحوم و خضروات');
+
+                                                  }
+
+
+                                                  else if(restaurantName=='كريب/سوري'){
+
+
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كريب/سوري');
+
+
+
+                                                  }
+
+                                                  else{
+                                                    print('Error');
+                                                  }
+
+                                                }
+
+                                                else{
+                                                  print('error');
+                                                }
 
                                               },
+
 
 
                                             );
@@ -203,46 +600,257 @@ class HomePageScreen extends StatelessWidget {
                                                 child: Text(item),
                                                 value: item,
                                                 onTap: (){
+                                                  restaurantName=item.toString();
                                                   if(item=='اسماك' ){
-                                                    AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'اسماك');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'اسماك');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                      {
+                                                        AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+                                                      }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'اسماك');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'اسماك');
+
+                                                    }
                                                   }
 
-                                                  if(item=='مشويات'){
-                                                    AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
+                                                  else if(item=='مشويات'){
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'مشويات');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'مشويات');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'مشويات');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'مشويات');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'مشويات');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'مشويات');
+
+                                                    }
                                                   }
 
-                                                  if(item=='كل الفئات'){
-                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
-                                                  }
-
-                                                  if(item=='كشري و طواجن'){
-                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
-                                                  }
-
-                                                  if(item=='كل المطاعم'){
-                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
-                                                  }
-
-                                                  if(item=='بيتزا'){
-                                                    AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
-                                                  }
-
-                                                  if(item=='Restaurant'){
-                                                    AppCubit.get(context).restaurantsDetails=[];
-                                                  }
-
-                                                  if(item=='لحوم و خضروات'){
-                                                    AppCubit.get(context).restaurantsDetails=[];
-                                                  }
-
-                                                  if(item=='كريب/سوري'){
-                                                    AppCubit.get(context).restaurantsDetails=[];
-                                                  }
+                                                  else if(item=='كل الفئات'){
 
 
-                                                  if(item=='بيتزا'){
-                                                    AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل الفئات');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل الفئات');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل الفئات');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل الفئات');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل الفئات');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل الفئات');
+
+                                                    }
                                                   }
+
+                                                  else if(item=='كشري و طواجن'){
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كشري و طواجن');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كشري و طواجن');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كشري و طواجن');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كشري و طواجن');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كشري و طواجن');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كشري و طواجن');
+
+                                                    }
+
+                                                  }
+
+                                                  else if(item=='كل المطاعم'){
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل المطاعم');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل المطاعم');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل المطاعم');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل المطاعم');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل المطاعم');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل المطاعم');
+
+                                                    }
+                                                  }
+
+                                                  else if(item=='بيتزا'){
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'بيتزا');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'بيتزا');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'بيتزا');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'بيتزا');
+
+                                                    }
+                                                  }
+
+                                                  else if(item=='Restaurant'){
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'Restaurant');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'Restaurant');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'Restaurant');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'Restaurant');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'Restaurant');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'Restaurant');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'Restaurant');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'Restaurant');
+
+                                                    }
+                                                  }
+
+                                                  else if(item=='لحوم و خضروات'){
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'لحوم و خضروات');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'لحوم و خضروات');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'لحوم و خضروات');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'لحوم و خضروات');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'لحوم و خضروات');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'لحوم و خضروات');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'لحوم و خضروات');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'لحوم و خضروات');
+
+                                                    }                                                  }
+
+                                                  else if(item=='كريب/سوري'){
+
+                                                    if(areaName=='كل المناطق'){
+
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كريب/سوري');
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كريب/سوري');
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كريب/سوري');
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كريب/سوري');
+
+                                                    }
+
+                                                    else if(areaName=='كفر شبين')
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كريب/سوري');
+                                                    }
+                                                    else if(areaName=='شبين'){
+                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كريب/سوري');
+                                                    }
+                                                    else if(areaName=='كفر الشوبك'){
+                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كريب/سوري');
+                                                    }
+                                                    else{
+                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كريب/سوري');
+
+                                                    }
+
+                                                  }
+
+                                                  else{
+                                                    print('Error');
+                                                  }
+
+
+
 
 
                                                 }
@@ -273,7 +881,7 @@ class HomePageScreen extends StatelessWidget {
                             crossAxisCount: 2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 4,
-                            childAspectRatio: 1/1.4,
+                            childAspectRatio: 1/1.5,
                             children: List.generate(AppCubit.get(context).restaurantsDetails.length, (index)=> Block_Item(context,(AppCubit.get(context).restaurantsDetails[index]))) ,
                           ),
                         ),

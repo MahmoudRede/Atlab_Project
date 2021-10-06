@@ -81,6 +81,7 @@ class AppCubit extends Cubit<AppStates>{
   })
   {
 
+
     if(resName=='كل المطاعم' ){
 
         emit(AppGetItemDetailLoadingState());
@@ -342,6 +343,81 @@ class AppCubit extends Cubit<AppStates>{
 
     }
 
+    else if(resName=='كشري و طواجن' ){
+
+      emit(AppGetItemDetailLoadingState());
+
+      FirebaseFirestore.instance
+          .collection('كفر شبين')
+          .doc('كشري و طواجن')
+          .collection('كشري حماده')
+          .doc('details')
+          .get()
+          .then((value) {
+
+        print(value.data());
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
+
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error) {
+        print('Error when Get : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+
+    }
+
+    else if(resName=='مشويات' ){
+
+      emit(AppGetItemDetailLoadingState());
+
+      FirebaseFirestore.instance
+          .collection('كفر شبين')
+          .doc('مشويات')
+          .collection('حاتي التكيه')
+          .doc('details')
+          .get()
+          .then((value) {
+
+        print(value.data());
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
+
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error) {
+        print('Error when Get : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+
+    }
+
+    else if(resName=='اسماك'){
+
+      emit(AppGetItemDetailLoadingState());
+
+      FirebaseFirestore.instance
+          .collection('كفر شبين')
+          .doc('اسماك')
+          .collection('اسماك ابو مريم')
+          .doc('details')
+          .get()
+          .then((value) {
+
+        print(value.data());
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
+
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error) {
+        print('Error when Get : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+
+    }
+
     else if(resName=='كل الفئات' ){
 
       emit(AppGetItemDetailLoadingState());
@@ -406,79 +482,14 @@ class AppCubit extends Cubit<AppStates>{
 
     }
 
-    else if(resName=='اسماك'){
-
-      emit(AppGetItemDetailLoadingState());
-
-      FirebaseFirestore.instance
-          .collection('كفر شبين')
-          .doc('اسماك')
-          .collection('اسماك ابو مريم')
-          .doc('details')
-          .get()
-          .then((value) {
-
-        print(value.data());
-        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
-
-        emit(AppGetItemDetailSuccessState());
-      }).catchError((error) {
-        print('Error when Get : ${error.toString()}');
-        emit(AppGetItemDetailErrorState(error.toString()));
-      });
+    else if(resName=='لحوم و خضروات' ){
 
       restaurantsDetails=[];
-
     }
 
-    else if(resName=='كشري و طواجن' ){
-
-      emit(AppGetItemDetailLoadingState());
-
-      FirebaseFirestore.instance
-          .collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('details')
-          .get()
-          .then((value) {
-
-        print(value.data());
-        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
-
-        emit(AppGetItemDetailSuccessState());
-      }).catchError((error) {
-        print('Error when Get : ${error.toString()}');
-        emit(AppGetItemDetailErrorState(error.toString()));
-      });
+    else if(resName=='كريب/سوري' ){
 
       restaurantsDetails=[];
-
-    }
-
-    else if(resName=='مشويات' ){
-
-      emit(AppGetItemDetailLoadingState());
-
-      FirebaseFirestore.instance
-          .collection('كفر شبين')
-          .doc('مشويات')
-          .collection('حاتي التكيه')
-          .doc('details')
-          .get()
-          .then((value) {
-
-        print(value.data());
-        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!)) ;
-
-        emit(AppGetItemDetailSuccessState());
-      }).catchError((error) {
-        print('Error when Get : ${error.toString()}');
-        emit(AppGetItemDetailErrorState(error.toString()));
-      });
-
-      restaurantsDetails=[];
-
     }
 
     else if(resName=='بيتزا' ){
@@ -633,6 +644,11 @@ class AppCubit extends Cubit<AppStates>{
 
     }
 
+    else if(resName=='Restaurant' ){
+
+      restaurantsDetails=[];
+    }
+
     else{print('error');}
 
   }
@@ -697,6 +713,41 @@ class AppCubit extends Cubit<AppStates>{
 
     }
 
+    else if(resName=='لحوم و خضروات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='Restaurant' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='كريب/سوري' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='كل الفئات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='اسماك' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='مشويات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='كشري و طواجن' ){
+
+      restaurantsDetails=[];
+    }
+
     else{print('error');}
 
   }
@@ -704,171 +755,442 @@ class AppCubit extends Cubit<AppStates>{
 
   //List<RestaurantModel> restaurantsDetails = [];
 
-  void getShbinRestaurantDetails ()
+  void getShbinRestaurantDetails (
   {
-    // مطعم Wings
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('details')
-        .get()
-        .then((value) {
-          restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-          print(value.data());
-          emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get Wings : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+     required String resName,
+  }
+      )
+  {
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('Restaurant')
-        .collection('البيك')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get البيك : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+    if(resName=='كل المطاعم'){
 
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('بيتزا')
-        .collection('بيتزا بريمو')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get بيتزا بريمو : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('Restaurant')
+          .collection('Wings')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get Wings : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('Restaurant')
+          .collection('البيك')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get البيك : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
 
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('كريب')
-        .collection('طبوش السورى')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get طبوش السورى  : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('بيتزا')
+          .collection('بيتزا بريمو')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get بيتزا بريمو : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
 
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('كشرى')
-        .collection('كشرى هند')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get كشرى هند  : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كريب')
+          .collection('طبوش السورى')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get طبوش السورى  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
 
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('كل الفئات')
-        .collection('fresco')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get fresco  : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كشرى')
+          .collection('كشرى هند')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get كشرى هند  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
 
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('كل الفئات')
-        .collection('السلطان')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get السلطان  : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('fresco')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get fresco  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('السلطان')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get السلطان  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
 
 
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('كل الفئات')
-        .collection('بيت الكنافة')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get بيت الكنافة  : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('بيت الكنافة')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get بيت الكنافة  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
 
-    FirebaseFirestore.instance
-        .collection('شبين')
-        .doc('كل الفئات')
-        .collection('مطعم الأندلس')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get مطعم الأندلس  : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('مطعم الأندلس')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get مطعم الأندلس  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+
+      restaurantsDetails=[];
+
+
+    }
+
+    else if(resName=='Restaurant'){
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('Restaurant')
+          .collection('Wings')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get Wings : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('Restaurant')
+          .collection('البيك')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get البيك : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+
+      restaurantsDetails=[];
+
+
+    }
+
+    else if( resName == 'بيتزا'){
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('بيتزا')
+          .collection('بيتزا بريمو')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get بيتزا بريمو : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+
+    }
+
+    else if(resName=='كريب/سوري'){
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كريب')
+          .collection('طبوش السورى')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get طبوش السورى  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+      restaurantsDetails=[];
+
+
+
+    }
+
+    else if(resName=='لحوم و خضروات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='اسماك' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='مشويات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName =='كشري و طواجن'){
+
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كشرى')
+          .collection('كشرى هند')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get كشرى هند  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+      restaurantsDetails=[];
+
+    }
+
+   else if(resName=='كل الفئات'){
+
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('fresco')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get fresco  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('السلطان')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get السلطان  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('بيت الكنافة')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get بيت الكنافة  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('كل الفئات')
+          .collection('مطعم الأندلس')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get مطعم الأندلس  : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+
+      restaurantsDetails=[];
+
+    }
+
+    else{
+      print('error');
+    }
 
 
   }
 
 
-  void getTahaRestaurantDetails ()
+  void getTahaRestaurantDetails ({
+  required String resName,
+})
   {
-    FirebaseFirestore.instance
-        .collection('طحا')
-        .doc('Restaurant')
-        .collection('مشويات حمزه')
-        .doc('details')
-        .get()
-        .then((value) {
-      restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
-      print(value.data());
-      emit(AppGetItemDetailSuccessState());
-    }).catchError((error){
-      print('Error when get مشويات حمزه : ${error.toString()}');
-      emit(AppGetItemDetailErrorState(error.toString()));
-    });
+    if(resName=='كل المطاعم'){
+
+      FirebaseFirestore.instance
+          .collection('طحا')
+          .doc('Restaurant')
+          .collection('مشويات حمزه')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get مشويات حمزه : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+
+    }
+
+   else if(resName=='Restaurant'){
+
+      FirebaseFirestore.instance
+          .collection('طحا')
+          .doc('Restaurant')
+          .collection('مشويات حمزه')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get مشويات حمزه : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+
+    }
+
+    else if(resName=='لحوم و خضروات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='بيتزا' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='كريب/سوري' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='كل الفئات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='اسماك' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='مشويات' ){
+
+      restaurantsDetails=[];
+    }
+
+    else if(resName=='كشري و طواجن' ){
+
+      restaurantsDetails=[];
+    }
+
+
   }
 
 
