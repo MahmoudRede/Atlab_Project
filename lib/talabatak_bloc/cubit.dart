@@ -759,8 +759,7 @@ class AppCubit extends Cubit<AppStates>{
   void getShbinRestaurantDetails (
   {
      required String resName,
-  }
-      )
+  })
   {
 
     if(resName=='كل المطاعم'){
@@ -784,7 +783,7 @@ class AppCubit extends Cubit<AppStates>{
       FirebaseFirestore.instance
           .collection('شبين')
           .doc('Restaurant')
-          .collection('Wings')
+          .collection('البيك')
           .doc('details')
           .get()
           .then((value) {
@@ -792,7 +791,7 @@ class AppCubit extends Cubit<AppStates>{
         print(value.data());
         emit(AppGetItemDetailSuccessState());
       }).catchError((error){
-        print('Error when get Wings : ${error.toString()}');
+        print('Error when get البيك : ${error.toString()}');
         emit(AppGetItemDetailErrorState(error.toString()));
       });
 
@@ -1358,7 +1357,7 @@ class AppCubit extends Cubit<AppStates>{
       tabs = gostom;
       tabsScreens = gostomScreens;
     }
-
+    emit(AppChangeTabsState());
   }
 
 }

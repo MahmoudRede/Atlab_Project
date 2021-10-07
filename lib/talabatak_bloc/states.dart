@@ -10,6 +10,8 @@ class SelectedPlaceState extends AppStates{
 
 }
 
+class AppChangeTabsState extends AppStates{}
+
 class SelectedAreaState extends AppStates{
 
 }
