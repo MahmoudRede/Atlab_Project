@@ -49,8 +49,8 @@ class HomePageScreen extends StatelessWidget {
           'السله',
           Icons.add_shopping_cart,
               (){
-                navigateTo(context: context, widget: ProfileScreen());
-           }
+                navigateTo(context: context, widget: ProfileScreen(),);
+          }
       ),
       Items_Drawer(
           'عنواني',
@@ -963,7 +963,9 @@ Widget Block_Line_Drawer(Items_Drawer model){
 Widget Block_Item(context,RestaurantModel model){
   return GestureDetector(
     onTap: (){
-      navigateTo(context: context, widget: MenuScreen());
+      AppCubit.get(context).changeTabs(restaurantName: model.name!).then((value) {
+        navigateTo(context: context, widget: MenuScreen(model));
+      });
     },
     child: Padding(
       padding: const EdgeInsets.all(3.0),
@@ -976,7 +978,7 @@ Widget Block_Item(context,RestaurantModel model){
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Image(
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
                 image: NetworkImage('${model.image}'),
             ),
             SizedBox(

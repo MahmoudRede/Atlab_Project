@@ -1,100 +1,109 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen2.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen3.dart';
+import 'package:talabatak/talabatak_bloc/cubit.dart';
+import 'package:talabatak/talabatak_bloc/states.dart';
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+
+  final RestaurantModel model ;
+
+  MenuScreen(this.model);
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-             toolbarHeight: MediaQuery.of(context).size.height*.30,
-            title: Container(
-              child: Center(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20.0,
+    return BlocConsumer <AppCubit , AppStates>(
+      listener: (context , state){},
+      builder: (context , state){
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: DefaultTabController(
+            length: AppCubit.get(context).tabs.length,
+            child: Scaffold(
+              appBar: AppBar(
+                toolbarHeight: MediaQuery.of(context).size.height*.28,
+                title: Container(
+                  child: Center(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 60.0,
+                        ),
+                        CircleAvatar(
+                          radius: 50.0,
+                          backgroundImage: NetworkImage('${model.image}'),
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Text(
+                          model.name!,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage: AssetImage('assets/images/delivery.jpg'),
+                  ),
+                ),
+                leading: Container(
+                  alignment: Alignment.topCenter,
+                  margin: EdgeInsets.only(
+                    top: 15.0,
+                  ),
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: 32.0,
                     ),
-                    SizedBox(
-                      height: 5.0,
+                  ),
+                ),
+                actions: [
+                  Container(
+                    alignment: Alignment.topCenter,
+                    margin: EdgeInsets.only(
+                        left: 13.0,
+                        top: 25.0
                     ),
-                    Text(
-                      'مشويات الريس',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap : (){},
+                      child : Image(
+                        height: 35.0,
+                        width: 35.0,
+                        image: AssetImage('assets/images/shopping.png'),
                       ),
                     ),
+                  ),
+                ],
+                bottom: TabBar(
+                  isScrollable: true,
+                  labelStyle: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w800,
+                  ),
+                  tabs: [
+                    ...(AppCubit.get(context).tabs).map((tab){
+                      return Text(tab);
+                    }).toList(),
                   ],
                 ),
               ),
-            ),
-            leading: Container(
-              alignment: Alignment.topCenter,
-              margin: EdgeInsets.only(
-                top: 15.0,
+              body: TabBarView(
+                children: AppCubit.get(context).tabsScreens,
               ),
-              child: IconButton(
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.arrow_back,
-                  size: 32.0,
-                ),
-              ),
-            ),
-            actions: [
-              Container(
-                alignment: Alignment.topCenter,
-                margin: EdgeInsets.only(
-                  left: 13.0,
-                  top: 25.0
-                ),
-                child: GestureDetector(
-                  onTap : (){},
-                  child : Image(
-                    height: 35.0,
-                    width: 35.0,
-                    image: AssetImage('assets/images/shopping.png'),
-                  ),
-                ),
-              ),
-            ],
-            bottom: TabBar(
-              labelStyle: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w800,
-              ),
-              tabs: [
-                Tab(text: 'مشويات',),
-                Tab(text: 'سندوتشات',),
-                Tab(text: 'وجبات',),
-              ],
             ),
           ),
-          body: TabBarView(
-            children: [
-              Screen1(),
-              Screen1(),
-              Screen1(),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

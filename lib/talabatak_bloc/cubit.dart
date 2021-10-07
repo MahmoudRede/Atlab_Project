@@ -1,6 +1,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
@@ -783,7 +784,7 @@ class AppCubit extends Cubit<AppStates>{
       FirebaseFirestore.instance
           .collection('شبين')
           .doc('Restaurant')
-          .collection('البيك')
+          .collection('Wings')
           .doc('details')
           .get()
           .then((value) {
@@ -791,7 +792,22 @@ class AppCubit extends Cubit<AppStates>{
         print(value.data());
         emit(AppGetItemDetailSuccessState());
       }).catchError((error){
-        print('Error when get البيك : ${error.toString()}');
+        print('Error when get Wings : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('مشويات')
+          .collection('مطعم جوستو')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get مطعم جوستو : ${error.toString()}');
         emit(AppGetItemDetailErrorState(error.toString()));
       });
 
@@ -972,6 +988,26 @@ class AppCubit extends Cubit<AppStates>{
 
     }
 
+    else if (resName == 'مشويات')
+    {
+      FirebaseFirestore.instance
+          .collection('شبين')
+          .doc('مشويات')
+          .collection('مطعم جوستو')
+          .doc('details')
+          .get()
+          .then((value) {
+        restaurantsDetails.add(RestaurantModel.fromFire(value.data()!));
+        print(value.data());
+        emit(AppGetItemDetailSuccessState());
+      }).catchError((error){
+        print('Error when get مطعم جوستو : ${error.toString()}');
+        emit(AppGetItemDetailErrorState(error.toString()));
+      });
+
+      restaurantsDetails=[];
+    }
+
     else if(resName=='كريب/سوري'){
 
       FirebaseFirestore.instance
@@ -989,8 +1025,6 @@ class AppCubit extends Cubit<AppStates>{
         emit(AppGetItemDetailErrorState(error.toString()));
       });
       restaurantsDetails=[];
-
-
 
     }
 
@@ -1193,6 +1227,139 @@ class AppCubit extends Cubit<AppStates>{
 
   }
 
+
+  List<String> tabs = [];
+  List<Widget> tabsScreens = [];
+
+  Future <void> changeTabs ({required String restaurantName})
+  async {
+    if(restaurantName == 'بيتزا بؤله')
+    {
+      tabs = pizzaPoalaTabs;
+      tabsScreens = pizzaPoalaScreens;
+    }
+    else if (restaurantName == 'حاتى التكيه')
+      {
+        tabs = hatyEltkehTabs;
+        tabsScreens = hatyEltkehScreens;
+      }
+    else if (restaurantName == 'مشويات حمزة')
+    {
+      tabs = mashwatHamzaTabs;
+      tabsScreens = mashwatHamzaScreens;
+    }
+    else if (restaurantName == 'بيتزا الحوت')
+    {
+      tabs = pizzaElhootTabs;
+      tabsScreens = pizzaElhootScreens;
+    }
+    else if (restaurantName == 'السلطان')
+    {
+      tabs = elSoltanTabs;
+      tabsScreens = elSoltanScreens;
+    }
+    else if (restaurantName == 'مطعم و كشرى حمادة المحطة')
+    {
+      tabs = hamdaElmahataTabs;
+      tabsScreens = hamdaElmahataScreens;
+    }
+    else if (restaurantName == 'طبوش السورى')
+    {
+      tabs = taboshElsoryTabs;
+      tabsScreens = taboshElsoryScreens;
+    }
+    else if (restaurantName == 'مطعم الأندلس')
+    {
+      tabs = elAndalosTabs;
+      tabsScreens = elAndalosScreens;
+    }
+    else if (restaurantName == 'Crazy Pizza')
+    {
+      tabs = crazyPizzaTabs;
+      tabsScreens = crazyPizzaScreens;
+    }
+    else if (restaurantName == 'بيت الكنافة')
+    {
+      tabs = batElknafaTabs;
+      tabsScreens = batElknafaScreens;
+    }
+    else if (restaurantName == 'بيتزا السفير')
+    {
+      tabs = pizzaElsafirTabs;
+      tabsScreens = pizzaElsafirScreens;
+    }
+    else if (restaurantName == 'بيتزا العمدة')
+    {
+      tabs = pizzaElomdaTabs;
+      tabsScreens = pizzaElomdaScreens;
+    }
+    else if (restaurantName == 'بيتزا بريمو')
+    {
+      tabs = pizzaBremoTabs;
+      tabsScreens = pizzaBremoScreens;
+    }
+    else if (restaurantName == 'اسماك ابو مريم')
+    {
+      tabs = asmakAboMarimTabs;
+      tabsScreens = asmakAboMarimScreens;
+    }
+    else if (restaurantName == 'بيتزا الأميرة')
+    {
+      tabs = pizzaElamiraTabs;
+      tabsScreens = pizzaElamiraScreens;
+    }
+    else if (restaurantName == 'كشرى هند')
+    {
+      tabs = kosharyHendTabs;
+      tabsScreens = kosharyHendScreens;
+    }
+    else if (restaurantName == 'حضر موت المهندسين')
+    {
+      tabs = hadrMotTabs;
+      tabsScreens = hadrMotScreens;
+    }
+    else if (restaurantName == 'بيتزا هم')
+    {
+      tabs = pizzaHumTabs;
+      tabsScreens = pizzaHumScreens;
+    }
+    else if (restaurantName == 'Wings')
+    {
+      tabs = wingsTabs;
+      tabsScreens = wingsScreens;
+    }
+    else if (restaurantName == 'بيتزا المهدى')
+    {
+      tabs = pizzaElmahdyTabs;
+      tabsScreens = pizzaElmahdyScreens;
+    }
+    else if (restaurantName == 'البيك')
+    {
+      tabs = elBakTabs;
+      tabsScreens = elBakScreens;
+    }
+    else if (restaurantName == 'Fresco - فريسكو')
+    {
+      tabs = frescoTabs;
+      tabsScreens = frescoScreens;
+    }
+    else if (restaurantName == 'كشرى حمادة')
+    {
+      tabs = kosharyHamadaTabs;
+      tabsScreens = kosharyHamadaScreens;
+    }
+    else if (restaurantName == 'الأصيل')
+    {
+      tabs = elAselTabs;
+      tabsScreens = elAselScreens;
+    }
+    else if (restaurantName == 'مطعم جوستوم')
+    {
+      tabs = gostom;
+      tabsScreens = gostomScreens;
+    }
+
+  }
 
 }
 
