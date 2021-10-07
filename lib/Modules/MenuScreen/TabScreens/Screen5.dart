@@ -6,12 +6,12 @@ import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
-class Screen3 extends StatelessWidget {
-  const Screen3({Key? key}) : super(key: key);
+class Screen5 extends StatelessWidget {
+  const Screen5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  BlocConsumer<AppCubit,AppStates>(
+    return BlocConsumer<AppCubit,AppStates>(
       listener: (context,state){},
       builder: (context,state){
         return Directionality(
@@ -19,18 +19,17 @@ class Screen3 extends StatelessWidget {
           child: Scaffold(
             body: ListView.separated(
               physics: BouncingScrollPhysics(),
-              itemBuilder: (context , index) => menuListItem(context,AppCubit.get(context).foodsScreen3[index]),
+              itemBuilder: (context , index) => menuListItem(context,AppCubit.get(context).foodsScreen5[index]),
               separatorBuilder: (context , index) => SizedBox(
                 height: 1.0,
               ),
-              itemCount: AppCubit.get(context).foodsScreen3.length,
+              itemCount: AppCubit.get(context).foodsScreen5.length,
             ),
           ),
         );
       },
     );
   }
-
 }
 
 Widget menuListItem (context,ItemModel foods)

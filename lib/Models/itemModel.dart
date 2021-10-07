@@ -1,26 +1,22 @@
 class ItemModel {
   String? name;
-  String? title;
-  String? street;
+  String? price;
 
   ItemModel({
     this.name,
-    this.title,
-    this.street,
+    this.price,
   });
 
   ItemModel.fromFire(Map <String, dynamic> fire){
     name = fire['name'];
-    title = fire['title'];
-    street = fire['street'];
+    price = fire['price'];
   }
 
 
   Map <String, dynamic> toMap() {
     return {
       'name': name,
-      'title': title,
-      'street': street,
+      'price': price,
     };
   }
 

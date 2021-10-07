@@ -1,29 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
+import 'package:talabatak/talabatak_bloc/cubit.dart';
+import 'package:talabatak/talabatak_bloc/states.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: ListView.separated(
-          physics: BouncingScrollPhysics(),
-            itemBuilder: (context , index) => menuListItem(context),
-            separatorBuilder: (context , index) => SizedBox(
-              height: 1.0,
+    return BlocConsumer<AppCubit,AppStates>(
+        builder: (context,state){
+          return Directionality(
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+              body: ListView.separated(
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context , index) => menuListItem(context,AppCubit.get(context).foodsScreen1[index]!),
+                separatorBuilder: (context , index) => SizedBox(
+                  height: 1.0,
+                ),
+                itemCount: AppCubit.get(context).foodsScreen1.length,
+              ),
             ),
-            itemCount: 10,
-        ),
-      ),
+          );
+        },
+        listener: (context,state){}
     );
   }
 
-  Widget menuListItem (context)
+  Widget menuListItem (context,ItemModel foods)
   {
     return GestureDetector(
       onTap: (){
@@ -51,8 +60,7 @@ class Screen1 extends StatelessWidget {
                   width: 20.0,
                 ),
                 Expanded(
-                  child: Text(
-                    'فراخ شوايا فحم',
+                  child: Text(foods.name!,
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -71,8 +79,7 @@ class Screen1 extends StatelessWidget {
                 SizedBox(
                   width: 5.0,
                 ),
-                Text(
-                  '20',
+                Text(foods.price!,
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,

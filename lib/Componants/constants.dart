@@ -1,5 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen2.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen3.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen4.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen5.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen6.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen7.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen8.dart';
 
 String ?uId = '';
 
@@ -37,7 +44,7 @@ List <Widget> mashwatHamzaScreens = [Screen1(),  Screen1(),  Screen1() , Screen1
 List <String> hatyEltkehTabs = ['مشويات' , 'كريب' , 'باستا' , 'سندوتشات' , 'طواجن' ];
 List <String> pizzaElmahdyTabs = ['شرقى' , 'ايطالى' , 'الحو' ,  'اضافات' ];
 List <String> hamdaElmahataTabs = ['كشرى' ,  'وجبات' , 'اضافات' , 'طواجن' , 'الحو' , 'شاورما' ,  'سندوتشات' , 'حواوشى' , 'كريب' ];
-List <String> kosharyHamadaTabs = ['كشرى' , 'اضافات' , 'طواجن' , 'الحو' , 'حواوشى' ];
+List <String> kosharyHamadaTabs = ['كشرى' , 'اضافات' , 'طواجن' , 'الحلو' , 'حواوشى' ];
 List <String> asmakAboMarimTabs = ['اسماك' , 'سندوتشات' , 'شوربة' , 'المطبخ' , 'طواجن' , 'وجبات' , 'الحلو' , 'اضافات'];
 List <String> pizzaHumTabs = ['شرقى' , 'ايطالى' , 'الحو' ,  'اضافات' , 'بريك'];
 List <String> pizzaElkhwagaTabs =  ['شرقى' , ' '];
@@ -53,11 +60,11 @@ List <String> hadrMotTabs = ['مشويات' , 'سندوتشات' , 'اضافات
 List <Widget> hatyEltkehScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1()];
 List <Widget> pizzaElmahdyScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() ];
 List <Widget> hamdaElmahataScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() , Screen1(),  Screen1() , Screen1() , Screen1()];
-List <Widget> kosharyHamadaScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() ];
-List <Widget> asmakAboMarimScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() , Screen1(),  Screen1() , Screen1() ];
+List <Widget> kosharyHamadaScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() ];
+List <Widget> asmakAboMarimScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() , Screen6(),  Screen7() , Screen8() ];
 List <Widget> pizzaHumScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() ];
 List <Widget> pizzaElkhwagaScreens =  [Screen1()];
-List <Widget> pizzaElamiraScreens = [Screen1(),  Screen1(),  Screen1() ];
+List <Widget> pizzaElamiraScreens = [Screen1(),  Screen2(),  Screen3() ];
 List <Widget> pizzaElhootScreens = [Screen1(),  Screen1(),  Screen1() , Screen1()];
 List <Widget> pizzaElsafirScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() , Screen1(), ];
 List <Widget> pizzaPoalaScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() ];

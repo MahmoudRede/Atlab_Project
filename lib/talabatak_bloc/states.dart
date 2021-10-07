@@ -51,3 +51,20 @@ class AppGetItemDetailErrorState extends AppStates {
 
   AppGetItemDetailErrorState(this.error);
 }
+
+class AppGetKosharyHamadaSuccessState extends AppStates{
+
+}
+
+class AppGetKosharyHamadaErrorState extends AppStates{
+
+}
+
+class AppGetAbuMariamFishSuccessState extends AppStates{
+
+}
+
+
+class AppGetAbuMariamFishErrorState extends AppStates{
+
+}
