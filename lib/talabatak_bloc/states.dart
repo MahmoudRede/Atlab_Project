@@ -68,3 +68,6 @@ class AppGetAbuMariamFishSuccessState extends AppStates{
 class AppGetAbuMariamFishErrorState extends AppStates{
 
 }
+
+class AppGetMenusSuccessState extends AppStates{}
+class AppGetMenusErrorState extends AppStates{}

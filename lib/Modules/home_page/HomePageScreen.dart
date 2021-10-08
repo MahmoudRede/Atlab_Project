@@ -982,7 +982,7 @@ Widget Block_Item(context,RestaurantModel model){
                   height: 110,
                   width: 150,
                   fit: BoxFit.fill,
-                  image: NetworkImage((model!.image)!)
+                  image: NetworkImage((model.image)!)
               ),
             ),
             SizedBox(

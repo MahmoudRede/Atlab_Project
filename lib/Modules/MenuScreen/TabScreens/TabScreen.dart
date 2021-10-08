@@ -7,8 +7,10 @@ import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
-class Screen1 extends StatelessWidget {
-  const Screen1({Key? key}) : super(key: key);
+class TabScreen extends StatelessWidget {
+   final List<ItemModel> menu ;
+
+   TabScreen({required this.menu});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,11 @@ class Screen1 extends StatelessWidget {
             child: Scaffold(
               body: ListView.separated(
                 physics: BouncingScrollPhysics(),
-                itemBuilder: (context , index) => menuListItem(context,AppCubit.get(context).foodsScreen1[index]),
+                itemBuilder: (context , index) => menuListItem(context,menu[index]),
                 separatorBuilder: (context , index) => SizedBox(
                   height: 1.0,
                 ),
-                itemCount: AppCubit.get(context).foodsScreen1.length,
+                itemCount: menu.length,
               ),
             ),
           );
