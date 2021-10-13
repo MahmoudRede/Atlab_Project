@@ -45,9 +45,7 @@ class RegisterScreen extends StatelessWidget {
                     key: formKey,
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 25.0,
-                        ),
+
                         CircleAvatar(
                           radius: 75.0,
                           child: Image(
@@ -61,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
                           'تسجيل البيانات',
                           style: TextStyle(
                             fontSize: 22.0,
-                            color: Colors.orange,
+                            color: Color.fromRGBO(58, 86, 156,1),
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -73,7 +71,7 @@ class RegisterScreen extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF341f97),
+                            color: Color.fromRGBO(58, 86, 156,1),
                           ),
                           keyboardType: TextInputType.text,
                           validator: (value){
@@ -85,6 +83,7 @@ class RegisterScreen extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             hintText: 'الأسم بالكامل',
+
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.person,
@@ -98,7 +97,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.orange,
+                                color: Color.fromRGBO(58, 86, 156,1),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -107,7 +106,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.blueAccent,
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -124,7 +123,7 @@ class RegisterScreen extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF341f97),
+                            color:Color.fromRGBO(58, 86, 156,1)
                           ),
                           keyboardType: TextInputType.phone,
                           validator: (value){
@@ -136,6 +135,7 @@ class RegisterScreen extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             hintText: 'رقم الموبيل (يفضل رقم الواتس)',
+
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.phone,
@@ -149,7 +149,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.orange,
+                                color: Color.fromRGBO(58, 86, 156,1),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -158,7 +158,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.blueAccent,
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -175,7 +175,7 @@ class RegisterScreen extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF341f97),
+                            color: Color.fromRGBO(58, 86, 156,1),
                           ),
                           keyboardType: TextInputType.text,
                           validator: (value){
@@ -200,7 +200,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.orange,
+                                color: Color.fromRGBO(58, 86, 156,1),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -209,7 +209,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.blueAccent,
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -219,7 +219,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 40.0,
+                          height: 30.0,
                         ),
                         ConditionalBuilder(
                           condition: state is! AppRegisterLoadingState,
@@ -229,7 +229,7 @@ class RegisterScreen extends StatelessWidget {
                             child: Material(
                               elevation: 5.0,
                               borderRadius: BorderRadius.circular(15.0),
-                              color: Colors.orange,
+                              color: Color.fromRGBO(58, 86, 156,1),
                               child: MaterialButton(
                                 minWidth: double.infinity,
                                 height: 50.0,
@@ -275,7 +275,7 @@ class RegisterScreen extends StatelessWidget {
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontSize: 16.0,
-                                color: Colors.deepOrange,
+                                color: Color.fromRGBO(58, 86, 156,1),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,8 @@ import 'package:talabatak/Modules/MenuScreen/MenuScreen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 String ?areaName='كل المناطق';
 String ?restaurantName='كل المطاعم';
@@ -111,7 +114,7 @@ class HomePageScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        color: Colors.amber,
+                        color: Color.fromRGBO(58, 86, 156,1),
                         margin: EdgeInsets.only(
                           bottom: 5.0,
                         ),
@@ -130,25 +133,25 @@ class HomePageScreen extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
-                                          color: Colors.black
+                                          color: Colors.white
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
+
                                   Expanded(
                                     child: Text(
                                       'نوع المطعم',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
-                                        color: Colors.black,
+                                        color: Colors.white,
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
+                                  SizedBox(width: 20,),
+
                                 ],
                               ),
                               Row(
@@ -156,11 +159,13 @@ class HomePageScreen extends StatelessWidget {
                                   Expanded(
                                       child: Center(
                                         child: DropdownButton(
+                                          dropdownColor: Colors.black87,
                                           style: TextStyle(
-                                              color: Colors.black,
+                                              color: Colors.white,
+
                                               fontSize: 17
                                           ),
-                                          icon: Icon(Icons.arrow_drop_down_sharp,color: Colors.black,),
+                                          icon: Icon(Icons.arrow_drop_down_sharp,color: Colors.white,),
                                           underline: Container(
                                             color: Colors.white,
                                           ),
@@ -584,16 +589,15 @@ class HomePageScreen extends StatelessWidget {
                                   Expanded(
                                       child: Center(
                                         child: DropdownButton(
-
+                                          dropdownColor: Colors.black87,
                                           underline: Container(
                                             color: Colors.white,
                                           ),
                                           style: TextStyle(
-                                              color: Colors.black,
+                                              color: Colors.white,
                                               fontSize: 17
-
                                           ),
-                                          icon: Icon(Icons.arrow_drop_down_sharp,color: Colors.black,),
+                                          icon: Icon(Icons.arrow_drop_down_sharp,color: Colors.white,),
                                           value: AppCubit.get(context).selectedPlace,
                                           items: AppCubit.get(context).places.map((item) {
                                             return DropdownMenuItem(
@@ -897,7 +901,7 @@ class HomePageScreen extends StatelessWidget {
                         height: 250,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Colors.amber
+                            color: Color.fromRGBO(58, 86, 156,1),
                         ),
                         child: Column(
                           children: [
@@ -947,9 +951,9 @@ Widget Block_Line_Drawer(Items_Drawer model){
           Text(
             '${model.text}',
             style: TextStyle(
-            fontSize: 13,
-            fontFamily: 'Lemonada',
-            ),
+              fontSize: 15,
+              fontFamily: 'OpenSans'
+            )
           ),
 
 
@@ -995,10 +999,10 @@ Widget Block_Item(context,RestaurantModel model){
                     textDirection: TextDirection.rtl,
                     child: Text(
                       (model.name)!,
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
-                      ),
+                      )
                     ),
                   )
               ),

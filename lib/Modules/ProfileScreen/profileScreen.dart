@@ -49,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                       height: double.infinity,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          color: Colors.blueGrey.shade100,
+                          color: Color.fromRGBO(58, 86, 156,1),
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(30),
                             topLeft:  Radius.circular(30),
@@ -61,11 +61,12 @@ class ProfileScreen extends StatelessWidget {
                           SizedBox(height: 57,),
                           Text('البيانات الشخصيه',style: TextStyle(
                               fontSize: 17,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
+                            color: Colors.white
                           ),),
                           Container(
                             height: 1,
-                            color: Colors.black45,
+                            color:Colors.white,
                           ),
                           SizedBox(height: 15,),
                           Row(
@@ -73,12 +74,14 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Text('الاسم :',style: TextStyle(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white
                               ),),
                               SizedBox(width: 5,),
                               Text((model!.name)!,style: TextStyle(
                                   fontSize: 17,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                             ],
                           ),
@@ -88,12 +91,14 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Text('رقم التلفون :',style: TextStyle(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                               SizedBox(width: 5,),
                               Text((model.phone)!,style: TextStyle(
                                   fontSize: 17,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                             ],
                           ),
@@ -103,23 +108,26 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Text('العنوان :',style: TextStyle(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                               SizedBox(width: 5,),
                               Text((model.address)!,style: TextStyle(
                                   fontSize: 17,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                             ],
                           ),
                           SizedBox(height: 25,),
                           Text('الاعدادات العامه',style: TextStyle(
                               fontSize: 17,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
+                            color: Colors.white
                           ),),
                           Container(
                             height: 1,
-                            color: Colors.black45,
+                            color: Colors.white,
                           ),
                           SizedBox(height: 15,),
                           Row(
@@ -127,12 +135,14 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Text('خدمه العملاء :',style: TextStyle(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                               SizedBox(width: 5,),
                               Text('01277556432 ',style: TextStyle(
                                   fontSize: 17,
-                                  fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold,
+                                color: Colors.white
                               ),),
                             ],
                           ),

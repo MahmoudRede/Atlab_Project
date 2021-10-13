@@ -69,5 +69,23 @@ class AppGetAbuMariamFishErrorState extends AppStates{
 
 }
 
+class AppGetPizzaBolaSuccessState extends AppStates{
+
+}
+
+
+class AppGetPizzaBolaErrorState extends AppStates{
+
+}
+
+class AppGetHatyeEltakiaSuccessState extends AppStates{
+
+}
+
+
+class AppGetHatyeEltakiaErrorState extends AppStates{
+
+}
+
 class AppGetMenusSuccessState extends AppStates{}
 class AppGetMenusErrorState extends AppStates{}

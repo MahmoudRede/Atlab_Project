@@ -33,7 +33,7 @@ class MenuScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 45.0,
+                            height: 30.0,
                           ),
                           CircleAvatar(
                             radius: 50.0,
@@ -48,10 +48,12 @@ class MenuScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black
+                                color: Colors.white
                             ),
                           ),
+                          SizedBox(height: 10,),
                         ],
+
                       ),
                     ),
                   ),

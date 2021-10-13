@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return
         BlocProvider(
-        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..getMenu(),
+        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings(),
           child: BlocConsumer<AppCubit,AppStates>(
             listener: (context,state){},
             builder: (context,state)=>MaterialApp(
@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.white,
               appBarTheme: AppBarTheme(
                 elevation: 0.0,
-                backgroundColor: Colors.amber,
+                backgroundColor: Color.fromRGBO(58, 86, 156,1),
                 backwardsCompatibility: false,
                 systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: Colors.amber,
+                  statusBarColor:Color.fromRGBO(58, 86, 156,1),
                   statusBarIconBrightness: Brightness.light,
                 ),
               ),

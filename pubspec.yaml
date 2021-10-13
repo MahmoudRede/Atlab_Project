@@ -37,6 +37,8 @@ dependencies:
   firebase_auth: ^3.0.2
   cloud_firestore: ^2.5.0
   firebase_storage: ^10.0.3
+  google_fonts: ^2.1.0
+
 #  splashscreen: ^1.3.5
 
 
@@ -76,6 +78,11 @@ flutter:
       fonts:
         - asset: assets/fonts/Lemonada-Regular.ttf
         - asset: assets/fonts/Lemonada-Bold.ttf
+
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
 
   #
   # For details regarding fonts from package dependencies,

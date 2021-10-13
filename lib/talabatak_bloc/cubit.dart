@@ -9,7 +9,6 @@ import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Models/UserModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
-import 'package:talabatak/Modules/MenuScreen/TabScreens/TabScreen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
@@ -1230,6 +1229,7 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
+
   List<String> tabs = [];
   List<Widget> tabsScreens = [];
   List<ItemModel> foodsScreen1=[];
@@ -1251,11 +1251,15 @@ class AppCubit extends Cubit<AppStates>{
     {
       tabs = pizzaPoalaTabs;
       tabsScreens = pizzaPoalaScreens;
+      getPizzaBola();
+
     }
     else if (restaurantName == 'حاتى التكيه')
-      {
+    {
         tabs = hatyEltkehTabs;
         tabsScreens = hatyEltkehScreens;
+        getHatyeEltakya();
+
       }
     else if (restaurantName == 'مشويات حمزة')
     {
@@ -1266,6 +1270,8 @@ class AppCubit extends Cubit<AppStates>{
     {
       tabs = pizzaElhootTabs;
       tabsScreens = pizzaElhootScreens;
+
+
     }
     else if (restaurantName == 'السلطان')
     {
@@ -1316,6 +1322,9 @@ class AppCubit extends Cubit<AppStates>{
     {
       tabs = asmakAboMarimTabs;
       tabsScreens = asmakAboMarimScreens;
+      getFishAbuMarim();
+
+
     }
     else if (restaurantName == 'بيتزا الأميرة')
     {
@@ -1341,7 +1350,8 @@ class AppCubit extends Cubit<AppStates>{
     else if (restaurantName == 'Wings')
     {
       tabs = wingsTabs;
-      tabsScreens = [TabScreen(menu: wingsMealsMenu,), TabScreen(menu: wingsFamilyMealMenu) , TabScreen(menu: wingsBargerMenu,)];
+      tabsScreens = wingsScreens;
+      getWings();
     }
     else if (restaurantName == 'بيتزا المهدى')
     {
@@ -1362,254 +1372,7 @@ class AppCubit extends Cubit<AppStates>{
     {
       tabs = kosharyHamadaTabs;
       tabsScreens = kosharyHamadaScreens;
-
-    // كشري
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('كشري')
-          .collection('علبه كماله')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen1.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('كشري')
-          .collection('علبه حماده')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen1.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('كشري')
-          .collection('علبه محمد صلاح')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen1.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('كشري')
-          .collection('علبه الشبح')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen1.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('كشري')
-          .collection('علبه ميكس')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen1.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-      //طواجن
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('طواجن')
-          .collection('طاجن لحمه')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen3.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('طواجن')
-          .collection('طاجن لحمه كبير')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen3.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('طواجن')
-          .collection('طاجن فراخ عادي')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen3.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('طواجن')
-          .collection('طاجن فراخ كبير')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen3.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      // حواوشي
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('حواوشي')
-          .collection('حواوشي بلدي')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen5.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('حواوشي')
-          .collection('حواوشي فراخ')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen5.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-    // الحلو
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-      .doc('كشري و طواجن')
-      .collection('كشري حماده')
-      .doc('الحلو')
-      .collection('ارز باللبن حلو')
-      .doc('detail')
-      .get().then((value) {
-        foodsScreen4.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('الحلو')
-          .collection('بليله')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen4.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      // اضافات
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('اضافات')
-          .collection('عيش توست')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen2.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-
-      FirebaseFirestore.instance.collection('كفر شبين')
-          .doc('كشري و طواجن')
-          .collection('كشري حماده')
-          .doc('اضافات')
-          .collection('سلطه')
-          .doc('detail')
-          .get().then((value) {
-        foodsScreen2.add(ItemModel.fromFire(value.data()!));
-        emit(AppGetKosharyHamadaSuccessState());
-
-      }).catchError((error){
-        print('Error');
-        emit(AppGetKosharyHamadaErrorState());
-      });
-
-    foodsScreen6=[];
-    foodsScreen7=[];
-    foodsScreen8=[];
+      getKoshryHamada();
 
     }
     else if (restaurantName == 'الأصيل')
@@ -1628,351 +1391,1566 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
-  List<ItemModel> wingsMealsMenu = [];
-  List<ItemModel> wingsBargerMenu = [];
-  List<ItemModel> wingsFamilyMealMenu = [];
 
-  void getMenu ()
-  {
 
-    // مطاعم شبين
-    // wings
-    // وجبات
+  void getPizzaBola(){
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('دينر بوكس')
+    // شرقي
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('بسطرمه')
         .doc('detail')
-        .get()
-        .then((value){
-          wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-          emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('سناك بوكس')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('لحمه')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('سوبر دينر')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('مشروم')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('سوبر ستربس')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('بوله')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('كيدز ميل')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('بيف')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('لايت استريس')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('جبنه رومي')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('مكس بوكس')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('تونه قطع')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('ميجا ستربس')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('تونه مفتته')
+        .doc('شرقي')
+        .collection('لحمه')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('وجبة التوفير')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('سجق اسكندراني')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('برجر')
-        .collection('وجبة وينجز')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('سوسيس')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsMealsMenu.add(ItemModel.fromFire(value.data()!));
-      print('menu : ${value.data()}');
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    // برجر
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('اونيون وينج')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('فاهيتا فراخ')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
-    }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
-    });
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('بيج وينج طبقتين')
-        .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
-    });
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('فيينا وينج')
-        .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
-    }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
-    });
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('كلاسيك وينج')
-        .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
-    }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('لاف تشيز')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('فراخ')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
-    }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
-    });
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('موتز وينج')
-        .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
     }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
-    });
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('موتزريلا لاف')
-        .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
-    }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
-    });
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات')
-        .collection('هوت وينج')
-        .doc('detail')
-        .get()
-        .then((value){
-      wingsBargerMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
-    }).catchError((error){
-      print('Error when get wings Meals');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
 
-    // وجبات عائليه
-
-
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات عائلية')
-        .collection('وجبة 12 قطعة')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('مشكل جبن')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsFamilyMealMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals : ${error.toString()}');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات عائلية')
-        .collection('وجبة 16 قطعة')
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('شرقي')
+        .collection('مشكل لحوم')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsFamilyMealMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals : ${error.toString()}');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
-    FirebaseFirestore.instance.collection('شبين')
-        .doc('Restaurant')
-        .collection('Wings')
-        .doc('وجبات عائلية')
-        .collection('وجبة 8 قطع')
+    // ايطالي
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('مارجريتا')
         .doc('detail')
-        .get()
-        .then((value){
-      wingsFamilyMealMenu.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetMenusSuccessState());
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
     }).catchError((error){
-      print('Error when get wings Meals : ${error.toString()}');
-      emit(AppGetMenusErrorState());
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('مشروم')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('بسطرمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('بوله')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('بيفي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('تشكين بربكيو')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('تونه قطع')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('تونه مفتته')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('خضروات')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('سجق اسكندراني')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('سوبر سوبريم')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('سوسيس')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('فاهيتا فراخ')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('فراخ')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('لحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('مشكل جبن')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('ايطالي')
+        .collection('مشكل لحوم')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    // الحلو
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('الحلو')
+        .collection('بغاشه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('الحلو')
+        .collection('سكر')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('الحلو')
+        .collection('شيكولاته')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('الحلو')
+        .collection('قشطه و عسل')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('الحلو')
+        .collection('كاستر')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    // حواوشي
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('حواوشي')
+        .collection('سجق')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('بيتزا')
+        .collection('بيتزا بوله')
+        .doc('حواوشي')
+        .collection('لحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetPizzaBolaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetPizzaBolaErrorState());
     });
 
 
+    foodsScreen1=[];
+    foodsScreen2=[];
+    foodsScreen3=[];
+    foodsScreen4=[];
+    foodsScreen5=[];
+    foodsScreen6=[];
+    foodsScreen7=[];
+    foodsScreen8=[];
 
 
-    //---------------------------------------
 
-    // كفر شبين
+
+
+  }
+
+  void getHatyeEltakya(){
+
+
+    // سندوتشات
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('رغيف حواوشي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('برجر جبنه فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('برجر التكيه فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش بانيه فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش برجر ساده - فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش زنجر فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش شيش فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش فاهيتا فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش كبده')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش كرسبي فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سندوتشات')
+        .collection('سندوتش كوردن بلو فرنساوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    // المطبخ
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('المطبخ')
+        .collection('سمبوسك جبن')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('المطبخ')
+        .collection('سمبوسك لحم')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('المطبخ')
+        .collection('كريمه بالفراخ')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('المطبخ')
+        .collection('كوارع مخليه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('المطبخ')
+        .collection('لسان عصفور')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('المطبخ')
+        .collection('ورق عنب')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    // باستا
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('باستا')
+        .collection('مكرونه الفريدو')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('باستا')
+        .collection('مكرونه بالسجق')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('باستا')
+        .collection('مكرونه بالكبده')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('باستا')
+        .collection('مكرونه بشاميل')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('باستا')
+        .collection('مكرونه بولونيز')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('باستا')
+        .collection('مكرونه نجرسكو')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    // سلاطات
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سلاطات')
+        .collection('بابا غنوج')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سلاطات')
+        .collection('توميه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سلاطات')
+        .collection('سلطه بلدي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سلاطات')
+        .collection('سلطه طحينه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سلاطات')
+        .collection('طماطم مشوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('سلاطات')
+        .collection('مخلل')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    // طواجن
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن ارز معمر ساده')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن ارز معمر لحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن التكيه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن باميه باللحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن تورلي لحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن سجق')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن عكاوي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن ملوخيه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('طواجن')
+        .collection('طاجن ورق عنب كوارع')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    // فتات
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('فتات')
+        .collection('فته كوارع')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen6.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('فتات')
+        .collection('فته لحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen6.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('فتات')
+        .collection('فته موزه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen6.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    // كريب
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب بانيه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب برجر')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب بطاطس')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب زنجر')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب سجق')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب سوسيس')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب شيش طاووق')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب فاهيتا')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب كرسبي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب كفته')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('كريب')
+        .collection('كريب مكس جبنه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen7.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    // مشويات
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('ريش')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('شيش طاووق')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('طرب')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('طلب نيفه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('فراخ تكا')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('فراخ مشويه شيش')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('كباب')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('كبده')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('مشويات')
+        .collection('حاتي التكيه')
+        .doc('مشويات')
+        .collection('كفته')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen8.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetHatyeEltakiaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetHatyeEltakiaErrorState());
+    });
+
+
+    foodsScreen1=[];
+    foodsScreen2=[];
+    foodsScreen3=[];
+    foodsScreen4=[];
+    foodsScreen5=[];
+    foodsScreen6=[];
+    foodsScreen7=[];
+    foodsScreen8=[];
+
+  }
+
+  void getFishAbuMarim(){
+
     // أسماك أبو مريم
 
     FirebaseFirestore.instance.collection('كفر شبين')
@@ -2741,18 +3719,625 @@ class AppCubit extends Cubit<AppStates>{
       emit(AppGetAbuMariamFishErrorState());
     });
 
+    foodsScreen1=[];
+    foodsScreen2=[];
+    foodsScreen3=[];
+    foodsScreen4=[];
+    foodsScreen5=[];
+    foodsScreen6=[];
+    foodsScreen7=[];
+    foodsScreen8=[];
 
-    // كشرى حمادة
+
+  }
+
+  void getKoshryHamada(){
 
 
+    // كشري
 
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('كشري')
+        .collection('علبه كماله')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('كشري')
+        .collection('علبه حماده')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('كشري')
+        .collection('علبه محمد صلاح')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('كشري')
+        .collection('علبه الشبح')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('كشري')
+        .collection('علبه ميكس')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+    //طواجن
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('طواجن')
+        .collection('طاجن لحمه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('طواجن')
+        .collection('طاجن لحمه كبير')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('طواجن')
+        .collection('طاجن فراخ عادي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('طواجن')
+        .collection('طاجن فراخ كبير')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    // حواوشي
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('حواوشي')
+        .collection('حواوشي بلدي')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('حواوشي')
+        .collection('حواوشي فراخ')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen5.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    // الحلو
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('الحلو')
+        .collection('ارز باللبن حلو')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('الحلو')
+        .collection('بليله')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen4.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    // اضافات
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('اضافات')
+        .collection('عيش توست')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('كفر شبين')
+        .doc('كشري و طواجن')
+        .collection('كشري حماده')
+        .doc('اضافات')
+        .collection('سلطه')
+        .doc('detail')
+        .get().then((value) {
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetKosharyHamadaSuccessState());
+
+    }).catchError((error){
+      print('Error');
+      emit(AppGetKosharyHamadaErrorState());
+    });
+
+    foodsScreen1=[];
+    foodsScreen2=[];
+    foodsScreen3=[];
+    foodsScreen4=[];
+    foodsScreen5=[];
+    foodsScreen6=[];
+    foodsScreen7=[];
+    foodsScreen8=[];
+
+
+  }
+
+  void getWings (){
+
+    // وجبات
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('دينر بوكس')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('سناك بوكس')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('سوبر دينر')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('سوبر ستربس')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('كيدز ميل')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('لايت استريس')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('مكس بوكس')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('ميجا ستربس')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('وجبة التوفير')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('برجر')
+        .collection('وجبة وينجز')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen1.add(ItemModel.fromFire(value.data()!));
+      print('menu : ${value.data()}');
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    // برجر
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('اونيون وينج')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('بيج وينج طبقتين')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('فيينا وينج')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('كلاسيك وينج')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('لاف تشيز')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('موتز وينج')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('موتزريلا لاف')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات')
+        .collection('هوت وينج')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen2.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals');
+      emit(AppGetMenusErrorState());
+    });
+
+
+    // وجبات عائليه
+
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات عائلية')
+        .collection('وجبة 12 قطعة')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals : ${error.toString()}');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات عائلية')
+        .collection('وجبة 16 قطعة')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals : ${error.toString()}');
+      emit(AppGetMenusErrorState());
+    });
+
+    FirebaseFirestore.instance.collection('شبين')
+        .doc('Restaurant')
+        .collection('Wings')
+        .doc('وجبات عائلية')
+        .collection('وجبة 8 قطع')
+        .doc('detail')
+        .get()
+        .then((value){
+      foodsScreen3.add(ItemModel.fromFire(value.data()!));
+      emit(AppGetMenusSuccessState());
+    }).catchError((error){
+      print('Error when get wings Meals : ${error.toString()}');
+      emit(AppGetMenusErrorState());
+    });
+
+    foodsScreen1=[];
+    foodsScreen2=[];
+    foodsScreen3=[];
+    foodsScreen4=[];
+    foodsScreen5=[];
+    foodsScreen6=[];
+    foodsScreen7=[];
+    foodsScreen8=[];
 
 
   }
 
 
-}
 
+
+}
 
 
 

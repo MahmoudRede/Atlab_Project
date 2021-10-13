@@ -30,16 +30,15 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
     return Scaffold(
       appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.white,
+        backgroundColor: Color.fromRGBO(58, 86, 156,1),
           backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.white,
-            statusBarIconBrightness: Brightness.dark,
+            statusBarColor: Color.fromRGBO(58, 86, 156,1),
+            statusBarIconBrightness: Brightness.light,
           ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Container(
+      body:Container(
+           color: Color.fromRGBO(58, 86, 156,1),
           alignment: Alignment.center,
           child: Column(
             children: [
@@ -48,20 +47,23 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
                 style: TextStyle(
                 fontSize: 45,
                 fontFamily: 'Lemonada',
-                fontWeight: FontWeight.bold
-              ),),
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+
+                ),),
               SizedBox(height: MediaQuery.of(context).size.height*.02,),
               Image(
                 height: MediaQuery.of(context).size.height*.35,
                 width: MediaQuery.of(context).size.height*.35,
-                image: AssetImage('assets/images/delivery.jpg'),
+                image: AssetImage('assets/images/delvery.png'),
               ),
               SizedBox(height: MediaQuery.of(context).size.height*.05,),
               Text('أسرع و أمن دليفري مع طلباتك بنقربك للي يهمك',
                   style: TextStyle(
                     fontSize: 17,
                     fontFamily: 'Lemonada',
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
                 ),
                   textAlign: TextAlign.center,
                 ),
@@ -70,15 +72,16 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
                 style: TextStyle(
                   fontSize: 13,
                   fontFamily: 'Lemonada',
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
 
-              ),
+
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
           )
         ),
-      ),
     );
   }
 }

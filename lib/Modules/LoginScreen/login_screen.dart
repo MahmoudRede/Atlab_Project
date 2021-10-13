@@ -72,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF341f97),
+                            color: Color.fromRGBO(58, 86, 156,1),
                           ),
                           keyboardType: TextInputType.phone,
                           validator: (value){
@@ -84,6 +84,7 @@ class LoginScreen extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             hintText: 'أدخل رقم الهاتف',
+
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.phone,
@@ -97,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.orange,
+                                color: Color.fromRGBO(58, 86, 156,1),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -106,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.blueAccent,
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.all(
@@ -132,7 +133,7 @@ class LoginScreen extends StatelessWidget {
                               textDirection: TextDirection.rtl,
                               style: TextStyle(
                                 fontSize: 16.0,
-                                color: Colors.deepOrange,
+                                color: Color.fromRGBO(58, 86, 156,1),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -144,7 +145,7 @@ class LoginScreen extends StatelessWidget {
                         Material(
                           elevation: 5.0,
                           borderRadius: BorderRadius.circular(15.0),
-                          color: Colors.orange,
+                          color: Color.fromRGBO(58, 86, 156,1),
                           child: MaterialButton(
                             minWidth: double.infinity,
                             height: 50.0,

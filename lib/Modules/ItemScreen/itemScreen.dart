@@ -15,7 +15,6 @@ class ItemScreen extends StatelessWidget {
           textDirection: TextDirection.rtl,
           child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.amber,
               title: Text('تفاصيل المنتج',style: TextStyle(
                   fontSize: 22,
                   color: Colors.white,
@@ -117,7 +116,7 @@ class ItemScreen extends StatelessWidget {
                                     mini:true ,
                                     child:Icon(
                                       Icons.add_circle_outline,
-                                      color: Colors.amber,
+                                      color: Color.fromRGBO(58, 86, 156,1),
                                       size: 30,
                                     ) ,
                                   ),
@@ -135,7 +134,7 @@ class ItemScreen extends StatelessWidget {
                                     mini:true ,
                                     child:Icon(
                                       Icons.remove_circle_outline,
-                                      color: Colors.amber,
+                                      color: Color.fromRGBO(58, 86, 156,1),
                                       size: 30,
                                     ) ,
                                   ),
@@ -152,7 +151,7 @@ class ItemScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                              color: Colors.amber,
+                              color: Color.fromRGBO(58, 86, 156,1),
                               onPressed: (){
 
                               },
