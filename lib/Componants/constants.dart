@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen10.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen2.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen3.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen4.dart';
@@ -7,30 +8,31 @@ import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen5.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen6.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen7.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen8.dart';
+import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen9.dart';
 
 String ?uId = '';
 
 // مطاعم شبين
 
 List <String> wingsTabs = ['وجبات' ,'برجر', 'وجبات عائلية' ];
-List <String> elBakTabs = ['اضافات' , 'شندوتشات' , 'وجبات' , 'وجبات عائلية'];
+List <String> elBakTabs = ['وجبات' , 'وجبات عائلية' , 'شندوتشات' , 'اضافات' ];
 List <String> pizzaBremoTabs = ['شرقى'];
-List <String> taboshElsoryTabs = ['اضافات' , 'البروسات' , 'الحلو' , 'برجر' , 'سندوتشات' , 'شاورما' , 'فتات' , 'فراخ' , 'وجبات'];
-List <String> kosharyHendTabs = ['اضافات' , 'الحو' , 'ايطالى' , 'حواوشى' , 'سندوتشات' , 'شرقى' , 'طواجن' , 'كشرى'];
+List <String> taboshElsoryTabs = ['وجبات' , 'فراخ' , 'فتات' , 'شاورما' , 'سندوتشات' , 'برجر' , 'الحلو' , 'البروسات' , 'اضافات'];
+List <String> kosharyHendTabs = ['كشرى' , 'طواجن' , 'شرقى' , 'سندوتشات' , 'حواوشى' , 'ايطالى' ,  'الحو' , 'اضافات'];
 List <String> elSoltanTabs = ['اضافات' , 'الحو' , 'ايطالى' , 'حواوشى' , 'سندوتشات' , 'شرقى' ,'شاورما' , 'طواجن' , 'كشرى' , 'كريب' , 'مشويات' , 'مكرونات' ];
 List <String> batElknafaTabs = ['شرقى'];
-List <String> frescoTabs = ['اضافات' , 'باستا' , 'برجر' , 'بيتزا' , 'سلاطات' , 'شاورما' , 'طواجن' , 'كريب' , 'مشويات' , 'وجبات'];
+List <String> frescoTabs = ['وجبات' , 'مشويات' ,  'كريب' , 'طواجن' ,  'شاورما' , 'سلاطات' , 'بيتزا' , 'برجر' , 'باستا' , 'اضافات'];
 List <String> elAndalosTabs = ['الحو' , 'ايطالى' , 'حواوشى' , 'سندوتشات' , 'شرقى' , 'طواجن' , 'فراخ'];
 List <String> gostom = ['مشويات', 'وجبات' , 'طواجن' , 'وجبات عائلية' , 'مكرونات' , 'اضافات' , 'سلاطات' , 'سندوتشات' , 'سورى' , 'كريب'];
 
 List <Widget> wingsScreens = [Screen1(),  Screen2(),  Screen3()];
-List <Widget> elBakScreens = [Screen1(),  Screen1(),  Screen1() , Screen1()];
+List <Widget> elBakScreens = [Screen3() ,  Screen4() , Screen2() , Screen1() ];
 List <Widget> pizzaBremoScreens = [Screen1()];
-List <Widget> taboshElsoryScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1()];
-List <Widget> kosharyHendScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() ,Screen1(),  Screen1(),  Screen1() , Screen1()];
+List <Widget> taboshElsoryScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5(),  Screen6(),  Screen7() , Screen8() , Screen9()];
+List <Widget> kosharyHendScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() ,Screen5(),  Screen6(),  Screen7() , Screen8()];
 List <Widget> elSoltanScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1(),  Screen1() , Screen1()];
 List <Widget> batElknafaScreens = [Screen1()];
-List <Widget> frescoScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1()];
+List <Widget> frescoScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5(),  Screen6(),  Screen7() , Screen8(),  Screen9() , Screen10()];
 List <Widget> elAndalosScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() ,Screen1(),  Screen1(),  Screen1()];
 List <Widget> gostomScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1(),  Screen1()];
 
