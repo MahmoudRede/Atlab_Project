@@ -37,7 +37,7 @@ Widget menuListItem (context,ItemModel foods)
 {
   return GestureDetector(
     onTap: (){
-      navigateTo(context: context, widget: ItemScreen());
+      navigateTo(context: context, widget: ItemScreen(foods));
     },
     child: Padding(
       padding: const EdgeInsets.all(10.0),

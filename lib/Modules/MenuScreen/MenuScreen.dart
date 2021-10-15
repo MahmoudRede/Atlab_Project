@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen2.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen3.dart';
+import 'package:talabatak/Modules/UserBasket/UserBasket.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
@@ -80,7 +82,9 @@ class MenuScreen extends StatelessWidget {
                           top: 25.0
                       ),
                       child: GestureDetector(
-                        onTap : (){},
+                        onTap : (){
+                          navigateTo(context: context, widget: UserBasket());
+                        },
                         child : Image(
                           height: 35.0,
                           width: 35.0,

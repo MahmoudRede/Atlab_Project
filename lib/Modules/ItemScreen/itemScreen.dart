@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Models/itemModel.dart';
+import 'package:talabatak/Modules/AddOrder/AddOrder.dart';
+import 'package:talabatak/Modules/UserBasket/UserBasket.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
 class ItemScreen extends StatelessWidget {
-  const ItemScreen({Key? key}) : super(key: key);
+
+  ItemModel itemModel;
+
+  ItemScreen(this.itemModel);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit,AppStates>(
       listener: (context,state){},
       builder: (context,state){
+
+        int itemNumber = AppCubit.get(context).numberOfItem;
+
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
@@ -21,7 +31,6 @@ class ItemScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold
               ),),
             ),
-
             body: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -33,8 +42,8 @@ class ItemScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       elevation: 5,
                       child: Container(
-                        height: 335,
-                        width: 300,
+                        height: 400,
+                        width: 330,
                         child: Column(
                           children: [
                             SizedBox(height: 30,),
@@ -48,20 +57,38 @@ class ItemScreen extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('نص فرخه',style: TextStyle(
+                                    Text(
+                                      '${itemModel.name}',
+                                      style: TextStyle(
                                         fontSize: 22,
-                                        fontWeight: FontWeight.bold
+                                        fontWeight: FontWeight.bold,
                                     ),),
-                                    Text('مشويات',style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold
+                                    Text(
+                                      '${itemModel.category}',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey,
                                     ),),
+                                    Container(
+                                      width: 180,
+                                      child: Text(
+                                        '${itemModel.details}',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      maxLines: 3,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
                             ),
+                            SizedBox(
+                              height: 12,
+                            ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 10),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 5),
                               child: Row(
                                 children: [
                                   Text('الحجم :',style: TextStyle(
@@ -69,16 +96,17 @@ class ItemScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold
                                   ),),
                                   SizedBox(width: 35,),
-                                  Text('نص',style: TextStyle(
+                                  Text(
+                                    'نص',
+                                    style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                   ),)
-
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 10),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 5),
                               child: Row(
                                 children: [
                                   Text('السعر :',style: TextStyle(
@@ -86,20 +114,22 @@ class ItemScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold
                                   ),),
                                   SizedBox(width: 35,),
-                                  Text('L.E',style: TextStyle(
+                                  Text(
+                                    'L.E',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold
+                                     ),
+                                  ),
+                                  Text('${itemModel.price}',style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                   ),),
-                                  Text(' 40',style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold
-                                  ),),
-
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 0),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 10),
                               child: Row(
                                 children: [
                                   Text('العدد :',style: TextStyle(
@@ -129,7 +159,6 @@ class ItemScreen extends StatelessWidget {
                                     elevation: 0,
                                     onPressed: (){
                                       AppCubit.get(context).minesNumberOfItem();
-
                                     },
                                     mini:true ,
                                     child:Icon(
@@ -146,19 +175,22 @@ class ItemScreen extends StatelessWidget {
                             SizedBox(height: 5,),
                             MaterialButton(
                               elevation: 7,
-
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                               color: Color.fromRGBO(58, 86, 156,1),
                               onPressed: (){
-
+                                AppCubit.get(context).addItemToUserOrders(itemModel , AppCubit.get(context).numberOfItem);
+                                navigateTo(context: context, widget: AddOrder());
                               },
                               child: Text('اضف الي طلباتك',style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20
                               ),),
+                            ),
+                            SizedBox(
+                              height: 20.0,
                             ),
                           ],
                         ),
@@ -171,15 +203,25 @@ class ItemScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(28, 0, 0, 0),
                     child: InkWell(
                       onTap: (){
-                        print('1');
+                        AppCubit.get(context).insertDatabase(name: itemModel.name!, price: itemModel.price!, category: itemModel.category!, details: itemModel.details!);
+                        navigateTo(context: context, widget: UserBasket());
                       },
-                      child: Image(image: AssetImage('assets/images/cart.png',),
-                        height: 125,
-                        width: 125,
+                      child: Column(
+                        children: [
+                          Image(image: AssetImage('assets/images/cart.png',),
+                            height: 100,
+                            width: 100,
+                          ),
+                          Text(
+                            'أضف الى السله',
+                            style: TextStyle(
+                              color: Color.fromRGBO(58, 86, 156,1),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-
                 ],
 
               ),

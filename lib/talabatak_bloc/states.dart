@@ -10,6 +10,20 @@ class SelectedPlaceState extends AppStates{
 
 }
 
+class AppAddItemToUserOredersState extends AppStates {}
+
+class AppRemoveItemFromUserOredersState extends AppStates {}
+class AppGetTotalPriceState extends AppStates {}
+class AppCreateDatabaseState extends AppStates {}
+class AppInsertDatabaseState extends AppStates {}
+class AppInsertDatabaseLoadingState extends AppStates {}
+class AppGetDatabaseState extends AppStates {}
+class AppDeleteDatabaseState extends AppStates {}
+
+
+
+
+
 class AppChangeTabsState extends AppStates{}
 
 class SelectedAreaState extends AppStates{
