@@ -10,7 +10,6 @@ import 'package:talabatak/talabatak_bloc/states.dart';
 class ItemScreen extends StatelessWidget {
 
   ItemModel itemModel;
-
   ItemScreen(this.itemModel);
 
   @override
@@ -181,8 +180,52 @@ class ItemScreen extends StatelessWidget {
                               padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                               color: Color.fromRGBO(58, 86, 156,1),
                               onPressed: (){
-                                AppCubit.get(context).addItemToUserOrders(itemModel , AppCubit.get(context).numberOfItem);
-                                navigateTo(context: context, widget: AddOrder());
+
+                                AlertDialog alert=AlertDialog(
+                                  title:Container(
+                                    child: Column(
+                                      children: [
+                                        Text('هل متاكد انك تريد اضافه المنتج الي طلباتك',textDirection: TextDirection.rtl,),
+                                        SizedBox(height: 5,),
+                                        Container(
+                                          color: Colors.black,
+                                          height: 2,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  content: Container(
+                                    height: 50,
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: TextButton(onPressed: (){
+                                           Navigator.pop(context);
+                                          }, child: Text('لاا',style: TextStyle(
+                                              fontSize: 19,
+                                              color:  Color.fromRGBO(58, 86, 156,1),
+                                              fontWeight: FontWeight.bold
+                                          ),)),
+                                        ),
+                                        Expanded(
+                                          child: TextButton(onPressed: (){
+                                            AppCubit.get(context).addItemToUserOrders(itemModel , AppCubit.get(context).numberOfItem);
+                                            AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
+                                            AppCubit.get(context).clearData();
+                                            navigateTo(context: context, widget: AddOrder());
+                                          }, child: Text('نعم',style: TextStyle(
+                                              fontSize: 19,
+                                            color:  Color.fromRGBO(58, 86, 156,1),
+                                            fontWeight: FontWeight.bold
+                                          ),)),
+                                        ),
+
+                                      ],
+                                    )
+                                  ),
+                                );
+                                showDialog(builder: (context) => alert, context: context);
+
                               },
                               child: Text('اضف الي طلباتك',style: TextStyle(
                                   color: Colors.white,
@@ -203,8 +246,10 @@ class ItemScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(28, 0, 0, 0),
                     child: InkWell(
                       onTap: (){
-                        AppCubit.get(context).insertDatabase(name: itemModel.name!, price: itemModel.price!, category: itemModel.category!, details: itemModel.details!);
+
                         navigateTo(context: context, widget: UserBasket());
+                        AppCubit.get(context).insertDatabase(name: itemModel.name!, price: itemModel.price!, category: itemModel.category!, details: itemModel.details!);
+
                       },
                       child: Column(
                         children: [

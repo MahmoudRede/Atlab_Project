@@ -912,7 +912,7 @@ class HomePageScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(63),
                                   image: DecorationImage(
-                                    image: AssetImage('assets/images/login.jpg'),
+                                    image: AssetImage('assets/images/login.jpeg'),
                                   )
                               ),
                             ),

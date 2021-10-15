@@ -10,7 +10,10 @@ import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Models/UserModel.dart';
+import 'package:talabatak/Models/adminModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
+import 'package:talabatak/Models/orderModel.dart';
+import 'package:talabatak/Modules/AdminScreen/adminScreen.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
@@ -12837,6 +12840,107 @@ class AppCubit extends Cubit<AppStates>{
     // FirebaseFirestore.instance.collection('orders').
   }
 
+  void createInfo({
+    required String name,
+    required String number,
+    required String address,
+  }){
+
+    AdminModel model= AdminModel(
+      name:name,
+      number: number,
+      address: address,
+    );
+
+    FirebaseFirestore.instance
+        .collection('Info')
+        .doc('uids')
+        .set(model.toMap())
+        .then((value) {
+        emit(AppCreateInfoSuccessState());
+    }).catchError((error){
+      print('no done');
+
+      emit(AppCreateInfoErrorState());
+
+    });
+
+  }
+
+
+  AdminModel? adminModel;
+
+  void getInf(context){
+
+    FirebaseFirestore.instance.collection('Info')
+        .doc('uids')
+        .get()
+        .then((value) {
+          print(value);
+          adminModel=AdminModel.fromFire(value.data()!);
+          navigateTo(context: context, widget: adminScreen());
+          emit(AppGetInfoSuccessState());
+    }).catchError((error){
+      emit(AppGetInfoErrorState());
+
+    });
+
+  }
+
+  void createOrder({
+    required int number,
+    required String price,
+    required String name,
+  }){
+
+    OrderModel model= OrderModel(
+
+      number: number,
+      price:price,
+      name: name,
+    );
+
+    FirebaseFirestore.instance
+        .collection('orders')
+        .doc()
+        .set(model.toMap())
+        .then((value) {
+      emit(AppCreateOrderSuccessState());
+    }).catchError((error){
+      print('no done');
+
+      emit(AppCreateOrderErrorState());
+
+    });
+
+  }
+
+
+  OrderModel? orderModel;
+
+  List<OrderModel> items=[];
+
+  void getOrder(){
+        items=[];
+    FirebaseFirestore.instance.collection('orders')
+          .snapshots().listen((event) {
+           event.docs.forEach((element) {
+             print(element.data()!);
+             items.add(OrderModel.fromFire(element.data()!));
+          });
+          emit(AppGetOrderSuccessState());
+         });
+        }
+
+  void clearData(){
+    items.clear();
+    final fb= FirebaseFirestore.instance.collection('orders').doc();
+    fb.delete().whenComplete(() {
+      print('done');
+    });
+    emit(ClearDataState());
+
+  }
 
 }
 

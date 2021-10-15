@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Componants/constants.dart';
+import 'package:talabatak/Modules/AdminScreen/adminScreen.dart';
+import 'package:talabatak/Modules/DoneOrder/DoneOrder.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/cubit.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/state.dart';
@@ -36,138 +39,202 @@ class FinishOrder extends StatelessWidget {
                 ),
               ],
             ),
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: Center(
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                      height: 100,
-                      ),
-                      TextFormField(
-                        controller: phoneController,
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color:Color.fromRGBO(58, 86, 156,1)
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                child: Center(
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                        height: 70,
                         ),
-                        keyboardType: TextInputType.phone,
-                        validator: (value){
-                          if(value!.isEmpty && value.length <= 11)
-                          {
-                            return 'برجاء أدخال رقم موبيل صحيح';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'رقم الموبيل (يفضل رقم الواتس)',
-
-                          hintTextDirection: TextDirection.rtl,
-                          suffixIcon: Icon(
-                            Icons.phone,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 20,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(58, 86, 156,1),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.blueAccent,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      TextFormField(
-                        controller: addressController,
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(58, 86, 156,1),
-                        ),
-                        keyboardType: TextInputType.text,
-                        validator: (value){
-                          if(value!.isEmpty)
-                          {
-                            return 'برجاء أدخال عنوان صحيح';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'العنوان بالكامل',
-                          hintTextDirection: TextDirection.rtl,
-                          suffixIcon: Icon(
-                            Icons.location_on,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 20,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(58, 86, 156,1),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.blueAccent,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 50.0,
-                      ),
-                      MaterialButton(
-                        color: Color.fromRGBO(58, 86, 156,1),
-                        minWidth: double.infinity,
-                        height: 50.0,
-                        onPressed: (){
-                          if(formKey.currentState!.validate())
-                          {}
-                        },
-                        child: Text(
-                          'اتمام العملية',
-                          textAlign: TextAlign.center,
+                        TextFormField(
+                          controller: nameController,
+                          textDirection: TextDirection.rtl,
                           style: TextStyle(
-                            color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
+                            color: Color.fromRGBO(58, 86, 156,1),
+                          ),
+                          keyboardType: TextInputType.text,
+                          validator: (value){
+                            if(value!.isEmpty)
+                            {
+                              return 'برجاء أدخال الاسم';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'الاسم ثلاثي',
+                            hintTextDirection: TextDirection.rtl,
+                            suffixIcon: Icon(
+                              Icons.person,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 15,
+                              horizontal: 20,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(58, 86, 156,1),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.blueAccent,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        TextFormField(
+                          controller: phoneController,
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:Color.fromRGBO(58, 86, 156,1)
+                          ),
+                          keyboardType: TextInputType.phone,
+                          validator: (value){
+                            if(value!.isEmpty && value.length <= 11)
+                            {
+                              return 'برجاء أدخال رقم موبيل صحيح';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'رقم الموبيل (يفضل رقم الواتس)',
+
+                            hintTextDirection: TextDirection.rtl,
+                            suffixIcon: Icon(
+                              Icons.phone,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 15,
+                              horizontal: 20,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(58, 86, 156,1),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.blueAccent,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        TextFormField(
+                          controller: addressController,
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(58, 86, 156,1),
+                          ),
+                          keyboardType: TextInputType.text,
+                          validator: (value){
+                            if(value!.isEmpty)
+                            {
+                              return 'برجاء أدخال عنوان صحيح';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'العنوان بالكامل',
+                            hintTextDirection: TextDirection.rtl,
+                            suffixIcon: Icon(
+                              Icons.location_on,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 15,
+                              horizontal: 20,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromRGBO(58, 86, 156,1),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.blueAccent,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50.0,
+                        ),
+                        MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          color: Color.fromRGBO(58, 86, 156,1),
+                          minWidth: double.infinity,
+                          height: 50.0,
+                          onPressed: (){
+                            if(formKey.currentState!.validate())
+                            {
+
+                              AppCubit.get(context).createInfo( name: nameController.text, number: phoneController.text, address: addressController.text);
+                              AppCubit.get(context)..getOrder();
+                              navigateTo(context: context, widget: DoneOrder());
+
+
+                            }
+                          },
+                          child: Text(
+                            'اتمام العملية',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
                   ),
                 ),
               ),

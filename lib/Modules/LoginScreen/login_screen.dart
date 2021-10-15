@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Modules/AdminLoginScreen/AdminLoginScreen.dart';
 import 'package:talabatak/Modules/RegisterScreen/register_Screen.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
@@ -61,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                         CircleAvatar(
                           radius: 75.0,
                           child: Image(
-                            image: AssetImage('assets/images/login.jpg'),
+                            image: AssetImage('assets/images/login.jpeg'),
                           ),
                         ),
                         SizedBox(
@@ -139,8 +140,28 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        Container(
+                          width: double.infinity,
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context){
+                                return AdminLoginScreen();
+                              }));
+                            },
+                            child: Text(
+                              'تسجيل الدخول كادمن',
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                color: Color.fromRGBO(58, 86, 156,1),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
                         SizedBox(
-                          height: 60.0,
+                          height: 25.0,
                         ),
                         Material(
                           elevation: 5.0,

@@ -37,13 +37,13 @@ class AddOrder extends StatelessWidget {
                           child: ListView.separated(
                               itemBuilder: (context , index) => listItem(userOrders[index] , itemNumber[index] ,context , index),
                               separatorBuilder: (context , index) => SizedBox(
-                                height: 5.0,
+                                height: 1,
                               ),
                               itemCount: userOrders.length,
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
                           child: Row(
                             children: [
                               MaterialButton(
@@ -77,9 +77,7 @@ class AddOrder extends StatelessWidget {
                                     fontSize: 16,
                                 ),),
                               ),
-                              SizedBox(
-                                width: 25.0,
-                              ),
+                              SizedBox(width: 5,),
                               Row(
                                 children: [
                                   Text('السعر :',style: TextStyle(
@@ -121,7 +119,7 @@ class AddOrder extends StatelessWidget {
   Widget listItem (ItemModel model  , itemNum , context , index)
   {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 30, 20, 20),
+      padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
       child: Material(
         borderRadius: BorderRadius.circular(20),
         elevation: 5,
@@ -130,61 +128,65 @@ class AddOrder extends StatelessWidget {
           width: 330,
           child: Column(
             children: [
-              Align(
-                alignment: AlignmentDirectional.topEnd,
-                child: IconButton(
-                  onPressed: (){
-                    AppCubit.get(context).removeItemFromUserOrders(index);
-                  },
-                  icon: Icon(
-                    Icons.cancel_outlined,
-                    size: 30,
-                    color: Color.fromRGBO(58, 86, 156,1),
-                  ),
-                ),
-              ),
-              Row(
-                children: [
-                  Image(
-                    image: AssetImage('assets/images/burger.png',),
-                    height: 80,
-                    width: 110,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+              SizedBox(height: 35,),
+              // Align(
+              //   alignment: AlignmentDirectional.topEnd,
+              //   child: IconButton(
+              //     onPressed: (){
+              //       AppCubit.get(context).removeItemFromUserOrders(index);
+              //     },
+              //     icon: Icon(
+              //       Icons.cancel_outlined,
+              //       size: 30,
+              //       color: Color.fromRGBO(58, 86, 156,1),
+              //     ),
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0, 30, 0),
+                child: Row(
+                  children: [
+                    Image(
+                      image: AssetImage('assets/images/burger.png',),
+                      height: 100,
+                      width: 80,
+                    ),
+                    SizedBox(width: 5,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
 
-                      Container(
-                        width: 220,
-                        child: Text(
-                          '${model.name}',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                        Container(
+                          child: Text(
+                            '${model.name}',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 2,
                           ),
-                          maxLines: 2,
                         ),
-                      ),
-                      Text(
-                        '${model.category}',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),),
-                      Container(
-                        width: 200,
-                        child: Text(
-                          '${model.details}',
+                        Text(
+                          '${model.category}',
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),),
+                        Container(
+                          width: 150,
+                          child: Text(
+                            '${model.details}',
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold
+                            ),
+                            maxLines: 3,
                           ),
-                          maxLines: 3,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 12,

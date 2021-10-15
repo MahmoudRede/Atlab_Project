@@ -103,3 +103,18 @@ class AppGetHatyeEltakiaErrorState extends AppStates{
 
 class AppGetMenusSuccessState extends AppStates{}
 class AppGetMenusErrorState extends AppStates{}
+
+class AppCreateInfoSuccessState extends AppStates{}
+class AppCreateInfoErrorState extends AppStates{}
+
+class AppGetInfoSuccessState extends AppStates{}
+class AppGetInfoErrorState extends AppStates{}
+
+
+class AppCreateOrderSuccessState extends AppStates{}
+class AppCreateOrderErrorState extends AppStates{}
+
+class AppGetOrderSuccessState extends AppStates{}
+class AppGetOrderErrorState extends AppStates{}
+
+class ClearDataState extends AppStates{}

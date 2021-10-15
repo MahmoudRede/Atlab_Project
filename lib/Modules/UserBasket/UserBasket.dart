@@ -86,7 +86,7 @@ class UserBasket extends StatelessWidget {
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold
                             ),),
-                            SizedBox(width: 35,),
+                            SizedBox(width: 20,),
                             Text(
                               'L.E ',
                               style: TextStyle(
@@ -135,11 +135,10 @@ class UserBasket extends StatelessWidget {
                 children: [
                   Image(
                     image: AssetImage('assets/images/burger.png',),
-                    height: 80,
-                    width: 100,
+                    height: 90,
+                    width: 90,
                   ),
                   Container(
-                    width: 190,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -158,7 +157,7 @@ class UserBasket extends StatelessWidget {
                             color: Colors.grey,
                           ),),
                         Container(
-                          width: 180,
+                          width: 120,
                           child: Text(
                             '${model['details']}',
                             style: TextStyle(
@@ -171,6 +170,7 @@ class UserBasket extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Spacer(),
                   IconButton(
                       onPressed: (){
                         AppCubit.get(context).deleteDatabase(id: model['id']);

@@ -49,7 +49,7 @@ class RegisterScreen extends StatelessWidget {
                         CircleAvatar(
                           radius: 75.0,
                           child: Image(
-                            image: AssetImage('assets/images/login.jpg'),
+                            image: AssetImage('assets/images/login.jpeg'),
                           ),
                         ),
                         SizedBox(
