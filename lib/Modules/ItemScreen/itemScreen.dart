@@ -211,7 +211,6 @@ class ItemScreen extends StatelessWidget {
                                           child: TextButton(onPressed: (){
                                             AppCubit.get(context).addItemToUserOrders(itemModel , AppCubit.get(context).numberOfItem);
                                             AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
-                                            AppCubit.get(context).clearData();
                                             navigateTo(context: context, widget: AddOrder());
                                           }, child: Text('نعم',style: TextStyle(
                                               fontSize: 19,

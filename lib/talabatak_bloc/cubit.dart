@@ -12932,13 +12932,21 @@ class AppCubit extends Cubit<AppStates>{
          });
         }
 
-  void clearData(){
-    items.clear();
-    final fb= FirebaseFirestore.instance.collection('orders').doc();
-    fb.delete().whenComplete(() {
-      print('done');
-    });
-    emit(ClearDataState());
+  Future<void> clearData() async {
+
+    var collection = FirebaseFirestore.instance.collection('orders');
+    var snapshots = await collection.get();
+    for (var doc in snapshots.docs) {
+      await doc.reference.delete();
+    }
+
+    // items.clear();
+    // final fb= FirebaseFirestore.instance.collection('orders').doc();
+    // fb.delete().whenComplete(() {
+    //   print('done');
+    // });
+
+    // emit(ClearDataState());
 
   }
 

@@ -117,4 +117,3 @@ class AppCreateOrderErrorState extends AppStates{}
 class AppGetOrderSuccessState extends AppStates{}
 class AppGetOrderErrorState extends AppStates{}
 
-class ClearDataState extends AppStates{}

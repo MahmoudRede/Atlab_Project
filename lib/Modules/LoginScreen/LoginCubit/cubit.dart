@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +27,25 @@ class LoginCubit extends Cubit<LoginStates> {
       print('Error when login : ${error.toString()}');
       emit(AppLoginErrorState(error.toString()));
     });
+  }
+
+
+  Future<void> clearData() async {
+
+    var collection = FirebaseFirestore.instance.collection('orders');
+    var snapshots = await collection.get();
+    for (var doc in snapshots.docs) {
+      await doc.reference.delete();
+    }
+
+    // items.clear();
+    // final fb= FirebaseFirestore.instance.collection('orders').doc();
+    // fb.delete().whenComplete(() {
+    //   print('done');
+    // });
+
+    emit(ClearDataState());
+
   }
 
 }

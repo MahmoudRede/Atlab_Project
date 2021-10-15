@@ -17,5 +17,8 @@ class AppLoginErrorState extends LoginStates {
 
 class AppLoginChangePasswordState extends LoginStates{}
 
+class ClearDataState extends LoginStates{}
+
+
 
 

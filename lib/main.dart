@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return
         BlocProvider(
-        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings()..getInf(context),
+        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings()..getInf(context)..getOrder(),
           child: BlocConsumer<AppCubit,AppStates>(
             listener: (context,state){},
             builder: (context,state)=>MaterialApp(
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             home: Directionality(
               textDirection: TextDirection.ltr,
-              child: DoneOrder(),
+              child: MainSplashScreen(),
             ),
           ),
         ),
