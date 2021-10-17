@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/MenuScreen/MenuScreen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
+import 'package:talabatak/SharedPreference/CacheHelper.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -87,6 +89,8 @@ class HomePageScreen extends StatelessWidget {
           'تسجيل الخروج',
           Icons.logout,
               (){
+            CacheHelper.removeData(key: 'uId');
+            uId = '';
             navigateAndRemove(context: context, widget:LoginScreen());
           }
       ),

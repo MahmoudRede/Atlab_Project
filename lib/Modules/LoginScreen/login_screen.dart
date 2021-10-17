@@ -145,9 +145,7 @@ class LoginScreen extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context){
-                                return AdminLoginScreen();
-                              }));
+                              navigateAndRemove(context: context, widget: AdminLoginScreen());
                             },
                             child: Text(
                               'تسجيل الدخول كادمن',

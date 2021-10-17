@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
+import 'package:talabatak/Models/adminModel.dart';
+import 'package:talabatak/Models/orderModel.dart';
 import 'package:talabatak/Modules/AdminScreen/adminScreen.dart';
 import 'package:talabatak/Modules/DoneOrder/DoneOrder.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
@@ -12,10 +14,13 @@ import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
 class FinishOrder extends StatelessWidget {
+  List<Map> order ;
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var addressController = TextEditingController();
   var formKey = GlobalKey<FormState>();
+
+  FinishOrder(this.order);
 
   @override
   Widget build(BuildContext context) {
@@ -214,10 +219,15 @@ class FinishOrder extends StatelessWidget {
                           onPressed: (){
                             if(formKey.currentState!.validate())
                             {
-
-                              AppCubit.get(context).createInfo( name: nameController.text, number: phoneController.text, address: addressController.text);
-                              AppCubit.get(context)..getOrder();
-                              navigateTo(context: context, widget: DoneOrder());
+                              AdminModel userData = AdminModel(
+                                name: nameController.text,
+                                number: phoneController.text,
+                                address: addressController.text,
+                              );
+                             // AppCubit.get(context).createInfo( name: nameController.text, number: phoneController.text, address: addressController.text);
+                              AppCubit.get(context).createOrder(userData: userData, orderData: order);
+                              //AppCubit.get(context)..getOrder();
+                              navigateAndRemove(context: context, widget: DoneOrder());
 
 
                             }

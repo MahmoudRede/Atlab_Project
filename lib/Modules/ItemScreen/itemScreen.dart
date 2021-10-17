@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/itemModel.dart';
+import 'package:talabatak/Models/orderModel.dart';
 import 'package:talabatak/Modules/AddOrder/AddOrder.dart';
 import 'package:talabatak/Modules/UserBasket/UserBasket.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
@@ -209,10 +211,10 @@ class ItemScreen extends StatelessWidget {
                                         ),
                                         Expanded(
                                           child: TextButton(onPressed: (){
-                                            AppCubit.get(context).addItemToUserOrders(itemModel , AppCubit.get(context).numberOfItem);
-                                            AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
-                                            navigateTo(context: context, widget: AddOrder());
-                                          }, child: Text('نعم',style: TextStyle(
+                                            AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant , name: itemModel.name , price: itemModel.price , category: itemModel.category , number: AppCubit.get(context).numberOfItem));
+                                            //AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
+                                            navigateAndRemove(context: context, widget: AddOrder());
+                                            }, child: Text('نعم',style: TextStyle(
                                               fontSize: 19,
                                             color:  Color.fromRGBO(58, 86, 156,1),
                                             fontWeight: FontWeight.bold

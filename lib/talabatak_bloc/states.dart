@@ -14,6 +14,7 @@ class AppAddItemToUserOredersState extends AppStates {}
 
 class AppRemoveItemFromUserOredersState extends AppStates {}
 class AppGetTotalPriceState extends AppStates {}
+class AppGetCurrentRestaurantState extends AppStates {}
 class AppCreateDatabaseState extends AppStates {}
 class AppInsertDatabaseState extends AppStates {}
 class AppInsertDatabaseLoadingState extends AppStates {}

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/itemModel.dart';
+import 'package:talabatak/Models/orderModel.dart';
 import 'package:talabatak/Modules/FinishOrder/FinishOrder.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
@@ -35,7 +36,7 @@ class AddOrder extends StatelessWidget {
                       children: [
                         Expanded(
                           child: ListView.separated(
-                              itemBuilder: (context , index) => listItem(userOrders[index] , itemNumber[index] ,context , index),
+                              itemBuilder: (context , index) => listItem(userOrders[index] , context , index),
                               separatorBuilder: (context , index) => SizedBox(
                                 height: 1,
                               ),
@@ -53,7 +54,7 @@ class AddOrder extends StatelessWidget {
                                 ),
                                 color: Color.fromRGBO(58, 86, 156,1),
                                 onPressed: (){
-                                  navigateTo(context: context, widget: FinishOrder());
+                                  navigateTo(context: context, widget: FinishOrder(finishOrders));
                                 },
                                 child: Text('تأكيد الطلب',style: TextStyle(
                                     color: Colors.white,
@@ -80,11 +81,16 @@ class AddOrder extends StatelessWidget {
                               SizedBox(width: 5,),
                               Row(
                                 children: [
-                                  Text('السعر :',style: TextStyle(
+                                  Text(
+                                    'السعر :',
+                                    style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold
-                                  ),),
-                                  SizedBox(width: 10,),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   Text(
                                     'L.E ',
                                     style: TextStyle(
@@ -105,9 +111,7 @@ class AddOrder extends StatelessWidget {
                           height: 20.0,
                         ),
                       ],
-
                     ),
-
                   ),
                 ),
               );
@@ -116,7 +120,7 @@ class AddOrder extends StatelessWidget {
         });
   }
 
-  Widget listItem (ItemModel model  , itemNum , context , index)
+  Widget listItem (OrderModel model  , context , index)
   {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
@@ -128,20 +132,19 @@ class AddOrder extends StatelessWidget {
           width: 330,
           child: Column(
             children: [
-              SizedBox(height: 35,),
-              // Align(
-              //   alignment: AlignmentDirectional.topEnd,
-              //   child: IconButton(
-              //     onPressed: (){
-              //       AppCubit.get(context).removeItemFromUserOrders(index);
-              //     },
-              //     icon: Icon(
-              //       Icons.cancel_outlined,
-              //       size: 30,
-              //       color: Color.fromRGBO(58, 86, 156,1),
-              //     ),
-              //   ),
-              // ),
+              Align(
+                alignment: AlignmentDirectional.topEnd,
+                child: IconButton(
+                  onPressed: (){
+                    AppCubit.get(context).removeItemFromUserOrders(index);
+                  },
+                  icon: Icon(
+                    Icons.cancel_outlined,
+                    size: 30,
+                    color: Color.fromRGBO(58, 86, 156,1),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0,0, 30, 0),
                 child: Row(
@@ -172,17 +175,17 @@ class AddOrder extends StatelessWidget {
                             fontSize: 14,
                             color: Colors.grey,
                           ),),
-                        Container(
-                          width: 150,
-                          child: Text(
-                            '${model.details}',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold
-                            ),
-                            maxLines: 3,
-                          ),
-                        ),
+                        // Container(
+                        //   width: 150,
+                        //   child: Text(
+                        //     '${model.details}',
+                        //     style: TextStyle(
+                        //         fontSize: 14,
+                        //         fontWeight: FontWeight.bold
+                        //     ),
+                        //     maxLines: 3,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],
@@ -203,7 +206,7 @@ class AddOrder extends StatelessWidget {
                             fontWeight: FontWeight.bold
                         ),),
                         SizedBox(width: 20,),
-                        Text('${itemNum}',style: TextStyle(
+                        Text('${model.number}',style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold
                         ),

@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
+import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
+import 'package:talabatak/SharedPreference/CacheHelper.dart';
 
 
 class MainSplashScreen extends StatefulWidget {
+
+
   @override
   _MainSplashScreenState createState() => _MainSplashScreenState();
 }
@@ -17,9 +22,21 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
   // Set Time Of Splash Screen
     @override
     void initState(){
+      Widget screen = LoginScreen();
+
+
+          uId = CacheHelper.getData(key: 'uId') ?? '';
+
+          if (uId.isNotEmpty) {
+            screen = HomePageScreen();
+          } else {
+            screen = LoginScreen();
+          }
+
+
       Future.delayed(Duration(seconds: 3),(){
         Navigator.push(context, MaterialPageRoute(builder: (_){
-          return LoginScreen();
+          return screen;
         }));
       });
       super.initState();

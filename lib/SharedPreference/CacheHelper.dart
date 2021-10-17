@@ -13,11 +13,7 @@ class CacheHelper {
   dynamic value ,
  }) async
  {
-  if(value is String) return sharedPreferences!.setString(key, value);
-  if(value is bool) return sharedPreferences!.setBool(key, value);
-  if(value is int) return sharedPreferences!.setInt(key, value);
-
-  return sharedPreferences!.setDouble(key, value);
+  return sharedPreferences!.setString(key, value);
  }
 
  static dynamic getData ({

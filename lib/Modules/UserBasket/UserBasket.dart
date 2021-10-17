@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/itemModel.dart';
+import 'package:talabatak/Models/orderModel.dart';
 import 'package:talabatak/Modules/AddOrder/AddOrder.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
@@ -279,7 +280,7 @@ class UserBasket extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                 color: Color.fromRGBO(58, 86, 156,1),
                 onPressed: (){
-                   AppCubit.get(context).addItemToUserOrders(ItemModel(name: model['name'] , price: model['price'] , details: model['details'] , category: model['category']) , AppCubit.get(context).numberOfItem);
+                   AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant, name: model['name'] , price: model['price'] , number: AppCubit.get(context).numberOfItem , category: model['category']) , );
                    navigateTo(context: context, widget: AddOrder());
                    AppCubit.get(context).deleteDatabase(id: model['id']);
                 },

@@ -9,6 +9,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/RestaurantModel.dart';
+import 'package:talabatak/Models/UploadOrder.dart';
 import 'package:talabatak/Models/UserModel.dart';
 import 'package:talabatak/Models/adminModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
@@ -60,17 +61,20 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
-  void addItemToUserOrders (ItemModel model , itemNum)
+  void addItemToUserOrders (OrderModel model )
   {
     userOrders.add(model);
-    itemNumber.add(itemNum);
+    finishOrders.add(model.toMap());
+   // itemNumber.add(itemNum);
     numberOfItem = 1;
     emit(AppAddItemToUserOredersState());
   }
   void removeItemFromUserOrders (index)
   {
     userOrders.removeAt(index);
-    itemNumber.removeAt(index);
+    finishOrders.removeAt(index);
+    //itemNumber.removeAt(index);
+    getTotalPrice();
     emit(AppRemoveItemFromUserOredersState());
   }
 
@@ -83,6 +87,12 @@ class AppCubit extends Cubit<AppStates>{
     });
 
     emit(AppGetTotalPriceState());
+  }
+
+  void getCurrentRestaurant (RestaurantModel model)
+  {
+    currentRestaurant = model.name!;
+    emit(AppGetCurrentRestaurantState());
   }
 
 
@@ -12887,28 +12897,51 @@ class AppCubit extends Cubit<AppStates>{
 
   }
 
+  // void createOrder({
+  //   required int number,
+  //   required String price,
+  //   required String name,
+  // }){
+  //
+  //   OrderModel model= OrderModel(
+  //     number: number,
+  //     price:price,
+  //     name: name,
+  //   );
+  //
+  //   FirebaseFirestore.instance
+  //       .collection('orders')
+  //       .doc()
+  //       .set(model.toMap())
+  //       .then((value) {
+  //     emit(AppCreateOrderSuccessState());
+  //   }).catchError((error){
+  //     print('no done');
+  //     emit(AppCreateOrderErrorState());
+  //
+  //   });
+  //
+  // }
+
   void createOrder({
-    required int number,
-    required String price,
-    required String name,
+    required AdminModel userData,
+    required List <Map> orderData,
   }){
 
-    OrderModel model= OrderModel(
-
-      number: number,
-      price:price,
-      name: name,
-    );
+    // UploadOrder model = UploadOrder(
+    //   userData: userData,
+    //   orderData: orderData,
+    // );
 
     FirebaseFirestore.instance
         .collection('orders')
         .doc()
-        .set(model.toMap())
+        .set({'userData': userData.toMap(), 'orderData': orderData})
         .then((value) {
+          print('Order Created Successful');
       emit(AppCreateOrderSuccessState());
     }).catchError((error){
-      print('no done');
-
+      print('no done : ${error.toString()}');
       emit(AppCreateOrderErrorState());
 
     });
@@ -12916,21 +12949,22 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
-  OrderModel? orderModel;
+  UploadOrder? orderModel;
 
-  List<OrderModel> items=[];
+  List<UploadOrder> items=[];
 
   void getOrder(){
         items=[];
     FirebaseFirestore.instance.collection('orders')
-          .snapshots().listen((event) {
+          .snapshots()
+        .listen((event) {
            event.docs.forEach((element) {
-             print(element.data()!);
-             items.add(OrderModel.fromFire(element.data()!));
+             print(element.data());
+             items.add(UploadOrder.fromFire(element.data()));
           });
           emit(AppGetOrderSuccessState());
          });
-        }
+  }
 
   Future<void> clearData() async {
 

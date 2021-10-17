@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:talabatak/Models/itemModel.dart';
+import 'package:talabatak/Models/orderModel.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen10.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen11.dart';
@@ -13,9 +14,11 @@ import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen7.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen8.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen9.dart';
 
-String ?uId = '';
-List <ItemModel>  userOrders = [];
+String uId = '';
+List <OrderModel>  userOrders = [];
+List <Map>  finishOrders = [];
 List <int> itemNumber = [];
+String currentRestaurant = '';
 // مطاعم شبين
 
 List <String> wingsTabs = ['وجبات' ,'برجر', 'وجبات عائلية' ];
