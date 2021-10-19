@@ -20,8 +20,6 @@ class ItemScreen extends StatelessWidget {
       listener: (context,state){},
       builder: (context,state){
 
-        int itemNumber = AppCubit.get(context).numberOfItem;
-
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
@@ -126,13 +124,13 @@ class ItemScreen extends StatelessWidget {
                                   ),),
                                   SizedBox(width: 35,),
                                   Text(
-                                    'L.E',
+                                    'L.E ',
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                      ),
                                   ),
-                                  Text('${itemModel.price}',style: TextStyle(
+                                  Text('${int.parse(itemModel.price!) * AppCubit.get(context).numberOfItem}',style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                   ),),
@@ -235,7 +233,7 @@ class ItemScreen extends StatelessWidget {
                                 // );
                                 // showDialog(builder: (context) => alert, context: context);
 
-                                AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant , name: itemModel.name , price: itemModel.price , category: itemModel.category , number: AppCubit.get(context).numberOfItem));
+                                AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant , name: itemModel.name , price: (int.parse(itemModel.price!) * AppCubit.get(context).numberOfItem).toString(), category: itemModel.category , number: AppCubit.get(context).numberOfItem));
                                 //AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
                                 navigateTo(context: context, widget: AddOrder());
 

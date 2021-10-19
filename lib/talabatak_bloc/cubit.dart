@@ -52,8 +52,10 @@ class AppCubit extends Cubit<AppStates>{
 
   var numberOfItem = 1;
 
+
   void plusNumberOfItem(){
     numberOfItem+=1;
+
     emit(PlusNumberOfItemState());
   }
 
@@ -61,6 +63,7 @@ class AppCubit extends Cubit<AppStates>{
     numberOfItem>1?numberOfItem-=1:numberOfItem=1;
     emit(MinesNumberOfItemState());
   }
+
 
 
   void addItemToUserOrders (OrderModel model )
@@ -1533,6 +1536,12 @@ class AppCubit extends Cubit<AppStates>{
       tabs = wingsTabs;
       tabsScreens = wingsScreens;
       getWings();
+    }
+    else if (restaurantName == 'بيتزا بريمو')
+    {
+      tabs = pizzaBremoTabs;
+      tabsScreens = pizzaBremoScreens;
+      getPizzaPremo();
     }
     else if (restaurantName == 'بيتزا المهدى')
     {
@@ -19637,83 +19646,58 @@ class AppCubit extends Cubit<AppStates>{
   }
 
 
-  void sendOrder ()
-  {
-    // FirebaseFirestore.instance.collection('orders').
-  }
-
-  void createInfo({
-    required String name,
-    required String number,
-    required String address,
-  }){
-
-    AdminModel model= AdminModel(
-      name:name,
-      number: number,
-      address: address,
-    );
-
-    FirebaseFirestore.instance
-        .collection('Info')
-        .doc('uids')
-        .set(model.toMap())
-        .then((value) {
-        emit(AppCreateInfoSuccessState());
-    }).catchError((error){
-      print('no done');
-
-      emit(AppCreateInfoErrorState());
-
-    });
-
-  }
-
-
-  AdminModel? adminModel;
-
-  void getInf(context){
-
-    FirebaseFirestore.instance.collection('Info')
-        .doc('uids')
-        .get()
-        .then((value) {
-          print(value);
-          adminModel=AdminModel.fromFire(value.data()!);
-          navigateTo(context: context, widget: adminScreen());
-          emit(AppGetInfoSuccessState());
-    }).catchError((error){
-      emit(AppGetInfoErrorState());
-
-    });
-
-  }
-
-  // void createOrder({
-  //   required int number,
-  //   required String price,
+  // void sendOrder ()
+  // {
+  //   // FirebaseFirestore.instance.collection('orders').
+  // }
+  //
+  // void createInfo({
   //   required String name,
+  //   required String number,
+  //   required String address,
   // }){
   //
-  //   OrderModel model= OrderModel(
+  //   AdminModel model= AdminModel(
+  //     name:name,
   //     number: number,
-  //     price:price,
-  //     name: name,
+  //     address: address,
   //   );
   //
   //   FirebaseFirestore.instance
-  //       .collection('orders')
-  //       .doc()
+  //       .collection('Info')
+  //       .doc('uids')
   //       .set(model.toMap())
   //       .then((value) {
-  //     emit(AppCreateOrderSuccessState());
+  //       emit(AppCreateInfoSuccessState());
   //   }).catchError((error){
   //     print('no done');
-  //     emit(AppCreateOrderErrorState());
+  //
+  //     emit(AppCreateInfoErrorState());
   //
   //   });
   //
   // }
+  //
+  //
+  // AdminModel? adminModel;
+  //
+  // void getInf(context){
+  //
+  //   FirebaseFirestore.instance.collection('Info')
+  //       .doc('uids')
+  //       .get()
+  //       .then((value) {
+  //         print(value);
+  //         adminModel=AdminModel.fromFire(value.data()!);
+  //         navigateTo(context: context, widget: adminScreen());
+  //         emit(AppGetInfoSuccessState());
+  //   }).catchError((error){
+  //     emit(AppGetInfoErrorState());
+  //
+  //   });
+  //
+  // }
+
 
   var num=-1;
 
@@ -19735,7 +19719,7 @@ class AppCubit extends Cubit<AppStates>{
         .doc(uIdDoc)
         .set({'userData': userData.toMap(), 'orderData': orderData,'uid': uIdDoc})
         .then((value) {
-      userOrders=[];
+      userOrders = [];
       print('Order Created Successful');
       emit(AppCreateOrderSuccessState());
     }).catchError((error){
@@ -19746,6 +19730,7 @@ class AppCubit extends Cubit<AppStates>{
 
 
   }
+
 
   void deleteOrder(
       int ?index,

@@ -1,3 +1,4 @@
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -23,7 +24,7 @@ class LoginScreen extends StatelessWidget {
       child: BlocConsumer<LoginCubit ,LoginStates>(
         listener: (context , state){
           if(state is AppLoginErrorState){
-            showToast(text: state.error, state: ToastState.ERROR);
+            showToast(text: 'الرقم غير صحيح', state: ToastState.ERROR);
           }
           if(state is AppLoginSuccessState) {
             CacheHelper.saveData(
@@ -161,32 +162,40 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 25.0,
                         ),
-                        Material(
-                          elevation: 5.0,
-                          borderRadius: BorderRadius.circular(15.0),
-                          color: Color.fromRGBO(58, 86, 156,1),
-                          child: MaterialButton(
-                            minWidth: double.infinity,
-                            height: 50.0,
-                            onPressed: (){
-                              if(formKey.currentState!.validate())
-                                {
-                                  LoginCubit.get(context).clearData();
-                                  LoginCubit.get(context).userLogin(phone: phoneController.text);
-
-                                }
-                            },
-                            child: Text(
-                              'دخول',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
+                        ConditionalBuilder(
+                            condition: state is !AppLoginLoadingState,
+                            builder: (context) => Container(
+                              width: double.infinity,
+                              height: 50,
+                              child: Material(
+                                elevation: 5.0,
+                                borderRadius: BorderRadius.circular(15.0),
+                                color: Color.fromRGBO(58, 86, 156,1),
+                                child: MaterialButton(
+                                  minWidth: double.infinity,
+                                  height: 50.0,
+                                  onPressed: (){
+                                    if(formKey.currentState!.validate())
+                                    {
+                                      LoginCubit.get(context).clearData();
+                                      LoginCubit.get(context).userLogin(phone: phoneController.text);
+                                    }
+                                  },
+                                  child: Text(
+                                    'دخول',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            fallback: (context)=> Center(child: CircularProgressIndicator()),
                         ),
+
                       ],
                     ),
                   ),

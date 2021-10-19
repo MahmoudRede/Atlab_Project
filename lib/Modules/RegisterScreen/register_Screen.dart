@@ -127,7 +127,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           keyboardType: TextInputType.phone,
                           validator: (value){
-                            if(value!.isEmpty && value.length <= 11)
+                            if(value!.isEmpty && value.length == 11)
                             {
                               return 'برجاء أدخال رقم موبيل صحيح';
                             }

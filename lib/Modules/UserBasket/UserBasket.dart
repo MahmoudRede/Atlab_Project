@@ -1,4 +1,5 @@
 import 'package:conditional_builder/conditional_builder.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
@@ -57,51 +58,28 @@ class UserBasket extends StatelessWidget {
                         ),
                       ),
                   ),
-
                   SizedBox(
                     height: 10.0,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      children: [
-                        MaterialButton(
-                          elevation: 7,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                          color: Color.fromRGBO(58, 86, 156,1),
-                          onPressed: (){
-                            navigateTo(context: context, widget: HomePageScreen());
-                          },
-                          child: Text('اضافة عنصر جديد',style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20
-                          ),),
+                    alignment: Alignment.center,
+                    child: Expanded(
+                      child: MaterialButton(
+                        elevation: 7,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        Spacer(),
-                        Row(
-                          children: [
-                            Text('السعر :',style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold
-                            ),),
-                            SizedBox(width: 20,),
-                            Text(
-                              'L.E ',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold
-                              ),
-                            ),
-                            Text('100',style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold
-                            ),),
-                          ],
-                        ),
-                      ],
+                        padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                        color: Color.fromRGBO(58, 86, 156,1),
+                        onPressed: (){
+                          navigateTo(context: context, widget: HomePageScreen());
+                        },
+                        child: Text('اضافة عنصر جديد',style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20
+                        ),),
+                      ),
                     ),
                   ),
                   SizedBox(

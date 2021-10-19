@@ -111,10 +111,12 @@ class AdminLoginScreen extends StatelessWidget {
                              {
                                if(phoneController.text=='01277556432'){
                                  // AppCubit.get(context).getOrder();
-                                 AppCubit.get(context).getInf(context);
-                                 navigateTo(context: context, widget: adminScreen());
-
+                                 navigateAndRemove(context: context, widget: adminScreen());
                                }
+                               else
+                                 {
+                                   showToast(text: 'أدخل رقم صحيح', state: ToastState.ERROR);
+                                 }
                              }
                            },
                            child: Text(

@@ -12,10 +12,12 @@ import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/MenuScreen/MenuScreen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
+import 'package:talabatak/Modules/UserBasket/UserBasket.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
@@ -31,6 +33,17 @@ class Items_Drawer{
   Items_Drawer(this.text, this.icon, this.function);
 }
 
+void launchWhatsapp(
+    String ?number,
+    String ?message,
+    )async{
+
+  String url= "whatsapp://send?phone=$number&text=$message";
+
+  await canLaunch(url) ? launch(url) : print('Can\'t open whatsapp');
+
+}
+
 
 class HomePageScreen extends StatefulWidget {
 
@@ -40,6 +53,7 @@ class HomePageScreen extends StatefulWidget {
 
 
   // This will check the connection at the beginning
+
 
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
@@ -74,7 +88,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           'السله',
           Icons.add_shopping_cart,
               (){
-                navigateTo(context: context, widget: ProfileScreen());
+                navigateTo(context: context, widget: UserBasket());
            }
       ),
       Items_Drawer(
@@ -88,22 +102,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
           'الرسائل',
           Icons.chat,
               (){
-            print('الرسائل');
-          }
+                launchWhatsapp("+201123780390", "");
+                },
       ),
       Items_Drawer(
           'الاعدادات',
           Icons.settings,
               (){
-            print('الاعدادات');
+                showToast(text: 'سيتم أضافتها قريبا...', state: ToastState.WARNING);
           }
       ),
       Items_Drawer(
           'الخصوصيه والامان',
           Icons.security,
               (){
-            print('الخصوصيه والامان');
-          }
+            showToast(text: 'سيتم أضافتها قريبا...', state: ToastState.WARNING);
+            },
       ),
       Items_Drawer(
           'تسجيل الخروج',

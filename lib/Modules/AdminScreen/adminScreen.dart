@@ -8,6 +8,7 @@ import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Models/adminModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Models/orderModel.dart';
+import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/ShowOrders/ShowOrders.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
@@ -28,77 +29,90 @@ class adminScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit,AppStates>(
-        listener: (context,state){},
-        builder: (context,state){
-         var order = AppCubit.get(context).items;
-         var lenght=  order.length;
-         for(int i=0;i<=lenght;i++){
-           cardColor.add(Colors.white);
-         }
-         for(int i=0;i<=lenght;i++){
-           isSelected.add('0');
-         }
+    return Builder(
+      builder: (context) {
+        AppCubit.get(context).getOrder();
+        return BlocConsumer<AppCubit,AppStates>(
+            listener: (context,state){},
+            builder: (context,state){
+             var order = AppCubit.get(context).items;
+             var lenght=  order.length;
+             for(int i=0;i<=lenght;i++){
+               cardColor.add(Colors.white);
+             }
+             for(int i=0;i<=lenght;i++){
+               isSelected.add('0');
+             }
 
-          return Directionality(
-            textDirection: TextDirection.rtl,
-            child: Scaffold(
-             appBar: AppBar(
-               title: Text('الطلبات',style: TextStyle(
-                   color: Colors.white,
-                   fontSize: 25,
-                   fontWeight: FontWeight.bold,
-               )),
-             ),
-
-             body: ConditionalBuilder(
-               condition: order.length > 0,
-               builder:(context)=> Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 children: [
-                   Padding(
-                     padding: const EdgeInsets.fromLTRB(0,10, 20, 0),
-                     child: Text('بيانات العميل',style: TextStyle(
-                         color: Colors.black,
-                         fontSize: 20,
-                         fontWeight: FontWeight.bold,
-                         fontFamily: 'Lemonada'
-                     )),
+              return Directionality(
+                textDirection: TextDirection.rtl,
+                child: Scaffold(
+                 appBar: AppBar(
+                   title: Text('الطلبات',style: TextStyle(
+                       color: Colors.white,
+                       fontSize: 25,
+                       fontWeight: FontWeight.bold,
+                   )),
+                   leading: IconButton(
+                     onPressed: (){
+                       navigateAndRemove(context: context, widget: LoginScreen());
+                     },
+                     icon: Icon(
+                       Icons.logout,
+                     ),
                    ),
-                   Expanded(
-                       child: ListView.separated(
-                           itemBuilder: (context , index) => clientItem(order[index].userData! , order[index].orderData! , context,cardColor,index),
-                           separatorBuilder: (context , index) => SizedBox(
-                             height: 0,
-                           ),
-                           itemCount: order.length,
+                 ),
+
+                 body: ConditionalBuilder(
+                   condition: order.length > 0,
+                   builder:(context)=> Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Padding(
+                         padding: const EdgeInsets.fromLTRB(0,10, 20, 0),
+                         child: Text('بيانات العميل',style: TextStyle(
+                             color: Colors.black,
+                             fontSize: 20,
+                             fontWeight: FontWeight.bold,
+                             fontFamily: 'Lemonada'
+                         )),
                        ),
+                       Expanded(
+                           child: ListView.separated(
+                               itemBuilder: (context , index) => clientItem(order[index].userData! , order[index].orderData! , context,cardColor,index),
+                               separatorBuilder: (context , index) => SizedBox(
+                                 height: 0,
+                               ),
+                               itemCount: order.length,
+                           ),
+                       ),
+                       // Padding(
+                       //   padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                       //   child: Text('الطلب',style: TextStyle(
+                       //       color: Colors.black,
+                       //       fontSize: 22,
+                       //       fontWeight: FontWeight.bold,
+                       //       fontFamily: 'Lemonada'
+                       //   )),
+                       // ),
+                       // Expanded(
+                       //   child: ListView.separated(
+                       //       itemBuilder: (context,index)=> listItem(order[index]),
+                       //       separatorBuilder: (context,index){
+                       //         return SizedBox(height: 5,);
+                       //       },
+                       //       itemCount: AppCubit.get(context).items.length
+                       //   ),
+                       // ),
+                     ],
                    ),
-                   // Padding(
-                   //   padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                   //   child: Text('الطلب',style: TextStyle(
-                   //       color: Colors.black,
-                   //       fontSize: 22,
-                   //       fontWeight: FontWeight.bold,
-                   //       fontFamily: 'Lemonada'
-                   //   )),
-                   // ),
-                   // Expanded(
-                   //   child: ListView.separated(
-                   //       itemBuilder: (context,index)=> listItem(order[index]),
-                   //       separatorBuilder: (context,index){
-                   //         return SizedBox(height: 5,);
-                   //       },
-                   //       itemCount: AppCubit.get(context).items.length
-                   //   ),
-                   // ),
-                 ],
-               ),
-               fallback: (context) => Center(child: Text('لا توجد طلبات'),),
+                   fallback: (context) => Center(child: Text('لا توجد طلبات'),),
+                 ),
              ),
-         ),
-          );
-        }
+              );
+            }
+        );
+      }
     );
   }
 }
