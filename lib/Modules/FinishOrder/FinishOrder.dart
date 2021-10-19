@@ -12,6 +12,7 @@ import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/cubit.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/state.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FinishOrder extends StatelessWidget {
   List<Map> order ;
@@ -19,6 +20,19 @@ class FinishOrder extends StatelessWidget {
   var phoneController = TextEditingController();
   var addressController = TextEditingController();
   var formKey = GlobalKey<FormState>();
+
+  void launchWhatsapp(
+      String ?number,
+      String ?message,
+      )async{
+
+    String url= "whatsapp://send?phone=$number&text=$message";
+
+    await canLaunch(url) ? launch(url) : print('Can\'t open whatsapp');
+
+  }
+
+
 
   FinishOrder(this.order);
 
@@ -227,7 +241,8 @@ class FinishOrder extends StatelessWidget {
                              // AppCubit.get(context).createInfo( name: nameController.text, number: phoneController.text, address: addressController.text);
                               AppCubit.get(context).createOrder(userData: userData, orderData: order);
                               //AppCubit.get(context)..getOrder();
-                              navigateAndRemove(context: context, widget: DoneOrder());
+                              launchWhatsapp("+201208455946", "شكرا لختيارك طلباتك ,اضغط ارسال لاتمام الطلب");
+                              // navigateAndRemove(context: context, widget: DoneOrder());
 
 
                             }

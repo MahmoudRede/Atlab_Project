@@ -31,5 +31,22 @@ class CacheHelper {
  }
 
 
+ static Future<bool> saveBool ({
+  required String key ,
+  required List <String> value ,
+ }) async
+ {
+  return sharedPreferences!.setStringList(key, value);
+ }
+
+ static dynamic getBool ({
+  required String key,
+ })
+ {
+  return sharedPreferences!.get(key);
+ }
+
+
+
 
 }

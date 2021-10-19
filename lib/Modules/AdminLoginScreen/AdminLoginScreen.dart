@@ -64,6 +64,7 @@ class AdminLoginScreen extends StatelessWidget {
                            hintTextDirection: TextDirection.rtl,
                            suffixIcon: Icon(
                              Icons.phone,
+                             textDirection: TextDirection.rtl,
                            ),
                            contentPadding: EdgeInsets.symmetric(
                              vertical: 15,

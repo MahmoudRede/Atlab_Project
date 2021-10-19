@@ -135,7 +135,6 @@ class RegisterScreen extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             hintText: 'رقم الموبيل (يفضل رقم الواتس)',
-
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.phone,

@@ -43,7 +43,7 @@ class ItemScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       elevation: 5,
                       child: Container(
-                        height: 400,
+                        height: 420,
                         width: 330,
                         child: Column(
                           children: [
@@ -61,7 +61,7 @@ class ItemScreen extends StatelessWidget {
                                     Text(
                                       '${itemModel.name}',
                                       style: TextStyle(
-                                        fontSize: 22,
+                                        fontSize: 19,
                                         fontWeight: FontWeight.bold,
                                     ),),
                                     Text(
@@ -89,7 +89,7 @@ class ItemScreen extends StatelessWidget {
                               height: 12,
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 5),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 110, 0),
                               child: Row(
                                 children: [
                                   Text('الحجم :',style: TextStyle(
@@ -98,13 +98,23 @@ class ItemScreen extends StatelessWidget {
                                   ),),
                                   SizedBox(width: 35,),
                                   Text(
-                                    'نص',
+                                    'صغير',
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold
                                   ),)
                                 ],
                               ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0,50,3),
+                              child: Text(
+                                'يختلف السعر علي حسب الحجم',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.grey
+
+                                )),
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 110, 5),
@@ -182,50 +192,52 @@ class ItemScreen extends StatelessWidget {
                               padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                               color: Color.fromRGBO(58, 86, 156,1),
                               onPressed: (){
+                                //
+                                // AlertDialog alert=AlertDialog(
+                                //   title:Container(
+                                //     child: Column(
+                                //       children: [
+                                //         Text('هل متاكد انك تريد اضافه المنتج الي طلباتك',textDirection: TextDirection.rtl,),
+                                //         SizedBox(height: 5,),
+                                //         Container(
+                                //           color: Colors.black,
+                                //           height: 2,
+                                //         )
+                                //       ],
+                                //     ),
+                                //   ),
+                                //   content: Container(
+                                //     height: 50,
+                                //     child: Row(
+                                //       children: [
+                                //         Expanded(
+                                //           child: TextButton(onPressed: (){
+                                //            Navigator.pop(context);
+                                //           }, child: Text('لاا',style: TextStyle(
+                                //               fontSize: 19,
+                                //               color:  Color.fromRGBO(58, 86, 156,1),
+                                //               fontWeight: FontWeight.bold
+                                //           ),)),
+                                //         ),
+                                //         Expanded(
+                                //           child: TextButton(onPressed: (){
+                                //
+                                //             }, child: Text('نعم',style: TextStyle(
+                                //               fontSize: 19,
+                                //             color:  Color.fromRGBO(58, 86, 156,1),
+                                //             fontWeight: FontWeight.bold
+                                //           ),)),
+                                //         ),
+                                //
+                                //       ],
+                                //     )
+                                //   ),
+                                // );
+                                // showDialog(builder: (context) => alert, context: context);
 
-                                AlertDialog alert=AlertDialog(
-                                  title:Container(
-                                    child: Column(
-                                      children: [
-                                        Text('هل متاكد انك تريد اضافه المنتج الي طلباتك',textDirection: TextDirection.rtl,),
-                                        SizedBox(height: 5,),
-                                        Container(
-                                          color: Colors.black,
-                                          height: 2,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  content: Container(
-                                    height: 50,
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: TextButton(onPressed: (){
-                                           Navigator.pop(context);
-                                          }, child: Text('لاا',style: TextStyle(
-                                              fontSize: 19,
-                                              color:  Color.fromRGBO(58, 86, 156,1),
-                                              fontWeight: FontWeight.bold
-                                          ),)),
-                                        ),
-                                        Expanded(
-                                          child: TextButton(onPressed: (){
-                                            AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant , name: itemModel.name , price: itemModel.price , category: itemModel.category , number: AppCubit.get(context).numberOfItem));
-                                            //AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
-                                            navigateAndRemove(context: context, widget: AddOrder());
-                                            }, child: Text('نعم',style: TextStyle(
-                                              fontSize: 19,
-                                            color:  Color.fromRGBO(58, 86, 156,1),
-                                            fontWeight: FontWeight.bold
-                                          ),)),
-                                        ),
-
-                                      ],
-                                    )
-                                  ),
-                                );
-                                showDialog(builder: (context) => alert, context: context);
+                                AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant , name: itemModel.name , price: itemModel.price , category: itemModel.category , number: AppCubit.get(context).numberOfItem));
+                                //AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
+                                navigateTo(context: context, widget: AddOrder());
 
                               },
                               child: Text('اضف الي طلباتك',style: TextStyle(

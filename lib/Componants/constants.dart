@@ -15,9 +15,12 @@ import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen8.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen9.dart';
 
 String uId = '';
+String uIdDoc = '';
+
 List <OrderModel>  userOrders = [];
 List <Map>  finishOrders = [];
 List <int> itemNumber = [];
+
 String currentRestaurant = '';
 // مطاعم شبين
 
@@ -51,38 +54,38 @@ List <Widget> mashwatHamzaScreens = [Screen1(),  Screen2(),  Screen3() , Screen4
 // كفر شبين
 
 List <String> hatyEltkehTabs = ['سندوتشات','المطبخ','باستا','سلاطات','طواجن','فتات' , 'كريب' ,'مشويات'  ];
-List <String> pizzaElmahdyTabs = ['شرقى' , 'ايطالى' , 'الحو' ,  'اضافات' ];
-List <String> hamdaElmahataTabs = ['كشرى' ,  'وجبات' , 'اضافات' , 'طواجن' , 'الحو' , 'شاورما' ,  'سندوتشات' , 'حواوشى' , 'كريب' ];
+List <String> pizzaElmahdyTabs = ['شرقى' , 'ايطالى' , 'الحلو' ,  'اضافات' ];
+List <String> hamdaElmahataTabs = ['سندوتشات' ,'شاورما' ,'طواجن', 'كريب' ,'كشرى' ,  'وجبات' , 'حواوشى' , 'الحلو' ,'اضافات' ,      ];
 List <String> kosharyHamadaTabs = ['كشرى' , 'اضافات' , 'طواجن' , 'الحلو' , 'حواوشى' ];
 List <String> asmakAboMarimTabs = ['اسماك' , 'سندوتشات' , 'شوربة' , 'المطبخ' , 'طواجن' , 'وجبات' , 'الحلو' , 'اضافات'];
-List <String> pizzaHumTabs = ['شرقى' , 'ايطالى' , 'الحو' ,  'اضافات' , 'بريك'];
+List <String> pizzaHumTabs = ['شرقى' , 'ايطالى' , 'بريك' ,'الحلو' ,  'اضافات'];
 List <String> pizzaElkhwagaTabs =  ['شرقى' , ' '];
-List <String> pizzaElamiraTabs = ['شرقى' , 'ايطالى' , 'الحو'];
-List <String> pizzaElhootTabs = ['شرقى' , 'ايطالى' , 'الحو' , 'كريب'];
-List <String> pizzaElsafirTabs = ['شرقى' , 'ايطالى' , 'الحو' , 'حواوشى' , 'مكرونات' ,  'اضافات' ];
+List <String> pizzaElamiraTabs = ['شرقى' , 'ايطالى' , 'الحلو'];
+List <String> pizzaElhootTabs = ['شرقى' , 'ايطالى' , 'كريب','الحلو'  ];
+List <String> pizzaElsafirTabs = ['شرقى' , 'ايطالى' , 'حواوشى' , 'مكرونات' ,  'اضافات' , 'الحلو' ];
 List <String> pizzaPoalaTabs = ['شرقى' , 'ايطالى' , 'الحلو' , 'حواوشي'  ];
 List <String> crazyPizzaTabs = [ 'ايطالى'];
-List <String> elAselTabs = ['مشويات' , 'كريب' , 'حواوشى' , 'مكرونات' , 'سندوتشات' , 'اضافات' , 'فتات' , 'وجبات' , 'شاورما' ];
-List <String> hadrMotTabs = ['مشويات' , 'سندوتشات' , 'اضافات' , 'وجبات' , 'المطبخ' ];
+List <String> elAselTabs = ['مشويات' ,'مكرونات' ,'وجبات' , 'كريب' ,'فتات' ,  'شاورما',  'سندوتشات' ,  'حواوشى' ,'اضافات' ,  ];
+List <String> hadrMotTabs = ['سندوتشات' ,'مشويات' ,'وجبات' ,   'المطبخ', 'اضافات' , ];
 
 
 List <Widget> hatyEltkehScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5(),Screen6() , Screen7() , Screen8()];
-List <Widget> pizzaElmahdyScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() ];
-List <Widget> hamdaElmahataScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() , Screen1(),  Screen1() , Screen1() , Screen1()];
+List <Widget> pizzaElmahdyScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() ];
+List <Widget> hamdaElmahataScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() , Screen6(),  Screen7() , Screen8() , Screen9()];
 List <Widget> kosharyHamadaScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() ];
 List <Widget> asmakAboMarimScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() , Screen6(),  Screen7() , Screen8() ];
-List <Widget> pizzaHumScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() ];
+List <Widget> pizzaHumScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() ];
 List <Widget> pizzaElkhwagaScreens =  [Screen1()];
 List <Widget> pizzaElamiraScreens = [Screen1(),  Screen2(),  Screen3() ];
-List <Widget> pizzaElhootScreens = [Screen1(),  Screen1(),  Screen1() , Screen1()];
-List <Widget> pizzaElsafirScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() , Screen1(), ];
+List <Widget> pizzaElhootScreens = [Screen1(),  Screen2(),  Screen3() , Screen4()];
+List <Widget> pizzaElsafirScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() , Screen6(), ];
 List <Widget> pizzaPoalaScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() ];
 List <Widget> crazyPizzaScreens = [Screen1()];
-List <Widget> elAselScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() , Screen1(),  Screen1() , Screen1() , Screen1()];
-List <Widget> hadrMotScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1() ];
+List <Widget> elAselScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() , Screen6(),  Screen7() , Screen8() , Screen9()];
+List <Widget> hadrMotScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5() ];
 
 
 // كفر الشوبك
 
-List <String> pizzaElomdaTabs = ['شرقى' , 'ايطالى' , 'الفطائر' ,'الحو' , 'مكرونات' ,'بريك' ];
-List <Widget> pizzaElomdaScreens = [Screen1(),  Screen1(),  Screen1() , Screen1() , Screen1()  , Screen1()];
+List <String> pizzaElomdaTabs = ['شرقى' , 'ايطالى' , 'مكرونات' ,'الفطائر' ,'الحلو' , 'بريك' ];
+List <Widget> pizzaElomdaScreens = [Screen1(),  Screen2(),  Screen3() , Screen4() , Screen5()  , Screen6()];

@@ -19,8 +19,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
-  CacheHelper.init();
+  await CacheHelper.init();
   Widget widget;
+
+  CacheHelper.getBool(key: 'isDone');
 
   // if(CacheHelper.getData(key: 'uId') != null)
   //   {
@@ -46,7 +48,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return
         BlocProvider(
-        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings()..getOrder(),
+        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings()..getOrder()..checkInternetConnection()
+          ..getPizzaElamira()..getCrazyPizza()..getPizzaElhowt()..getPizzaElsafer()..getPizzaElmahdy()..getPizzaHam()
+          ..getElasil()..getHadrMot()..getPizzaElomda()..getHamdaElmahta(),
           child: BlocConsumer<AppCubit,AppStates>(
             listener: (context,state){},
             builder: (context,state)=>MaterialApp(

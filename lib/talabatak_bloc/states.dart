@@ -118,3 +118,49 @@ class AppCreateOrderErrorState extends AppStates{}
 class AppGetOrderSuccessState extends AppStates{}
 class AppGetOrderErrorState extends AppStates{}
 
+class AppInternetConnectionSuccessState extends AppStates{}
+class AppInternetConnectionErrorState extends AppStates{}
+
+class AppChangeItemColorState extends AppStates{}
+
+class AppDeleteOrderState extends AppStates{}
+
+class  clearOrderState extends AppStates{}
+
+class AppGetPizzaElamiraSuccessState extends AppStates{}
+
+class AppGetPizzaElamiraErrorState  extends AppStates{}
+
+class AppGetCrazyPizzaSuccessState extends AppStates{}
+
+class AppGetCrazyPizzaErrorState extends AppStates{}
+
+class AppGetPizzaElhowtSuccessState extends AppStates{}
+
+class AppGetPizzaElhowtErrorState extends AppStates{}
+
+class AppGetPizzaElsaferSuccessState extends AppStates{}
+
+class AppGetPizzaElsaferErrorState extends AppStates{}
+
+class AppGetPizzaElmahdySuccessState extends AppStates{}
+
+class AppGetPizzaElmahdyErrorState extends AppStates{}
+
+class AppGetElasilSuccessState extends AppStates{}
+
+class AppGetElasilErrorState extends AppStates{}
+
+class AppGetHadrMotSuccessState extends AppStates{}
+
+class AppGetHadrMotErrorState extends AppStates{}
+
+class AppGetPizzaElomdaSuccessState extends AppStates{}
+
+class AppGetPizzaElomdaErrorState extends AppStates{}
+
+class AppGetHamdaElmahtaSuccessState extends AppStates{}
+
+class SaveDate extends AppStates{}
+
+class AppGetHamdaElmahtaErrorState extends AppStates{}

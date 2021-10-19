@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ import 'package:talabatak/talabatak_bloc/states.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
+
 String ?areaName='كل المناطق';
 String ?restaurantName='كل المطاعم';
 
@@ -24,17 +27,34 @@ class Items_Drawer{
   IconData ?icon;
   Function ?function;
 
+
   Items_Drawer(this.text, this.icon, this.function);
 }
 
 
-class HomePageScreen extends StatelessWidget {
+class HomePageScreen extends StatefulWidget {
+
+
+  // This function is triggered when the floating button is pressed
 
 
 
+  // This will check the connection at the beginning
+
+  @override
+  _HomePageScreenState createState() => _HomePageScreenState();
+}
+
+class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
 
+
+    @override
+    void initState() {
+      AppCubit.get(context).checkInternetConnection();
+      super.initState();
+    }
     List <Items_Drawer> Items=[
       Items_Drawer(
           'المطاعم',
@@ -114,7 +134,18 @@ class HomePageScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                body: Container(
+                body:   AppCubit.get(context).isConnected==false? Container(
+                  color: Colors.white,
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Image(
+                         fit: BoxFit.cover,
+                         image: AssetImage( "assets/images/noInternet.jpg",
+                     )),
+                   ],
+                 ),
+                ):Container(
                   child: Column(
                     children: [
                       Container(
@@ -185,19 +216,19 @@ class HomePageScreen extends StatelessWidget {
 
                                                   if(restaurantName=='اسماك' ){
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'اسماك');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'اسماك');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'اسماك');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'اسماك');
 
                                                   }
 
                                                   else if(restaurantName=='مشويات'){
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'مشويات');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'مشويات');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'مشويات');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'مشويات');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'مشويات');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'مشويات');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'مشويات');
 
                                                   }
 
@@ -205,69 +236,69 @@ class HomePageScreen extends StatelessWidget {
 
 
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل الفئات');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل الفئات');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل الفئات');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كل الفئات');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل الفئات');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كل الفئات');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل الفئات');
 
                                                   }
 
                                                   else if(restaurantName=='كشري و طواجن'){
 
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كشري و طواجن');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كشري و طواجن');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كشري و طواجن');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كشري و طواجن');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كشري و طواجن');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كشري و طواجن');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كشري و طواجن');
 
                                                   }
 
                                                   else if(restaurantName=='كل المطاعم'){
 
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل المطاعم');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كل المطاعم');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل المطاعم');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كل المطاعم');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كل المطاعم');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كل المطاعم');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كل المطاعم');
 
                                                   }
 
                                                   else if(restaurantName=='بيتزا'){
 
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'بيتزا');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'بيتزا');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'بيتزا');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'بيتزا');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'بيتزا');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'بيتزا');
 
                                                   }
 
                                                   else if(restaurantName=='Restaurant'){
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'Restaurant');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'Restaurant');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'Restaurant');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'Restaurant');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'Restaurant');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'Restaurant');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'Restaurant');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'Restaurant');
 
                                                   }
 
                                                   else if(restaurantName=='لحوم و خضروات'){
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'لحوم و خضروات');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'لحوم و خضروات');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'لحوم و خضروات');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'لحوم و خضروات');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'لحوم و خضروات');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'لحوم و خضروات');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'لحوم و خضروات');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'لحوم و خضروات');
 
-                                                    }
+                                                  }
 
 
                                                   else if(restaurantName=='كريب/سوري'){
 
 
-                                                      AppCubit.get(context).getItemKafrShaben(resName: 'كريب/سوري');
-                                                      AppCubit.get(context).getShbinRestaurantDetails(resName: 'كريب/سوري');
-                                                      AppCubit.get(context).getItemKafrShobak(resName: 'كريب/سوري');
-                                                      AppCubit.get(context).getTahaRestaurantDetails(resName: 'كريب/سوري');
+                                                    AppCubit.get(context).getItemKafrShaben(resName: 'كريب/سوري');
+                                                    AppCubit.get(context).getShbinRestaurantDetails(resName: 'كريب/سوري');
+                                                    AppCubit.get(context).getItemKafrShobak(resName: 'كريب/سوري');
+                                                    AppCubit.get(context).getTahaRestaurantDetails(resName: 'كريب/سوري');
 
 
 
@@ -621,9 +652,9 @@ class HomePageScreen extends StatelessWidget {
                                                     }
 
                                                     else if(areaName=='كفر شبين')
-                                                      {
-                                                        AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
-                                                      }
+                                                    {
+                                                      AppCubit.get(context).getItemKafrShaben(resName: 'اسماك');
+                                                    }
                                                     else if(areaName=='شبين'){
                                                       AppCubit.get(context).getShbinRestaurantDetails(resName: 'اسماك');
                                                     }
@@ -897,6 +928,8 @@ class HomePageScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+
+
                 drawer: Drawer(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -969,9 +1002,14 @@ Widget Block_Line_Drawer(Items_Drawer model){
 
 
 Widget Block_Item(context,RestaurantModel model){
+  DateTime time ;
+  time = new DateTime.now() ;
+
+
   return GestureDetector(
     onTap: (){
       AppCubit.get(context).changeTabs(restaurantName: model.name!);
+      print(TimeOfDay.now());
       navigateTo(context: context, widget: MenuScreen(model));
     },
     child: Padding(
@@ -1026,14 +1064,20 @@ Widget Block_Item(context,RestaurantModel model){
                     ),
                   ),
                   Spacer(),
-                  Text(
+                   time.hour>=12 ? Text(
                     'مفتوح',
                     style: TextStyle(
                         color: Colors.white,
                         backgroundColor: Colors.green,
                         fontWeight: FontWeight.bold,
                     ),
-                  ),
+                  ):Text(
+                    'مغلق',
+                    style: TextStyle(
+                      color: Colors.white,
+                      backgroundColor: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    )),
               ],
             ),
             SizedBox(
@@ -1064,3 +1108,4 @@ Widget Block_Item(context,RestaurantModel model){
     ),
   );
 }
+

@@ -5,6 +5,8 @@ class OrderModel {
   String? restaurantName;
   String? category;
   String? price;
+  String? uid;
+
 
   OrderModel({
     this.number,
@@ -13,6 +15,8 @@ class OrderModel {
     this.category,
     this.size,
     this.restaurantName,
+    this.uid,
+
   });
 
   OrderModel.fromFire(Map <String, dynamic> fire){
@@ -22,6 +26,8 @@ class OrderModel {
     category = fire['category'];
     size = fire['size'];
     restaurantName = fire['restaurantName'];
+    uid = fire['uid'];
+
   }
 
   Map <String, dynamic> toMap() {
@@ -32,6 +38,8 @@ class OrderModel {
       'category' : category,
       'size' : size,
       'restaurantName' : restaurantName,
+      'uid' : uid,
+
     };
   }
 
