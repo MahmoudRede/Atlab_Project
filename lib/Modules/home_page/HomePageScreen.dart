@@ -88,15 +88,18 @@ class _HomePageScreenState extends State<HomePageScreen> {
           'السله',
           Icons.add_shopping_cart,
               (){
-                navigateTo(context: context, widget: UserBasket());
-           }
+                // navigateTo(context: context, widget: UserBasket());
+                showToast(text: 'سيتم أضافتها قريبا...', state: ToastState.WARNING);
+
+              }
       ),
       Items_Drawer(
           'عنواني',
           Icons.location_on,
               (){
-                print('عنواني');
-          }
+                showToast(text: 'سيتم أضافتها قريبا...', state: ToastState.WARNING);
+
+              }
       ),
       Items_Drawer(
           'الرسائل',

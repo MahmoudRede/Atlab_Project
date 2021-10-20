@@ -49,7 +49,7 @@ class ItemScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Image(
-                                  image: AssetImage('assets/images/burger.png',),
+                                  image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/burger.jpeg?alt=media&token=c3071bd2-692b-4e08-a286-6b11eed46d38',),
                                   height: 95,
                                   width: 120,
                                 ),
@@ -257,14 +257,16 @@ class ItemScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(28, 0, 0, 0),
                     child: InkWell(
                       onTap: (){
-
-                        navigateTo(context: context, widget: UserBasket());
-                        AppCubit.get(context).insertDatabase(name: itemModel.name!, price: itemModel.price!, category: itemModel.category!, details: itemModel.details!);
-
+                        //
+                        // navigateTo(context: context, widget: UserBasket());
+                        // AppCubit.get(context).insertDatabase(name: itemModel.name!, price: itemModel.price!, category: itemModel.category!, details: itemModel.details!);
+                        AppCubit.get(context).addItemToUserOrders(OrderModel(restaurantName : currentRestaurant , name: itemModel.name , price: (int.parse(itemModel.price!) * AppCubit.get(context).numberOfItem).toString(), category: itemModel.category , number: AppCubit.get(context).numberOfItem));
+                        //AppCubit.get(context).createOrder(number: itemNumber, name: itemModel.name! ,price: itemModel.price!);
+                        navigateTo(context: context, widget: AddOrder());
                       },
                       child: Column(
                         children: [
-                          Image(image: AssetImage('assets/images/cart.png',),
+                          Image(image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/shopping.jpeg?alt=media&token=d7d9e1fe-5445-429e-b4ab-1b6bc1833f65',),
                             height: 100,
                             width: 100,
                           ),

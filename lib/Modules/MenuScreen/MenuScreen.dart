@@ -88,12 +88,12 @@ class MenuScreen extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap : (){
-                              navigateTo(context: context, widget: UserBasket());
+                              // navigateTo(context: context, widget: UserBasket());
                             },
                             child : Image(
                               height: 35.0,
                               width: 35.0,
-                              image: AssetImage('assets/images/shopping.png'),
+                              image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/cart.jpeg?alt=media&token=0e5a7b40-97df-49d3-b0c0-7652597db8c3'),
                             ),
                           ),
                         ),

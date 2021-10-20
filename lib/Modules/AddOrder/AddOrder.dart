@@ -84,7 +84,7 @@ class AddOrder extends StatelessWidget {
                                   Text(
                                     'السعر :',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold
                                     ),
                                   ),
@@ -150,7 +150,7 @@ class AddOrder extends StatelessWidget {
                 child: Row(
                   children: [
                     Image(
-                      image: AssetImage('assets/images/burger.png',),
+                      image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/burger.jpeg?alt=media&token=c3071bd2-692b-4e08-a286-6b11eed46d38',),
                       height: 100,
                       width: 80,
                     ),
@@ -163,7 +163,7 @@ class AddOrder extends StatelessWidget {
                           child: Text(
                             '${model.name}',
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                             maxLines: 2,

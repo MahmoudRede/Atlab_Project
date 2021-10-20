@@ -55,7 +55,7 @@ Widget menuListItem (context,ItemModel foods)
             children: [
               CircleAvatar(
                 radius: 45.0,
-                backgroundImage: AssetImage('assets/images/burger.png'),
+                backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/burger.jpeg?alt=media&token=c3071bd2-692b-4e08-a286-6b11eed46d38'),
               ),
               SizedBox(
                 width: 20.0,
