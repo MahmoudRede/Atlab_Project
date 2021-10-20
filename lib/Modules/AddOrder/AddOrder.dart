@@ -224,7 +224,7 @@ class AddOrder extends StatelessWidget {
                         ),),
                         SizedBox(width: 20,),
                         Text(
-                          'نص',
+                          'صغير',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold

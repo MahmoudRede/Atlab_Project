@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
         create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings()..getOrder()..checkInternetConnection()
           ..getPizzaElamira()..getCrazyPizza()..getPizzaElhowt()..getPizzaElsafer()..getPizzaElmahdy()..getPizzaHam()
-          ..getElasil()..getHadrMot()..getPizzaElomda()..getHamdaElmahta(),
+          ..getElasil()..getHadrMot()..getPizzaElomda()..getHamdaElmahta()..getPizzaPremo(),
           child: BlocConsumer<AppCubit,AppStates>(
             listener: (context,state){},
             builder: (context,state)=>MaterialApp(

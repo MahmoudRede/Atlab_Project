@@ -177,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                                   onPressed: (){
                                     if(formKey.currentState!.validate())
                                     {
-                                      LoginCubit.get(context).clearData();
+                                      // LoginCubit.get(context).clearData();
                                       LoginCubit.get(context).userLogin(phone: phoneController.text);
                                     }
                                   },

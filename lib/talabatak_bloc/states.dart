@@ -163,4 +163,7 @@ class AppGetHamdaElmahtaSuccessState extends AppStates{}
 
 class SaveDate extends AppStates{}
 
+class AppGetPizzaElprimoSuccessState extends AppStates{}
+
+
 class AppGetHamdaElmahtaErrorState extends AppStates{}

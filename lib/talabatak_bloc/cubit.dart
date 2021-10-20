@@ -1493,11 +1493,11 @@ class AppCubit extends Cubit<AppStates>{
       tabsScreens = pizzaElomdaScreens;
       getPizzaElomda();
     }
-    else if (restaurantName == 'بيتزا بريمو')
-    {
-      tabs = pizzaBremoTabs;
-      tabsScreens = pizzaBremoScreens;
-    }
+    // else if (restaurantName == 'بيتزا بريمو')
+    // {
+    //   tabs = pizzaBremoTabs;
+    //   tabsScreens = pizzaBremoScreens;
+    // }
     else if (restaurantName == 'اسماك ابو مريم')
     {
       tabs = asmakAboMarimTabs;
@@ -4048,21 +4048,21 @@ class AppCubit extends Cubit<AppStates>{
     });
 
 // المكرونات
-
-    FirebaseFirestore.instance.collection('كفر شبين')
-        .doc('بيتزا')
-        .collection('بيتزا السفير')
-        .doc('مكرونات')
-        .collection('اسباجتي جمبري')
-        .doc('detail')
-        .get().then((value) {
-      foodsScreen4.add(ItemModel.fromFire(value.data()!));
-      emit(AppGetPizzaElsaferSuccessState());
-
-    }).catchError((error){
-      print('Error');
-      emit(AppGetPizzaElsaferErrorState());
-    });
+//
+//     FirebaseFirestore.instance.collection('كفر شبين')
+//         .doc('بيتزا')
+//         .collection('بيتزا السفير')
+//         .doc('مكرونات')
+//         .collection('اسباجتي جمبري')
+//         .doc('detail')
+//         .get().then((value) {
+//       foodsScreen4.add(ItemModel.fromFire(value.data()!));
+//       emit(AppGetPizzaElsaferSuccessState());
+//
+//     }).catchError((error){
+//       print('Error');
+//       emit(AppGetPizzaElsaferErrorState());
+//     });
 
     FirebaseFirestore.instance.collection('كفر شبين')
         .doc('بيتزا')
@@ -19731,14 +19731,16 @@ class AppCubit extends Cubit<AppStates>{
 
   }
 
+  int num2=-1;
 
   void deleteOrder(
       int ?index,
       ){
     //
     // uIdDoc= '$index';
-    uIdDoc='${++num}';
-    print(index);
+
+    uIdDoc='${++num2}';
+    print(num2);
     print(uIdDoc);
     FirebaseFirestore.instance
         .collection('orders')

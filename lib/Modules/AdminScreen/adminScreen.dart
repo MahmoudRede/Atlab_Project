@@ -210,7 +210,6 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
 
 
                         AppCubit.get(context).changeItemColor(index, colors);
-                        AppCubit.get(context).saveIsDone(isSelected, index,colors);
 
 
                       },

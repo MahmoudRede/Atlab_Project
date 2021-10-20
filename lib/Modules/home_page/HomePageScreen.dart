@@ -148,18 +148,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     ],
                   ),
                 ),
-                body:   AppCubit.get(context).isConnected==false? Container(
-                  color: Colors.white,
-                 child: Column(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   children: [
-                     Image(
-                         fit: BoxFit.cover,
-                         image: AssetImage( "assets/images/noInternet.jpg",
-                     )),
-                   ],
-                 ),
-                ):Container(
+                body:  Container(
                   child: Column(
                     children: [
                       Container(
@@ -1089,7 +1078,7 @@ Widget Block_Item(context,RestaurantModel model){
                     'مغلق',
                     style: TextStyle(
                       color: Colors.white,
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.red,
                       fontWeight: FontWeight.bold,
                     )),
               ],
