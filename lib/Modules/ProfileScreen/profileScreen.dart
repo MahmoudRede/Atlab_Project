@@ -139,7 +139,7 @@ class ProfileScreen extends StatelessWidget {
                                 color: Colors.white
                               ),),
                               SizedBox(width: 5,),
-                              Text('01277556432 ',style: TextStyle(
+                              Text('01016257980',style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                 color: Colors.white

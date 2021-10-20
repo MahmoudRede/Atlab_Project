@@ -62,9 +62,8 @@ class AdminLoginScreen extends StatelessWidget {
                            hintText: 'أدخل رقم الهاتف',
 
                            hintTextDirection: TextDirection.rtl,
-                           suffixIcon: Icon(
+                           prefixIcon: Icon(
                              Icons.phone,
-                             textDirection: TextDirection.rtl,
                            ),
                            contentPadding: EdgeInsets.symmetric(
                              vertical: 15,

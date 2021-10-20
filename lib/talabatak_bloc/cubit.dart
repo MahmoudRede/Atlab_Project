@@ -19739,12 +19739,14 @@ class AppCubit extends Cubit<AppStates>{
     //
     // uIdDoc= '$index';
 
-
+    uIdDoc='${++num2}';
     if(index! > num2)
       {
-        num2=index!-1;
+        num2=index!;
+        uIdDoc='$num2';
+        num2=-1;
       }
-    uIdDoc='${++num2}';
+
     print(num2);
     print(uIdDoc);
     FirebaseFirestore.instance
