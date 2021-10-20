@@ -47,9 +47,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return
         BlocProvider(
-        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getPizzaBola()..getHatyeEltakya()..getFishAbuMarim()..getKoshryHamada()..getWings()..getOrder()..checkInternetConnection()
-          ..getPizzaElamira()..getCrazyPizza()..getPizzaElhowt()..getPizzaElsafer()..getPizzaElmahdy()..getPizzaHam()
-          ..getElasil()..getHadrMot()..getPizzaElomda()..getHamdaElmahta()..getPizzaPremo(),
+        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getOrder()
+          ..getPizzaPremo()..getHamdaElmahta()..getPizzaElamira()..getPizzaElomda()..getPizzaElhowt()..getHadrMot()..getElasil()..getPizzaHam()..getPizzaElmahdy()..getPizzaElsafer()..getCrazyPizza()..getWings()..getKoshryHamada()..getFishAbuMarim()..getHatyeEltakya()..getPizzaBola()..getBatElkonafa()..getElandalos()..getElbak()..getElsoltan()..getFresco()..getGosto()..getKosharyHend()..getMashweatHamza()..getTaboshElsory(),
           child: BlocConsumer<AppCubit,AppStates>(
             listener: (context,state){},
             builder: (context,state)=>MaterialApp(
