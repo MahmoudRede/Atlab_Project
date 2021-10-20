@@ -10,6 +10,7 @@ import 'package:talabatak/Modules/DoneOrder/DoneOrder.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/cubit.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/state.dart';
+import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -57,6 +58,15 @@ class FinishOrder extends StatelessWidget {
                   ),
                 ),
               ],
+              leading: IconButton(
+                onPressed: (){
+                  userOrders = [];
+                  navigateAndRemove(context: context, widget: HomePageScreen());
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                ),
+              ),
             ),
             body: SingleChildScrollView(
               child: Padding(
