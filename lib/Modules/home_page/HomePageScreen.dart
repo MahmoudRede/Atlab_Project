@@ -12,6 +12,7 @@ import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/MenuScreen/MenuScreen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
+import 'package:talabatak/Modules/RegisterScreen/RegisterVistorScreen.dart';
 import 'package:talabatak/Modules/UserBasket/UserBasket.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
@@ -60,6 +61,7 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
+  bool chosse=true;
   @override
   Widget build(BuildContext context) {
 
@@ -81,7 +83,23 @@ class _HomePageScreenState extends State<HomePageScreen> {
           'الحساب الشخصي',
           Icons.person,
               (){
-                AppCubit.get(context).getUser(context);
+                if(vistorLogin==false){
+                  AppCubit.get(context).getUser(context);
+
+                }
+                else{
+                  setState(() {
+                    chosse=!chosse;
+                    if(chosse==false)
+                      {
+                        showToast(text: 'يرجاء تسجيل الدخول اضغط مره اخر لانتقال لتسجيل الدخول', state: ToastState.WARNING);
+                      }
+                     else{
+                      navigateAndRemove(context: context, widget:RegisterVistorScreen());
+                    }
+                  });
+
+                }
               }
       ),
       Items_Drawer(
@@ -105,7 +123,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           'الرسائل',
           Icons.chat,
               (){
-                launchWhatsapp("+201123780390", "");
+                launchWhatsapp("+201016257980", "");
                 },
       ),
       Items_Drawer(

@@ -8,6 +8,7 @@ import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Models/adminModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Models/orderModel.dart';
+import 'package:talabatak/Modules/AdminScreen/itemsAdminScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/ShowOrders/ShowOrders.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
@@ -55,10 +56,10 @@ class adminScreen extends StatelessWidget {
                    )),
                    leading: IconButton(
                      onPressed: (){
-                       navigateAndRemove(context: context, widget: LoginScreen());
+                       navigateAndRemove(context: context, widget: ItemsAdminScreen());
                      },
                      icon: Icon(
-                       Icons.logout,
+                       Icons.arrow_forward_outlined,
                      ),
                    ),
                  ),
@@ -106,9 +107,20 @@ class adminScreen extends StatelessWidget {
                        // ),
                      ],
                    ),
-                   fallback: (context) => Center(child: Text('لا توجد طلبات'),),
+                   fallback: (context) => Center(
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         Icon(Icons.menu,size: 150,color: Color.fromRGBO(58, 86, 156,1),),
+                         Text('لا توجد طلبات',style: TextStyle(
+                             color: Color.fromRGBO(58, 86, 156,1),
+                             fontSize: 25,
+                             fontWeight: FontWeight.bold
+                         ),)
+                       ],
+                     ),
+                   ),),
                  ),
-             ),
               );
             }
         );

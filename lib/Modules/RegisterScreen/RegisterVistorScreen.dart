@@ -1,71 +1,40 @@
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
-import 'package:talabatak/Componants/constants.dart';
-import 'package:talabatak/Models/adminModel.dart';
-import 'package:talabatak/Models/orderModel.dart';
-import 'package:talabatak/Modules/AdminScreen/adminScreen.dart';
-import 'package:talabatak/Modules/DoneOrder/DoneOrder.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
-import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/cubit.dart';
-import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/state.dart';
-import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
-import 'package:talabatak/talabatak_bloc/cubit.dart';
-import 'package:talabatak/talabatak_bloc/states.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'RegisterCubit/cubit.dart';
+import 'RegisterCubit/state.dart';
 
-class FinishOrder extends StatelessWidget {
-  List<Map> order ;
+class RegisterVistorScreen extends StatelessWidget {
+
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var addressController = TextEditingController();
   var formKey = GlobalKey<FormState>();
 
-  void launchWhatsapp(
-      String ?number,
-      String ?message,
-      )async{
-
-    String url= "whatsapp://send?phone=$number&text=$message";
-
-    await canLaunch(url) ? launch(url) : print('Can\'t open whatsapp');
-
-  }
-
-
-
-  FinishOrder(this.order);
-
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer <AppCubit , AppStates>(
-        listener: (context , state){},
+    return  BlocProvider(
+      create: (BuildContext context) => RegisterCubit(),
+      child: BlocConsumer<RegisterCubit , RegisterStates>(
+        listener: (context , state){
+          if(state is AppRegisterSuccessState)
+          {
+            navigateAndRemove(context: context, widget: LoginScreen());
+          }
+        },
         builder: (context , state){
+          var cubit = RegisterCubit.get(context);
           return Scaffold(
             appBar: AppBar(
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Center(
-                    child: Text(
-                      'تأكيد الطلب',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-              leading: IconButton(
-                onPressed: (){
-                  userOrders = [];
-                  navigateAndRemove(context: context, widget: HomePageScreen());
-                },
-                icon: Icon(
-                  Icons.arrow_back,
-                ),
+              elevation: 0.0,
+              backgroundColor: Colors.white,
+              backwardsCompatibility: false,
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Colors.white,
+                statusBarIconBrightness: Brightness.dark,
               ),
             ),
             body: SingleChildScrollView(
@@ -76,8 +45,26 @@ class FinishOrder extends StatelessWidget {
                     key: formKey,
                     child: Column(
                       children: [
+
+                        CircleAvatar(
+                          radius: 75.0,
+                          child: Image(
+                            image: AssetImage('assets/images/login.jpeg'),
+                          ),
+                        ),
                         SizedBox(
-                        height: 70,
+                          height: 10.0,
+                        ),
+                        Text(
+                          'تسجيل البيانات',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            color: Color.fromRGBO(58, 86, 156,1),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50.0,
                         ),
                         TextFormField(
                           controller: nameController,
@@ -90,12 +77,13 @@ class FinishOrder extends StatelessWidget {
                           validator: (value){
                             if(value!.isEmpty)
                             {
-                              return 'برجاء أدخال الاسم';
+                              return 'برجاء أدخال الأسم صحيح';
                             }
                             return null;
                           },
                           decoration: InputDecoration(
-                            hintText: 'الاسم ثلاثي',
+                            hintText: 'الأسم بالكامل',
+
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.person,
@@ -128,7 +116,7 @@ class FinishOrder extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 20.0,
+                          height: 10.0,
                         ),
                         TextFormField(
                           controller: phoneController,
@@ -139,7 +127,7 @@ class FinishOrder extends StatelessWidget {
                           ),
                           keyboardType: TextInputType.phone,
                           validator: (value){
-                            if(value!.isEmpty && value.length <= 11)
+                            if(value!.isEmpty && value.length == 11)
                             {
                               return 'برجاء أدخال رقم موبيل صحيح';
                             }
@@ -147,7 +135,6 @@ class FinishOrder extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             hintText: 'رقم الموبيل (يفضل رقم الواتس)',
-
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.phone,
@@ -180,7 +167,7 @@ class FinishOrder extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 20.0,
+                          height: 10.0,
                         ),
                         TextFormField(
                           controller: addressController,
@@ -198,7 +185,7 @@ class FinishOrder extends StatelessWidget {
                             return null;
                           },
                           decoration: InputDecoration(
-                            hintText: 'العنوان بالكامل',
+                            hintText: 'العنوان الأساسى بالكامل',
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: Icon(
                               Icons.location_on,
@@ -231,42 +218,47 @@ class FinishOrder extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 50.0,
+                          height: 30.0,
                         ),
-                        MaterialButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          color: Color.fromRGBO(58, 86, 156,1),
-                          minWidth: double.infinity,
-                          height: 50.0,
-                          onPressed: (){
-                            if(formKey.currentState!.validate())
-                            {
-                              AdminModel userData = AdminModel(
-                                name: nameController.text,
-                                number: phoneController.text,
-                                address: addressController.text,
-                              );
-                             // AppCubit.get(context).createInfo( name: nameController.text, number: phoneController.text, address: addressController.text);
-                              AppCubit.get(context).createOrder(userData: userData, orderData: order);
-                              //AppCubit.get(context)..getOrder();
-                              // launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك(مطاعم) ,اضغط ارسال لاتمام الطلب");
-                              // navigateAndRemove(context: context, widget: DoneOrder());
-                              navigateTo(context: context, widget: DoneOrder());
-
-
-                            }
-                          },
-                          child: Text(
-                            'اتمام العملية',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                        ConditionalBuilder(
+                          condition: state is! AppRegisterLoadingState,
+                          builder: (context)=>Container(
+                            width: double.infinity,
+                            height: 50.0,
+                            child: Material(
+                              elevation: 5.0,
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: Color.fromRGBO(58, 86, 156,1),
+                              child: MaterialButton(
+                                minWidth: double.infinity,
+                                height: 50.0,
+                                onPressed: (){
+                                  if(formKey.currentState!.validate())
+                                  {
+                                    cubit.userRegister(
+                                      name: nameController.text,
+                                      phone: phoneController.text,
+                                      address: addressController.text,
+                                    );
+                                    showToast(text: 'تم تسجيل البيانات بنجاح', state: ToastState.SUCCESS);
+                                  }
+                                },
+                                child: Text(
+                                  'تسجيل',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
+                          fallback: (context)=> Center(child: CircularProgressIndicator()),
+                        ),
+                        SizedBox(
+                          height: 10.0,
                         ),
 
                       ],
@@ -277,6 +269,7 @@ class FinishOrder extends StatelessWidget {
             ),
           );
         },
-      );
+      ),
+    );
   }
 }

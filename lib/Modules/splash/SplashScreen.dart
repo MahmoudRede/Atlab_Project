@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
+import 'package:talabatak/Modules/StartScreen/StartScreen.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
 
@@ -28,16 +30,14 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
           uId = CacheHelper.getData(key: 'uId') ?? '';
 
           if (uId.isNotEmpty) {
-            screen = HomePageScreen();
+            screen = StartScreen();
           } else {
             screen = LoginScreen();
           }
 
 
       Future.delayed(Duration(seconds: 3),(){
-        Navigator.push(context, MaterialPageRoute(builder: (_){
-          return screen;
-        }));
+        navigateAndRemove(context: context, widget: screen);
       });
       super.initState();
     }

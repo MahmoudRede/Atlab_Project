@@ -167,3 +167,45 @@ class AppGetPizzaElprimoSuccessState extends AppStates{}
 
 
 class AppGetHamdaElmahtaErrorState extends AppStates{}
+
+class AppCreateMarketSuccessState extends AppStates{}
+
+class AppCreateMarketErrorState extends AppStates{}
+
+class AppGetMarketSuccessState extends AppStates{}
+
+class AppGetMarketErrorState extends AppStates{}
+
+class AppCreatePharmacySuccessState extends AppStates{}
+
+class AppCreatePharmacyErrorState extends AppStates{}
+
+class AppGetPharmacySuccessState extends AppStates{}
+
+class AppGetPharmacyErrorState extends AppStates{}
+
+class AppCreateShoppingSuccessState extends AppStates{}
+
+class AppCreateShoppingErrorState extends AppStates{}
+
+class AppGetShoppingSuccessState extends AppStates{}
+
+class AppGetShoppingErrorState extends AppStates{}
+
+class AppCreateNoThereSuccessState extends AppStates{}
+
+class AppCreateNoThereErrorState extends AppStates{}
+
+class AppGetNoThereSuccessState extends AppStates{}
+
+class AppGetNoThereErrorState extends AppStates{}
+
+class AppCreateDriveSuccessState extends AppStates{}
+
+class AppCreateDriveErrorState extends AppStates{}
+
+class AppGetDriveSuccessState extends AppStates{}
+
+class AppSwichValueVisibleState extends AppStates{}
+
+

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Modules/AdminScreen/adminScreen.dart';
+import 'package:talabatak/Modules/AdminScreen/itemsAdminScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 
@@ -50,20 +51,27 @@ class AdminLoginScreen extends StatelessWidget {
                            fontWeight: FontWeight.bold,
                            color: Color.fromRGBO(58, 86, 156,1),
                          ),
-                         keyboardType: TextInputType.phone,
+                         keyboardType: TextInputType.visiblePassword,
                          validator: (value){
                            if(value!.isEmpty)
                            {
-                             return 'برجاء أدخال رقم الموبيل الصحيح';
+                             return 'برجاء أدخال كلمه المرور';
                            }
                            return null;
                          },
+                         obscureText: AppCubit.get(context).valueVisible,
                          decoration: InputDecoration(
-                           hintText: 'أدخل رقم الهاتف',
+                           hintText: 'أدخل كلمه المرور',
 
                            hintTextDirection: TextDirection.rtl,
                            prefixIcon: Icon(
-                             Icons.phone,
+                             Icons.lock,
+                           ),
+                           suffixIcon: IconButton(
+                             onPressed: (){
+                               AppCubit.get(context).switchVisible();
+                             },
+                             icon: AppCubit.get(context).valueVisible?Icon(Icons.visibility_off):Icon(Icons.visibility),
                            ),
                            contentPadding: EdgeInsets.symmetric(
                              vertical: 15,
@@ -108,13 +116,13 @@ class AdminLoginScreen extends StatelessWidget {
                            onPressed: (){
                              if(formKey.currentState!.validate())
                              {
-                               if(phoneController.text=='01277556432'){
+                               if(phoneController.text=='1234512345'){
                                  // AppCubit.get(context).getOrder();
-                                 navigateAndRemove(context: context, widget: adminScreen());
+                                 navigateAndRemove(context: context, widget: ItemsAdminScreen());
                                }
                                else
                                  {
-                                   showToast(text: 'أدخل رقم صحيح', state: ToastState.ERROR);
+                                   showToast(text: 'كلمه المرور غير صحيحه', state: ToastState.ERROR);
                                  }
                              }
                            },

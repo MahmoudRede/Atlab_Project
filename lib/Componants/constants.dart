@@ -16,6 +16,11 @@ import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen9.dart';
 
 String uId = '';
 String uIdDoc = '';
+bool vistorLogin = false;
+double height=100;
+String valueOfOrder='0';
+String valueOfShowOrder='0';
+
 
 List <OrderModel>  userOrders = [];
 List <Map>  finishOrders = [];

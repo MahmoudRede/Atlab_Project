@@ -20,5 +20,12 @@ class AppCreateUserErrorState extends RegisterStates {
 
 class AppRegisterChangePasswordState extends RegisterStates{}
 
+class RegisterGetUserLoadingState extends RegisterStates{}
+
+class RegisterGetUserSuccessState extends RegisterStates{}
+
+class RegisterGetUserErrorState extends RegisterStates{}
+
+
 
 

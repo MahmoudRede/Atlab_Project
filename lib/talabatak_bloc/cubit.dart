@@ -14,6 +14,8 @@ import 'package:talabatak/Models/RestaurantModel.dart';
 import 'package:talabatak/Models/UploadOrder.dart';
 import 'package:talabatak/Models/UserModel.dart';
 import 'package:talabatak/Models/adminModel.dart';
+import 'package:talabatak/Models/categoryModel.dart';
+import 'package:talabatak/Models/driveModel.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Models/orderModel.dart';
 import 'package:talabatak/Modules/AdminScreen/adminScreen.dart';
@@ -110,7 +112,10 @@ class AppCubit extends Cubit<AppStates>{
         .get()
         .then((value) {
          userModel=UserModel.fromFire(value.data()!);
-         navigateTo(context: context, widget: ProfileScreen());
+         if(vistorLogin==false){
+           navigateTo(context: context, widget: ProfileScreen());
+
+         }
          emit(AppGetUserSuccessState());
     }).catchError((error) {
       print('Error when Register : ${error.toString()}');
@@ -19747,8 +19752,8 @@ class AppCubit extends Cubit<AppStates>{
         num2=-1;
       }
 
-    print(num2);
-    print(uIdDoc);
+    print('num2 = $num2');
+    print('uIdDoc = $uIdDoc');
     FirebaseFirestore.instance
         .collection('orders')
         .doc(uIdDoc).delete().whenComplete(() => getOrder());
@@ -19802,9 +19807,6 @@ class AppCubit extends Cubit<AppStates>{
     emit(AppChangeItemColorState());
   }
 
-
-
-
   void saveIsDone(
       List <String> isSelected,
       index,
@@ -19819,6 +19821,409 @@ class AppCubit extends Cubit<AppStates>{
 
   }
 
+
+  CategoryModel ?categoryModel ;
+  int marketNum=-1;
+
+
+  void createMarketOrder(
+      {
+        required String name,
+        required String number,
+        required String address,
+        required String order,
+      }
+      ){
+
+    categoryModel = CategoryModel(
+      name: name,
+      number: number,
+      address: address,
+      order: order,
+    );
+
+    uIdDoc='${++marketNum}';
+    FirebaseFirestore.instance.collection('marketorders')
+        .doc(uIdDoc)
+        .set(categoryModel!.toMap()).
+    then((value) {
+
+      emit(AppCreateMarketSuccessState());
+
+    }).catchError((error){
+      print(error);
+      emit(AppCreateMarketErrorState());
+
+    });
+
+  }
+
+
+  List <CategoryModel> marketList=[];
+
+  void getMarketOrder(){
+    marketList=[];
+    FirebaseFirestore.instance.collection('marketorders')
+        .snapshots().listen((event) {
+      event.docs.forEach((element) {
+        print(element.data());
+        marketList.add(CategoryModel.fromFire(element.data()));
+        emit(AppGetMarketSuccessState());
+
+      });
+    });
+
+
+  }
+
+  int marketNum2=-1;
+
+  void deleteMarketOrder(
+      int ?index,
+      ){
+    //
+    // uIdDoc= '$index';
+
+    uIdDoc='${++marketNum2}';
+    if(index! > marketNum2)
+    {
+      marketNum2=index!;
+      uIdDoc='$marketNum2';
+      marketNum2=-1;
+    }
+
+    print('marketNum2 = $marketNum2');
+    print('uIdDoc = $uIdDoc');
+    FirebaseFirestore.instance
+        .collection('marketorders')
+        .doc(uIdDoc).delete().whenComplete(() => getOrder());
+    emit(AppDeleteOrderState());
+  }
+
+
+
+
+  int pharmacyNum=-1;
+
+  void createPharmacyOrder(
+      {
+        required String name,
+        required String number,
+        required String address,
+        required String order,
+      }
+      ){
+
+    categoryModel =CategoryModel(
+      name: name,
+      number: number,
+      address: address,
+      order: order,
+    );
+    uIdDoc='${++pharmacyNum}';
+
+    FirebaseFirestore.instance.collection('pharmacyorders')
+        .doc(uIdDoc)
+        .set(categoryModel!.toMap()).
+    then((value) {
+
+      emit(AppCreatePharmacySuccessState());
+
+
+    }).catchError((error){
+
+      print(error);
+      emit(AppCreatePharmacyErrorState());
+
+
+    });
+
+  }
+
+
+  List <CategoryModel> pharmacyList=[];
+
+  void getPharmacyOrder(){
+    pharmacyList=[];
+    FirebaseFirestore.instance.collection('pharmacyorders')
+        .snapshots().listen((event) {
+      event.docs.forEach((element) {
+        print(element.data());
+        pharmacyList.add(CategoryModel.fromFire(element.data()));
+        emit(AppGetPharmacySuccessState());
+
+      });
+    });
+
+
+  }
+
+  int pharmacyNum2=-1;
+
+  void deletePharmacyOrder(
+      int ?index,
+      ){
+    //
+    // uIdDoc= '$index';
+
+    uIdDoc='${++pharmacyNum2}';
+    if(index! > pharmacyNum2)
+    {
+      pharmacyNum2=index!;
+      uIdDoc='$pharmacyNum2';
+      pharmacyNum2=-1;
+    }
+
+    print('pharmacyNum2 = $pharmacyNum2');
+    print('uIdDoc = $uIdDoc');
+    FirebaseFirestore.instance
+        .collection('pharmacyorders')
+        .doc(uIdDoc).delete().whenComplete(() => getOrder());
+    emit(AppDeleteOrderState());
+  }
+
+
+  int shoppingNum=-1;
+
+  void createShoppingOrder(
+      {
+        required String name,
+        required String number,
+        required String address,
+        required String order,
+      }
+      ){
+
+    categoryModel =CategoryModel(
+      name: name,
+      number: number,
+      address: address,
+      order: order,
+    );
+
+    uIdDoc='${++shoppingNum}';
+
+    FirebaseFirestore.instance.collection('shoppingorders')
+        .doc(uIdDoc)
+        .set(categoryModel!.toMap()).
+    then((value) {
+      emit(AppCreateShoppingSuccessState());
+
+    }).catchError((error){
+      print(error);
+      emit(AppCreateMarketErrorState());
+
+    });
+
+  }
+
+
+  List <CategoryModel> shoppingList=[];
+
+  void getShoppingOrder(){
+    shoppingList=[];
+    FirebaseFirestore.instance.collection('shoppingorders')
+        .snapshots().listen((event) {
+      event.docs.forEach((element) {
+        print(element.data());
+        shoppingList.add(CategoryModel.fromFire(element.data()));
+        emit(AppGetShoppingSuccessState());
+
+      });
+    });
+  }
+
+
+  int shoppingNum2=-1;
+
+  void deleteShoppingOrder(
+      int ?index,
+      ){
+    //
+    // uIdDoc= '$index';
+
+    uIdDoc='${++shoppingNum2}';
+    if(index! > shoppingNum2)
+    {
+      shoppingNum2=index!;
+      uIdDoc='$shoppingNum2';
+      shoppingNum2=-1;
+    }
+
+    print('shoppingNum2 = $shoppingNum2');
+    print('uIdDoc = $uIdDoc');
+    FirebaseFirestore.instance
+        .collection('shoppingorders')
+        .doc(uIdDoc).delete().whenComplete(() => getOrder());
+    emit(AppDeleteOrderState());
+  }
+
+
+  int nothereNum=-1;
+
+  void createNoThereOrder(
+      {
+        required String name,
+        required String number,
+        required String address,
+        required String order,
+      }
+      ){
+
+    categoryModel =CategoryModel(
+      name: name,
+      number: number,
+      address: address,
+      order: order,
+    );
+
+    uIdDoc='${++nothereNum}';
+
+    FirebaseFirestore.instance.collection('nothereorders')
+        .doc(uIdDoc)
+        .set(categoryModel!.toMap()).
+    then((value) {
+      emit(AppCreateNoThereSuccessState());
+
+    }).catchError((error){
+      print(error);
+      emit(AppCreateNoThereErrorState());
+
+    });
+
+  }
+
+
+  List <CategoryModel> nothereList=[];
+
+  void getNoThereOrder(){
+    nothereList=[];
+    FirebaseFirestore.instance.collection('nothereorders')
+        .snapshots().listen((event) {
+      event.docs.forEach((element) {
+        print(element.data());
+        nothereList.add(CategoryModel.fromFire(element.data()));
+        emit(AppGetNoThereSuccessState());
+
+      });
+    });
+  }
+
+
+  int nothereNum2=-1;
+
+  void deleteNoTheregOrder(
+      int ?index,
+      ){
+    //
+    // uIdDoc= '$index';
+
+    uIdDoc='${++nothereNum2}';
+    if(index! > nothereNum2)
+    {
+      nothereNum2=index!;
+      uIdDoc='$nothereNum2';
+      nothereNum2=-1;
+    }
+
+    print('nothereNum2 = $nothereNum2');
+    print('uIdDoc = $uIdDoc');
+    FirebaseFirestore.instance
+        .collection('nothereorders')
+        .doc(uIdDoc).delete().whenComplete(() => getOrder());
+    emit(AppDeleteOrderState());
+  }
+
+  DriveModel ?driveModel;
+
+  int driveNum=-1;
+
+  void createDriveOrder(
+      {
+        required String name,
+        required String number,
+        required String address,
+        required String order,
+        required String from,
+        required String to,
+
+      }
+      ){
+
+    driveModel =DriveModel(
+      name: name,
+      number: number,
+      address: address,
+      order: order,
+      from: from,
+      to: to
+    );
+
+    uIdDoc='${++driveNum}';
+
+    FirebaseFirestore.instance.collection('driveorders')
+        .doc(uIdDoc)
+        .set(driveModel!.toMap()).
+    then((value) {
+      emit(AppCreateDriveSuccessState());
+
+    }).catchError((error){
+      print(error);
+      emit(AppCreateDriveErrorState());
+
+    });
+
+  }
+
+
+  List <DriveModel> driveList=[];
+
+  void getDriveOrder(){
+    driveList=[];
+    FirebaseFirestore.instance.collection('driveorders')
+        .snapshots().listen((event) {
+      event.docs.forEach((element) {
+        print(element.data());
+        driveList.add(DriveModel.fromFire(element.data()));
+        emit(AppGetDriveSuccessState());
+
+      });
+    });
+  }
+
+
+  int driveNum2=-1;
+
+  void deleteDriveOrder(
+      int ?index,
+      ){
+    //
+    // uIdDoc= '$index';
+
+    uIdDoc='${++driveNum2}';
+    if(index! > driveNum2)
+    {
+      driveNum2=index!;
+      uIdDoc='$driveNum2';
+      driveNum2=-1;
+    }
+
+    print('driveNum2 = $driveNum2');
+    print('uIdDoc = $uIdDoc');
+    FirebaseFirestore.instance
+        .collection('driveorders')
+        .doc(uIdDoc).delete().whenComplete(() => getOrder());
+    emit(AppDeleteOrderState());
+  }
+
+
+  bool valueVisible=true;
+
+  void switchVisible(){
+
+    valueVisible=!valueVisible;
+    emit(AppSwichValueVisibleState());
+  }
 
 }
 

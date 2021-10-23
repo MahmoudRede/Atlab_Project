@@ -240,11 +240,11 @@ class RegisterScreen extends StatelessWidget {
                                       phone: phoneController.text,
                                       address: addressController.text,
                                     );
-                                    showToast(text: 'تم التسجيل بنجاح', state: ToastState.SUCCESS);
+                                    showToast(text: 'تم تسجيل البيانات بنجاح', state: ToastState.SUCCESS);
                                   }
                                 },
                                 child: Text(
-                                  'دخول',
+                                  'تسجيل',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.white,

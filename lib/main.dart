@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/constants.dart';
+import 'package:talabatak/Modules/DoneOrder/DoneOrder.dart';
 import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/cubit.dart';
+import 'package:talabatak/Modules/StartScreen/StartScreen.dart';
 import 'package:talabatak/Modules/splash/SplashScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
@@ -47,8 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return
         BlocProvider(
-        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getOrder()
-          ..getPizzaPremo()..getHamdaElmahta()..getPizzaElamira()..getPizzaElomda()..getPizzaElhowt()..getHadrMot()..getElasil()..getPizzaHam()..getPizzaElmahdy()..getPizzaElsafer()..getCrazyPizza()..getWings()..getKoshryHamada()..getFishAbuMarim()..getHatyeEltakya()..getPizzaBola()..getBatElkonafa()..getElandalos()..getElbak()..getElsoltan()..getFresco()..getGosto()..getKosharyHend()..getMashweatHamza()..getTaboshElsory(),
+        create: (BuildContext context) =>AppCubit()..getItemKafrShaben(resName: 'كل المطاعم')..getItemKafrShobak(resName: 'كل المطاعم')..getShbinRestaurantDetails(resName: 'كل المطاعم')..getTahaRestaurantDetails(resName: 'كل المطاعم')..createDatabase()..getOrder(),
           child: BlocConsumer<AppCubit,AppStates>(
             listener: (context,state){},
             builder: (context,state)=>MaterialApp(
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             home: Directionality(
-              textDirection: TextDirection.ltr,
+              textDirection: TextDirection.rtl,
               child: MainSplashScreen(),
             ),
           ),

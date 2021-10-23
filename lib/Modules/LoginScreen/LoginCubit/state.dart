@@ -19,6 +19,11 @@ class AppLoginChangePasswordState extends LoginStates{}
 
 class ClearDataState extends LoginStates{}
 
+class VistorState extends LoginStates{}
+
+
+
+
 
 
 

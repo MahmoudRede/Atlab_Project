@@ -6,10 +6,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/componant.dart';
+import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Modules/AdminLoginScreen/AdminLoginScreen.dart';
 import 'package:talabatak/Modules/RegisterScreen/register_Screen.dart';
+import 'package:talabatak/Modules/StartScreen/StartScreen.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
+import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'LoginCubit/cubit.dart';
 import 'LoginCubit/state.dart';
 
@@ -33,7 +36,7 @@ class LoginScreen extends StatelessWidget {
             {
               navigateAndRemove(
                 context: context,
-                widget: HomePageScreen(),
+                widget: StartScreen(),
               );
             });
           }
@@ -58,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 30.0,
+                          height:  MediaQuery.of(context).size.height*.03,
                         ),
                         CircleAvatar(
                           radius: 75.0,
@@ -67,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 70.0,
+                          height: MediaQuery.of(context).size.height*.07,
                         ),
                         TextFormField(
                           controller: phoneController,
@@ -119,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 10.0,
+                          height: MediaQuery.of(context).size.height*.01,
                         ),
                         Container(
                           width: double.infinity,
@@ -142,6 +145,20 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
+                          alignment: Alignment.topRight,
+                          child: TextButton(
+                              onPressed: (){
+                                LoginCubit.get(context).vistorState();
+                                navigateAndRemove(context: context, widget: StartScreen());
+
+                              }, child: Text('الدخول كزائر', textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Color.fromRGBO(58, 86, 156,1),
+                              fontWeight: FontWeight.w600,
+                            ),)),
+                        ),
+                        Container(
                           width: double.infinity,
                           alignment: Alignment.centerRight,
                           child: TextButton(
@@ -160,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 25.0,
+                          height: MediaQuery.of(context).size.height*.015,
                         ),
                         ConditionalBuilder(
                             condition: state is !AppLoginLoadingState,
@@ -178,6 +195,7 @@ class LoginScreen extends StatelessWidget {
                                     if(formKey.currentState!.validate())
                                     {
                                       // LoginCubit.get(context).clearData();
+                                      vistorLogin=false;
                                       LoginCubit.get(context).userLogin(phone: phoneController.text);
                                     }
                                   },
@@ -191,9 +209,24 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+
                               ),
                             ),
                             fallback: (context)=> Center(child: CircularProgressIndicator()),
+                        ),
+
+
+                        SizedBox(height: MediaQuery.of(context).size.height*.12,),
+                        Padding(
+
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('لاستفسار : 01016257980',
+                          style: TextStyle(
+                            color:  Color.fromRGBO(58, 86, 156,1),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold
+                          ),
+                          ),
                         ),
 
                       ],

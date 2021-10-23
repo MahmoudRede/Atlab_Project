@@ -74,7 +74,7 @@ class ShowOrders extends StatelessWidget {
                 child: Row(
                   children: [
                     Image(
-                      image: AssetImage('assets/images/burger.png',),
+                      image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/burger.jpeg?alt=media&token=c3071bd2-692b-4e08-a286-6b11eed46d38',),
                       height: 100,
                       width: 80,
                     ),
@@ -137,7 +137,7 @@ class ShowOrders extends StatelessWidget {
                         ),),
                         SizedBox(width: 12,),
                         Text(
-                          'نص',
+                          'صغير',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold
