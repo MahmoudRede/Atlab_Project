@@ -79,36 +79,32 @@ class ItemsAdminScreen extends StatelessWidget {
                 color: Colors.white,
                 child: Column(
                   children: [
+                    SizedBox(height: 5,),
                     Container(
                       alignment: Alignment.topLeft,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                      child: IconButton(
+
                         color: Colors.red,
                         onPressed: (){
                           navigateAndRemove(context: context, widget: LoginScreen());
                         },
-                        child: Text('خروج',style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17
-                        ),),
+
+                        icon: Icon(
+                          Icons.logout
+                        ),
 
                       ),
                     ),
                     SizedBox(height: 0,),
                     Text('أسرع و أمن دليفري مع',textAlign: TextAlign.center
                       ,style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Lemonada',
+                        fontSize: 27,
                         fontWeight: FontWeight.bold,
                         color:  Color.fromRGBO(58, 86, 156,1),
                       ),),
                     Text('طلباتك بنقربك للي يهمك',textAlign: TextAlign.center
                       ,style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Lemonada',
+                        fontSize: 27,
                         fontWeight: FontWeight.bold,
                         color:  Color.fromRGBO(58, 86, 156,1),
                       ),),

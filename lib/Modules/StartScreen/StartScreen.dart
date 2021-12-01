@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
+import 'package:talabatak/Modules/WorkerScreen/workerScreen.dart';
 import 'package:talabatak/Modules/antherOrder/AntherOrder.dart';
 import 'package:talabatak/Modules/antherOrder/DriveOrder.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
@@ -18,7 +20,9 @@ class StartScreen extends StatelessWidget {
     'https://image.freepik.com/free-psd/medical-capsules-mock-up-top-view_23-2148478002.jpg',
     'https://image.freepik.com/free-vector/vegetables-fruits-market-eggplant-peppers-onions-potatoes-healthy-tomato-banana-apple-pear-pumpkin-vector-illustration_1284-46286.jpg',
     'https://matrixclouds.com/uploads/blog/1604394498.png',
-    'https://img.freepik.com/free-vector/thinking-face-emoji_1319-430.jpg'
+    'https://image.freepik.com/free-vector/set-modern-workers-repairing-house_1262-19340.jpg',
+    'https://img.freepik.com/free-vector/thinking-face-emoji_1319-430.jpg',
+
 
   ];
   List <String> titleCategory=[
@@ -27,6 +31,7 @@ class StartScreen extends StatelessWidget {
     'صيدليات',
     'طلبات سوق',
     'توصيل طلبات',
+    'صنايعيه',
     'طلب اخر'
   ];
   @override
@@ -49,6 +54,9 @@ class StartScreen extends StatelessWidget {
             valueOfOrder='6';
             navigateAndRemove(context: context, widget: DriveOrder(imageCategory: 'https://matrixclouds.com/uploads/blog/1604394498.png',titleCategory: 'توصيل طلبات',));
       },
+          (){
+            navigateTo(context: context, widget: WorkerScreen());
+          },
           (){
         navigateAndRemove(context: context, widget: AntherOrder(imageCategory: 'https://img.freepik.com/free-vector/thinking-face-emoji_1319-430.jpg',titleCategory: 'طلب اخر',));
       },
@@ -73,37 +81,34 @@ class StartScreen extends StatelessWidget {
                       children: [
                          Container(
                            alignment: Alignment.topLeft,
-                           child: RaisedButton(
-                             shape: RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(15),
-                             ),
+                           child: IconButton(
+                             // shape: RoundedRectangleBorder(
+                             //   borderRadius: BorderRadius.circular(15),
+                             // ),
                              color: Colors.red,
                                 onPressed: (){
                                   navigateAndRemove(context: context, widget: LoginScreen());
                                 },
-                              child: Text('خروج',style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17
-                              ),),
+                              // icon:
+                             icon: Icon(
+                               Icons.logout
+                             ),
 
                         ),
                          ),
                         SizedBox(height: 2,),
                         Text('اهلا معاك طلباتك',textAlign: TextAlign.center
-                          ,style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Lemonada',
-                            fontWeight: FontWeight.bold,
-                            color:  Color.fromRGBO(58, 86, 156,1),
-                          ),),
+                          ,style: GoogleFonts.cookie(
+                                fontSize: 27,
+                                fontWeight: FontWeight.bold,
+                                color:  Color.fromRGBO(58, 86, 156,1),
+                            )),
                         Text('حابب تطلب اي النهارده',textAlign: TextAlign.center
-                          ,style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Lemonada',
-                            fontWeight: FontWeight.bold,
-                            color:  Color.fromRGBO(58, 86, 156,1),
-                          ),),
+                          ,style: GoogleFonts.lato(
+                              fontSize: 27,
+                              fontWeight: FontWeight.bold,
+                              color:  Color.fromRGBO(58, 86, 156,1),
+                            )),
 
                       ],
                     ),
@@ -132,13 +137,12 @@ class StartScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: GridView.count(
-
                       physics: BouncingScrollPhysics(),
                       mainAxisSpacing: 0,
                       crossAxisSpacing: 0,
                       childAspectRatio: 1/1.3,
                       crossAxisCount: 2,
-                      children: List.generate(6, (index) => orderBlock(imagesCategory[index],titleCategory[index],functionCategory[index])),
+                      children: List.generate(imagesCategory.length, (index) => orderBlock(imagesCategory[index],titleCategory[index],functionCategory[index])),
                     ),
                   ),
                 ],

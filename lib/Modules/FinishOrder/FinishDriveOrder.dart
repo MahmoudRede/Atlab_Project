@@ -263,6 +263,11 @@ class FinishDriveOrder extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: MediaQuery.of(context).size.height*.06,),
+                      Text('لدفع عن طريق فودفوان كاش : 01030018001',style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold
+                      ),)
 
                     ],
                   ),

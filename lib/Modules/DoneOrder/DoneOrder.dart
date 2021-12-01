@@ -81,7 +81,7 @@ class _DoneOrderState extends State<DoneOrder> {
           children: [
             SizedBox(height: 100,),
             Image(
-              image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202021-10-22%20at%202.12.48%20PM.jpeg?alt=media&token=9fd95a1e-eb05-4205-bf5d-6073fade1b2b'),
+              image: AssetImage('assets/images/newImage.jpeg'),
             ),
           ],
         )
