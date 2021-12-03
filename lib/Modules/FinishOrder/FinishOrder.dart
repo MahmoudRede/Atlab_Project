@@ -17,6 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class FinishOrder extends StatelessWidget {
   List<Map> order ;
+  String userLocation;
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var addressController = TextEditingController();
@@ -33,15 +34,14 @@ class FinishOrder extends StatelessWidget {
 
   }
 
-
-
-  FinishOrder(this.order);
+  FinishOrder(this.order , this.userLocation);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer <AppCubit , AppStates>(
         listener: (context , state){},
         builder: (context , state){
+          addressController.text = userLocation;
           return Scaffold(
             appBar: AppBar(
               actions: [
@@ -243,19 +243,15 @@ class FinishOrder extends StatelessWidget {
                           onPressed: (){
                             if(formKey.currentState!.validate())
                             {
+                              AppCubit.get(context).getCurrentLocation();
+                              String userLocation = AppCubit.get(context).currentLocation;
                               AdminModel userData = AdminModel(
                                 name: nameController.text,
                                 number: phoneController.text,
                                 address: addressController.text,
                               );
-                             // AppCubit.get(context).createInfo( name: nameController.text, number: phoneController.text, address: addressController.text);
                               AppCubit.get(context).createOrder(userData: userData, orderData: order);
-                              //AppCubit.get(context)..getOrder();
-                              // launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك(مطاعم) ,اضغط ارسال لاتمام الطلب");
-                              // navigateAndRemove(context: context, widget: DoneOrder());
                               navigateTo(context: context, widget: DoneOrder());
-
-
                             }
                           },
                           child: Text(

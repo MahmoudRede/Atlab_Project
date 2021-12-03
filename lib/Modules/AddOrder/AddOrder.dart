@@ -54,7 +54,9 @@ class AddOrder extends StatelessWidget {
                                 ),
                                 color: Color.fromRGBO(58, 86, 156,1),
                                 onPressed: (){
-                                  navigateTo(context: context, widget: FinishOrder(finishOrders));
+                                  AppCubit.get(context).getCurrentLocation();
+                                  String userLocation = AppCubit.get(context).currentLocation;
+                                  navigateTo(context: context, widget: FinishOrder(finishOrders , userLocation));
                                 },
                                 child: Text('تأكيد الطلب',style: TextStyle(
                                     color: Colors.white,

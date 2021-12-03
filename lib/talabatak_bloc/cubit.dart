@@ -1,7 +1,8 @@
 
 import 'dart:io';
 import 'dart:math';
-
+import 'package:geocoder/geocoder.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,6 +31,24 @@ class AppCubit extends Cubit<AppStates>{
   static AppCubit get(context)=> BlocProvider.of(context);
 
   UserModel ?userModel;
+
+  var currentLocation = '';
+  void getCurrentLocation () async
+  {
+    var position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var lastPosition = await Geolocator.getLastKnownPosition();
+    print(lastPosition.toString());
+   // currentLocation = '${position.latitude.toString() + ', ' + position.longitude.toString()}';
+    print(currentLocation.toString());
+
+    var coordinates = new Coordinates(position.latitude, position.longitude);
+
+    var address = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    currentLocation = address.first.addressLine;
+    print(address.first.addressLine);
+    emit(AppGetUserLocation());
+  }
+
 
 
   List <String> places = ['كشري و طواجن','مشويات','اسماك','كل الفئات','لحوم و خضروات','كريب/سوري','بيتزا','Restaurant','كل المطاعم'];

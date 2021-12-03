@@ -11,7 +11,7 @@ class SelectedPlaceState extends AppStates{
 }
 
 class AppAddItemToUserOredersState extends AppStates {}
-
+class AppGetUserLocation extends AppStates{}
 class AppRemoveItemFromUserOredersState extends AppStates {}
 class AppGetTotalPriceState extends AppStates {}
 class AppGetCurrentRestaurantState extends AppStates {}
