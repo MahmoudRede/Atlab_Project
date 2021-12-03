@@ -48,6 +48,10 @@ class FinishAntherOrder extends StatelessWidget {
     return BlocConsumer <AppCubit , AppStates>(
       listener: (context , state){},
       builder: (context , state){
+        AppCubit.get(context).getCurrentLocation();
+        String userLocation = AppCubit.get(context).currentLocation;
+
+        addressController.text = userLocation;
         return Scaffold(
           appBar: AppBar(
             actions: [
