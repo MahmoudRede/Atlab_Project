@@ -68,6 +68,7 @@ class AntherOrder extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: [
+
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: Center(

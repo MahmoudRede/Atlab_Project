@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Modules/DoneOrder/DoneOrder.dart';
+import 'package:talabatak/Modules/DrawerScreen/drawer_screen.dart';
+import 'package:talabatak/Modules/DrawerZoom/zoom_drawer.dart';
 import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
@@ -68,7 +70,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             home: Directionality(
               textDirection: TextDirection.rtl,
-              child: MainSplashScreen(),
+              child:MainSplashScreen(),
             ),
           ),
         ),

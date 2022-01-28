@@ -834,6 +834,28 @@ class AppCubit extends Cubit<AppStates>{
 
   }
 
+  double xOffcet = 0;
+  double yOffcet = 0;
+  double scale = 1;
+  bool factor = false;
+
+  void doSmallScreen() {
+    if (factor == false) {
+      xOffcet =-20;
+      yOffcet = 175;
+      scale = .55;
+      factor = true;
+      emit(SmallScreenState());
+    }
+    else{
+      xOffcet=0;
+      yOffcet=0;
+      scale=1;
+      factor=false;
+      emit(NormalScreenState());
+    }
+  }
+
   void getItemKafrShobak({
     required String resName,
   })

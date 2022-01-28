@@ -26,17 +26,14 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
     void initState(){
       Widget screen = LoginScreen();
 
-
-          uId = CacheHelper.getData(key: 'uId') ?? '';
-
+      uId = CacheHelper.getData(key: 'uId') ?? '';
           if (uId.isNotEmpty) {
             screen = StartScreen();
           } else {
             screen = LoginScreen();
           }
 
-
-      Future.delayed(Duration(seconds: 3),(){
+          Future.delayed(Duration(seconds: 3),(){
         navigateAndRemove(context: context, widget: screen);
       });
       super.initState();
@@ -60,7 +57,7 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height*.018,),
-              Text('طلباتك',
+              Text('اطلب',
                 style: TextStyle(
                 fontSize: 45,
                 fontFamily: 'Lemonada',
@@ -68,14 +65,14 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
                 color: Colors.white
 
                 ),),
-              SizedBox(height: MediaQuery.of(context).size.height*.02,),
+              SizedBox(height: MediaQuery.of(context).size.height*.03,),
               Image(
                 height: MediaQuery.of(context).size.height*.35,
                 width: MediaQuery.of(context).size.height*.35,
                 image: AssetImage('assets/images/delvery.png'),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height*.05,),
-              Text('أسرع و أمن دليفري مع طلباتك بنقربك للي يهمك',
+              SizedBox(height: MediaQuery.of(context).size.height*.07,),
+              Text('مع اطلب أسرع و افضل خدمه توصيل طلبات لمنازل ',
                   style: TextStyle(
                     fontSize: 17,
                     fontFamily: 'Lemonada',
@@ -85,7 +82,7 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
                   textAlign: TextAlign.center,
                 ),
               SizedBox(height: MediaQuery.of(context).size.height*.13,),
-              Text('يتم تسجيل بيناتك لمره واحده فقط*',
+              Text('',
                 style: TextStyle(
                   fontSize: 13,
                   fontFamily: 'Lemonada',

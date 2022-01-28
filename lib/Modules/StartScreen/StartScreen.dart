@@ -21,7 +21,7 @@ class StartScreen extends StatelessWidget {
     'https://image.freepik.com/free-vector/vegetables-fruits-market-eggplant-peppers-onions-potatoes-healthy-tomato-banana-apple-pear-pumpkin-vector-illustration_1284-46286.jpg',
     'https://matrixclouds.com/uploads/blog/1604394498.png',
     'https://image.freepik.com/free-vector/set-modern-workers-repairing-house_1262-19340.jpg',
-    'https://img.freepik.com/free-vector/thinking-face-emoji_1319-430.jpg',
+    'https://image.freepik.com/free-vector/design-inspiration-concept-illustration_114360-3992.jpg',
 
 
   ];
@@ -72,42 +72,26 @@ class StartScreen extends StatelessWidget {
             backgroundColor: Colors.grey[100],
             appBar: AppBar(
               toolbarHeight: 140,
-              title:  Container(
+              title:Container(
                 alignment: Alignment.center,
-                color: Colors.white,
+                color: Color.fromRGBO(58, 86, 156,1),
                 child: Stack(
                   children: [
                     Column(
                       children: [
-                         Container(
-                           alignment: Alignment.topLeft,
-                           child: IconButton(
-                             // shape: RoundedRectangleBorder(
-                             //   borderRadius: BorderRadius.circular(15),
-                             // ),
-                             color: Colors.red,
-                                onPressed: (){
-                                  navigateAndRemove(context: context, widget: LoginScreen());
-                                },
-                              // icon:
-                             icon: Icon(
-                               Icons.logout
-                             ),
 
-                        ),
-                         ),
-                        SizedBox(height: 2,),
-                        Text('اهلا معاك طلباتك',textAlign: TextAlign.center
+                        SizedBox(height: MediaQuery.of(context).size.height*.04,),
+                        Text('اهلا معاك اطلب',textAlign: TextAlign.center
                           ,style: GoogleFonts.cookie(
                                 fontSize: 27,
                                 fontWeight: FontWeight.bold,
-                                color:  Color.fromRGBO(58, 86, 156,1),
+                                color:  Colors.white,
                             )),
                         Text('حابب تطلب اي النهارده',textAlign: TextAlign.center
                           ,style: GoogleFonts.lato(
                               fontSize: 27,
                               fontWeight: FontWeight.bold,
-                              color:  Color.fromRGBO(58, 86, 156,1),
+                              color:  Colors.white,
                             )),
 
                       ],
@@ -115,11 +99,11 @@ class StartScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              backgroundColor: Colors.white,
+              backgroundColor:  Color.fromRGBO(58, 86, 156,1),
               backwardsCompatibility: false,
               systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Colors.white,
-                statusBarIconBrightness: Brightness.dark,
+                statusBarColor: Color.fromRGBO(58, 86, 156,1),
+                statusBarIconBrightness: Brightness.light,
               ),
             ),
             body: Container(
@@ -127,9 +111,8 @@ class StartScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Container(
-                    color: Colors.white,
+                    color:  Color.fromRGBO(58, 86, 156,1),
                     height: MediaQuery.of(context).size.height*.05,
                   ),
                   Container(

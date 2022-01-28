@@ -39,7 +39,7 @@ class WorkerScreen extends StatelessWidget {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height*.03,),
                 Text('اضغط علي الصانعه التي تريدها',style: GoogleFonts.lato(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color:  Color.fromRGBO(58, 86, 156,1),
                 )),
@@ -52,8 +52,8 @@ class WorkerScreen extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       mainAxisSpacing: 0,
                       crossAxisSpacing: 0,
-                      childAspectRatio: 1/1.1,
-                      crossAxisCount: 2,
+                      childAspectRatio: 1/1.5,
+                      crossAxisCount: 3,
                       children: List.generate(imagesWorkers.length, (index) => orderBlock(imagesWorkers[index],titleWorkers[index],index)),
                     ),
                   ),
@@ -83,25 +83,25 @@ Widget orderBlock( String images, String titles,index){
     onTap: (){
 
       if(index==0){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (كهربائي) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (كهربائي) ,اضغط ارسال لاتمام الطلب");
       }
       else if(index==1){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (نجار) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (نجار) ,اضغط ارسال لاتمام الطلب");
       }
       else if(index==2){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (سباك) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (سباك) ,اضغط ارسال لاتمام الطلب");
       }
       else if(index==3){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (حداد) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (حداد) ,اضغط ارسال لاتمام الطلب");
       }
       else if(index==4){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (نقاش) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (نقاش) ,اضغط ارسال لاتمام الطلب");
       }
       else if(index==5){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (ترزي) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (ترزي) ,اضغط ارسال لاتمام الطلب");
       }
       else if(index==6){
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (مكوجي) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (مكوجي) ,اضغط ارسال لاتمام الطلب");
       }
 
 
@@ -115,7 +115,7 @@ Widget orderBlock( String images, String titles,index){
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
         ),
-        margin: EdgeInsets.fromLTRB(7, 0, 7, 0),
+        margin: EdgeInsets.fromLTRB(3, 0, 5, 0),
         child: Column(
           children: [
             Container(
@@ -133,9 +133,9 @@ Widget orderBlock( String images, String titles,index){
                           image: NetworkImage(images)
                       ),
                     ),
-                    SizedBox(height: 17,),
+                    SizedBox(height: 8,),
                     Text(titles,style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),),
                     SizedBox(height: 5,),

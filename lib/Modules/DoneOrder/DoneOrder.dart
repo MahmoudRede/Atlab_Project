@@ -17,7 +17,7 @@ class _DoneOrderState extends State<DoneOrder> {
   @override
   void initState(){
 
-    Future.delayed(Duration(seconds: 2),(){
+    Future.delayed(Duration(seconds: 1),(){
       void launchWhatsapp(
           String ?number,
           String ?message,
@@ -31,32 +31,32 @@ class _DoneOrderState extends State<DoneOrder> {
       }
       if(valueOfOrder=='1')
       {
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (سوبر ماركت) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (سوبر ماركت) ,اضغط ارسال لاتمام الطلب");
 
       }
       else if(valueOfOrder=='2')
       {
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (صيدليات) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (صيدليات) ,اضغط ارسال لاتمام الطلب");
 
       }
       else if(valueOfOrder=='3')
       {
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (طلبات سوق) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (طلبات سوق) ,اضغط ارسال لاتمام الطلب");
 
       }
       else if(valueOfOrder=='4')
       {
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (طلب اخر) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (طلب اخر) ,اضغط ارسال لاتمام الطلب");
 
       }
       else if(valueOfOrder=='5')
       {
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (مطاعم) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (مطاعم) ,اضغط ارسال لاتمام الطلب");
 
       }
       else if(valueOfOrder=='6')
       {
-        launchWhatsapp("+201016257980", "شكرا لختيارك طلباتك (توصيل طلبات) ,اضغط ارسال لاتمام الطلب");
+        launchWhatsapp("+201123780390", "شكرا لختيارك اطلب (توصيل طلبات) ,اضغط ارسال لاتمام الطلب");
 
       }
       // navigateAndRemove(context: context, widget: screen);
@@ -67,21 +67,21 @@ class _DoneOrderState extends State<DoneOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.blueAccent,
         backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor:Colors.orange,
+          statusBarColor:Colors.blueAccent,
           statusBarIconBrightness: Brightness.light,
         ),
       ),
       body: Container(
         child: Column(
           children: [
-            SizedBox(height: 100,),
+            SizedBox(height: 150,),
             Image(
-              image: AssetImage('assets/images/newImage.jpeg'),
+              image: NetworkImage('https://image.freepik.com/free-vector/delivery-service-with-masks-concept_52683-36955.jpg'),
             ),
           ],
         )

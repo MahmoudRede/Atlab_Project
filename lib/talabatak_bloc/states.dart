@@ -20,6 +20,9 @@ class AppInsertDatabaseState extends AppStates {}
 class AppInsertDatabaseLoadingState extends AppStates {}
 class AppGetDatabaseState extends AppStates {}
 class AppDeleteDatabaseState extends AppStates {}
+class SmallScreenState extends AppStates {}
+class NormalScreenState extends AppStates {}
+
 
 
 

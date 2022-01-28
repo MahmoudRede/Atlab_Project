@@ -64,13 +64,16 @@ class LoginScreen extends StatelessWidget {
                           height:  MediaQuery.of(context).size.height*.03,
                         ),
                         CircleAvatar(
-                          radius: 75.0,
-                          child: Image(
-                            image: AssetImage('assets/images/login.jpeg'),
+                          radius: 77.0,
+                          child: CircleAvatar(
+                            radius: 75.0,
+                            backgroundImage: NetworkImage(
+                                'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
+                            ),
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height*.07,
+                          height: MediaQuery.of(context).size.height*.06,
                         ),
                         TextFormField(
                           controller: phoneController,
@@ -122,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height*.01,
+                          height: MediaQuery.of(context).size.height*.02,
                         ),
                         Container(
                           width: double.infinity,
@@ -177,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height*.015,
+                          height: MediaQuery.of(context).size.height*.040,
                         ),
                         ConditionalBuilder(
                             condition: state is !AppLoginLoadingState,
@@ -217,17 +220,7 @@ class LoginScreen extends StatelessWidget {
 
 
                         SizedBox(height: MediaQuery.of(context).size.height*.12,),
-                        Padding(
 
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('لاستفسار : 01016257980',
-                          style: TextStyle(
-                            color:  Color.fromRGBO(58, 86, 156,1),
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold
-                          ),
-                          ),
-                        ),
 
                       ],
                     ),
