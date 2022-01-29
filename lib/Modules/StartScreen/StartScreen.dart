@@ -71,7 +71,7 @@ class StartScreen extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.grey[100],
             appBar: AppBar(
-              toolbarHeight: 140,
+              toolbarHeight: 150,
               title:Container(
                 alignment: Alignment.center,
                 color: Color.fromRGBO(58, 86, 156,1),
@@ -79,15 +79,30 @@ class StartScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
+                        SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: IconButton(
+                            color: Colors.white,
+                            onPressed: (){
+                              navigateAndRemove(context: context, widget: LoginScreen());
+                            },
 
-                        SizedBox(height: MediaQuery.of(context).size.height*.04,),
-                        Text('اهلا معاك اطلب',textAlign: TextAlign.center
+                            icon: Icon(
+                                Icons.logout
+                            ),
+
+                          ),
+                        ),
+                        SizedBox(height: 0,),
+                        SizedBox(height: MediaQuery.of(context).size.height*.008,),
+                        Text('اسرع و افضل دليفري مع',textAlign: TextAlign.center
                           ,style: GoogleFonts.cookie(
                                 fontSize: 27,
                                 fontWeight: FontWeight.bold,
                                 color:  Colors.white,
                             )),
-                        Text('حابب تطلب اي النهارده',textAlign: TextAlign.center
+                        Text('اطلب',textAlign: TextAlign.center
                           ,style: GoogleFonts.lato(
                               fontSize: 27,
                               fontWeight: FontWeight.bold,

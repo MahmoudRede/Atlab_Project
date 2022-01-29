@@ -73,18 +73,18 @@ class ItemsAdminScreen extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.grey[100],
             appBar: AppBar(
+              titleSpacing: 0.0,
               toolbarHeight: 130,
               title:  Container(
                 alignment: Alignment.center,
-                color: Colors.white,
+                color: Color.fromRGBO(58, 86, 156,1),
                 child: Column(
                   children: [
-                    SizedBox(height: 5,),
+                    SizedBox(height: 10,),
                     Container(
                       alignment: Alignment.topLeft,
                       child: IconButton(
-
-                        color: Colors.red,
+                        color: Colors.white,
                         onPressed: (){
                           navigateAndRemove(context: context, widget: LoginScreen());
                         },
@@ -96,17 +96,17 @@ class ItemsAdminScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 0,),
-                    Text('أسرع و أمن دليفري مع',textAlign: TextAlign.center
+                    Text('أسرع و أفضل دليفري مع',textAlign: TextAlign.center
                       ,style: TextStyle(
                         fontSize: 27,
                         fontWeight: FontWeight.bold,
-                        color:  Color.fromRGBO(58, 86, 156,1),
+                        color: Colors.white,
                       ),),
-                    Text('طلباتك بنقربك للي يهمك',textAlign: TextAlign.center
+                    Text('اطلب ',textAlign: TextAlign.center
                       ,style: TextStyle(
                         fontSize: 27,
                         fontWeight: FontWeight.bold,
-                        color:  Color.fromRGBO(58, 86, 156,1),
+                        color:  Colors.white,
                       ),),
                   ],
                 ),
@@ -114,8 +114,8 @@ class ItemsAdminScreen extends StatelessWidget {
               backgroundColor: Colors.white,
               backwardsCompatibility: false,
               systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Colors.white,
-                statusBarIconBrightness: Brightness.dark,
+                statusBarColor: Color.fromRGBO(58, 86, 156,1),
+                statusBarIconBrightness: Brightness.light,
               ),
             ),
             body: Container(
@@ -125,7 +125,7 @@ class ItemsAdminScreen extends StatelessWidget {
                 children: [
 
                   Container(
-                    color: Colors.white,
+                    color:  Color.fromRGBO(58, 86, 156,1),
                     height: MediaQuery.of(context).size.height*.05,
                   ),
                   Container(

@@ -36,9 +36,12 @@ class AdminLoginScreen extends StatelessWidget {
                          height: 70.0,
                        ),
                        CircleAvatar(
-                         radius: 75.0,
-                         child: Image(
-                           image: AssetImage('assets/images/login.jpeg'),
+                         radius: 77.0,
+                         child: CircleAvatar(
+                           radius: 75.0,
+                           backgroundImage: NetworkImage(
+                               'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
+                           ),
                          ),
                        ),
                        SizedBox(
