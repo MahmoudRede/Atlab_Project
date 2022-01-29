@@ -95,7 +95,7 @@ class StartScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 0,),
-                        SizedBox(height: MediaQuery.of(context).size.height*.008,),
+                        SizedBox(height: MediaQuery.of(context).size.height*.007,),
                         Text('اسرع و افضل دليفري مع',textAlign: TextAlign.center
                           ,style: GoogleFonts.cookie(
                                 fontSize: 27,
