@@ -21,7 +21,7 @@ class ItemsAdminScreen extends StatelessWidget {
     'https://image.freepik.com/free-psd/medical-capsules-mock-up-top-view_23-2148478002.jpg',
     'https://image.freepik.com/free-vector/vegetables-fruits-market-eggplant-peppers-onions-potatoes-healthy-tomato-banana-apple-pear-pumpkin-vector-illustration_1284-46286.jpg',
     'https://matrixclouds.com/uploads/blog/1604394498.png',
-    'https://img.freepik.com/free-vector/thinking-face-emoji_1319-430.jpg'
+    'https://image.freepik.com/free-vector/design-inspiration-concept-illustration_114360-3992.jpg'
 
 
   ];

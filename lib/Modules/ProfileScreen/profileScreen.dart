@@ -19,33 +19,15 @@ class ProfileScreen extends StatelessWidget {
           return Directionality(
             textDirection: TextDirection.rtl,
             child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.white,
-                centerTitle: true,
-                title: Text('الحساب الشخصي ',style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),),
-                iconTheme: IconThemeData(
-                  color: Colors.black
-                ),
-                backwardsCompatibility: false,
-                systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: Colors.white,
-                  statusBarIconBrightness: Brightness.dark,
-                ),
 
-
-              ),
-              body: Container(
+                body: Container(
                 color: Colors.white,
                 child: Stack(
                   children: [
 
                     Container(
                       padding: EdgeInsets.all(25),
-                      margin: EdgeInsets.only(top: 150),
+                      margin: EdgeInsets.only(top: 220),
                       height: double.infinity,
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -139,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
                                 color: Colors.white
                               ),),
                               SizedBox(width: 5,),
-                              Text('01016257980',style: TextStyle(
+                              Text('01277556432',style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                 color: Colors.white
@@ -151,20 +133,21 @@ class ProfileScreen extends StatelessWidget {
 
                       ),
                     ),
-
                     Positioned(
-                      top: 85,
+                      top: 145,
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 0, 35, 0),
-                        child: CircleAvatar(
-                          radius: 63,
+                        child:  CircleAvatar(
                           backgroundColor: Colors.white,
+                          radius: 65.0,
                           child: CircleAvatar(
-                            radius: 60,
-                            backgroundImage: AssetImage('assets/images/login.jpeg',),
-
+                            radius: 62.0,
+                            backgroundImage: NetworkImage(
+                                'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
+                            ),
                           ),
                         ),
+
                       ),
                     ),
                   ],

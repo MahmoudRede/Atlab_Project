@@ -4,9 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
+import 'package:talabatak/Modules/OnBoarding/on_boarding.dart';
 import 'package:talabatak/Modules/StartScreen/StartScreen.dart';
 import 'package:talabatak/Modules/home_page/HomePageScreen.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
+import 'package:lottie/lottie.dart';
+
 
 
 class MainSplashScreen extends StatefulWidget {
@@ -20,20 +23,21 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
 
   var height=200;
   var width=200;
+  bool isBoarding=false;
 
   // Set Time Of Splash Screen
     @override
     void initState(){
       Widget screen = LoginScreen();
 
-      uId = CacheHelper.getData(key: 'uId') ?? '';
-          if (uId.isNotEmpty) {
-            screen = StartScreen();
-          } else {
-            screen = LoginScreen();
-          }
-
-          Future.delayed(Duration(seconds: 3),(){
+      isBoarding=CacheHelper.getBoolen(key: 'Boarding') ?? false;
+      if(isBoarding==false){
+         screen=OnBoarding();
+      }
+      else  {
+        screen=screen2;
+      }
+          Future.delayed(Duration(seconds: 5),(){
         navigateAndRemove(context: context, widget: screen);
       });
       super.initState();
@@ -52,47 +56,48 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
           ),
       ),
       body:Container(
+           width: double.infinity,
            color: Color.fromRGBO(58, 86, 156,1),
-          alignment: Alignment.center,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: MediaQuery.of(context).size.height*.018,),
-              Text('اطلب',
-                style: TextStyle(
-                fontSize: 45,
-                fontFamily: 'Lemonada',
-                fontWeight: FontWeight.bold,
-                color: Colors.white
 
-                ),),
-              SizedBox(height: MediaQuery.of(context).size.height*.03,),
-              Image(
-                height: MediaQuery.of(context).size.height*.35,
-                width: MediaQuery.of(context).size.height*.35,
-                image: AssetImage('assets/images/delvery.png'),
+              SizedBox(height: MediaQuery.of(context).size.height*.25,),
+
+              Lottie.asset('assets/images/bike.json',
+              height: 170
               ),
               SizedBox(height: MediaQuery.of(context).size.height*.07,),
-              Text('مع اطلب أسرع و افضل خدمه توصيل طلبات لمنازل ',
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontFamily: 'Lemonada',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white
-                ),
-                  textAlign: TextAlign.center,
-                ),
-              SizedBox(height: MediaQuery.of(context).size.height*.13,),
-              Text('',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'Lemonada',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-
-
-                ),
-                textAlign: TextAlign.center,
-              ),
+              // Text('اطلب',
+              //   style: TextStyle(
+              //       fontSize: 22,
+              //       fontFamily: 'Lemonada',
+              //       fontWeight: FontWeight.bold,
+              //       color: Colors.white
+              //
+              //   ),),
+              // Text('مع اطلب أسرع و افضل خدمه توصيل طلبات لمنازل ',
+              //     style: TextStyle(
+              //       fontSize: 17,
+              //       fontFamily: 'Lemonada',
+              //       fontWeight: FontWeight.bold,
+              //       color: Colors.white
+              //   ),
+              //     textAlign: TextAlign.center,
+              //   ),
+              // SizedBox(height: MediaQuery.of(context).size.height*.13,),
+              // Text('',
+              //   style: TextStyle(
+              //     fontSize: 13,
+              //     fontFamily: 'Lemonada',
+              //     fontWeight: FontWeight.bold,
+              //     color: Colors.white
+              //
+              //
+              //   ),
+              //   textAlign: TextAlign.center,
+              // ),
             ],
           )
         ),

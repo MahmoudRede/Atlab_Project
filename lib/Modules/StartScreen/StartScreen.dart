@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
+import 'package:talabatak/Modules/DrawerZoom/zoom_drawer.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/WorkerScreen/workerScreen.dart';
 import 'package:talabatak/Modules/antherOrder/AntherOrder.dart';
@@ -39,7 +40,7 @@ class StartScreen extends StatelessWidget {
     List <Function> functionCategory=[
           (){
         valueOfOrder='5';
-        navigateAndRemove(context: context, widget: HomePageScreen());
+        navigateAndRemove(context: context, widget: ContainerScreen());
       },
           (){
         navigateAndRemove(context: context, widget: AntherOrder(imageCategory: 'https://image.freepik.com/free-vector/shop-cart-shop-building-cartoon_138676-2085.jpg',titleCategory: 'سوبر ماركت',));

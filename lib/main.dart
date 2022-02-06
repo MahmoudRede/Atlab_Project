@@ -9,17 +9,21 @@ import 'package:talabatak/Modules/DrawerScreen/drawer_screen.dart';
 import 'package:talabatak/Modules/DrawerZoom/zoom_drawer.dart';
 import 'package:talabatak/Modules/ItemScreen/itemScreen.dart';
 import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
+import 'package:talabatak/Modules/OnBoarding/on_boarding.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterCubit/cubit.dart';
 import 'package:talabatak/Modules/StartScreen/StartScreen.dart';
+import 'package:talabatak/Modules/WorkerScreen/workerScreen.dart';
 import 'package:talabatak/Modules/splash/SplashScreen.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
 import 'package:talabatak/talabatak_bloc/states.dart';
 import 'Modules/home_page/HomePageScreen.dart';
 import 'SharedPreference/CacheHelper.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
 
   await Firebase.initializeApp();
   await CacheHelper.init();
@@ -69,7 +73,7 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             home: Directionality(
-              textDirection: TextDirection.rtl,
+              textDirection: TextDirection.ltr,
               child:MainSplashScreen(),
             ),
           ),

@@ -29,9 +29,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
     bool chosse = true;
 
     List<Items_Drawer> Items = [
-      Items_Drawer('المطاعم', Icons.home, () {
-        navigateAndRemove(context: context, widget: HomePageScreen());
-      }),
+
       Items_Drawer('الحساب الشخصي', Icons.person, () {
         if (vistorLogin == false) {
           AppCubit.get(context).getUser(context);
@@ -73,29 +71,58 @@ class _DrawerScreenState extends State<DrawerScreen> {
           showToast(text: 'سيتم أضافتها قريبا...', state: ToastState.WARNING);
         },
       ),
+      Items_Drawer(
+        'تسجيل الخروج',
+        Icons.logout,
+            () {
+          CacheHelper.removeData(key: 'uId');
+          uId = '';
+          navigateAndRemove(context: context, widget: LoginScreen());
+        },
+      ),
 
     ];
 
-    return Container(
-      color: Color.fromRGBO(58, 86, 156,1),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-               SizedBox(height: MediaQuery.of(context).size.height*.08,),
-                Row(
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          color: Color.fromRGBO(58, 86, 156,1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.infinity,
+                // color: Color.fromRGBO(58, 86, 156,1),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: CircleAvatar(
-                        radius: 50.0,
-                        child: CircleAvatar(
-                          radius: 48.0,
-                          backgroundImage: NetworkImage(
-                              'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
-                          ),
-                        ),
-                      ),
-                    ),
+                    SizedBox(height:40 ,),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30),
+                     child: Column(
+                       children: [
+                         CircleAvatar(
+                              radius: 43.0,
+                              backgroundColor: Colors.white,
+                              child: CircleAvatar(
+                                radius: 40.0,
+                                backgroundImage: NetworkImage(
+                                    'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
+                                ),
+                              ),
+                            ),
+                           // Text('اطلب',style: TextStyle(
+                           //   fontSize: 20,
+                           //   fontFamily: 'Lemonada',
+                           //
+                           // )),
+                       ],
+                     ),
+                   ),
+
+
+                    SizedBox(height:40 ,),
+
                     SizedBox(width: 4,),
                     // Text('اطلب',style: TextStyle(
                     //   fontSize: 20,
@@ -104,46 +131,24 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     // ))
                   ],
                 ),
-                SizedBox(height: 30,),
-                Expanded(
-                  child: ListView.separated(
-                      itemBuilder: (context, index) =>
-                          Block_Line_Drawer(Items[index]),
-                      separatorBuilder: (context, index) => SizedBox(
-                            height: 10,
-                          ),
-                      itemCount: Items.length),
-                ),
-                Container(
-                  child: InkWell(
-                      onTap: () {
-                            CacheHelper.removeData(key: 'uId');
-                            uId = '';
-                            navigateAndRemove(context: context, widget: LoginScreen());
-                            },
-                      child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                             children: [
-                              SizedBox(
-                              width: 15,
-                              ),
-                              Icon(
-                                Icons.logout,
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                              width: 12,
-                              ),
-                              Text('تسجيل الخروج',
-                              style: TextStyle(fontSize: 15, fontFamily: 'OpenSans')),
-                              ],
-                      ),
-                  ),
-                 ),
-                SizedBox(height: 70,),
+              ),
+              SizedBox(height: 30,),
+              Expanded(
+                child: ListView.separated(
+                    itemBuilder: (context, index) =>
+                        Block_Line_Drawer(Items[index]),
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 15,
+                    ),
+                    itemCount: Items.length),
+              ),
 
-        ],
+              SizedBox(height: 70,),
 
+            ],
+
+          ),
+        ),
       ),
     );
   }
@@ -161,12 +166,16 @@ Widget Block_Line_Drawer(Items_Drawer model) {
           SizedBox(
             width: 15,
           ),
-          Icon(model.icon),
+          Icon(model.icon,color: Colors.white,),
           SizedBox(
             width: 12,
           ),
           Text('${model.text}',
-              style: TextStyle(fontSize: 15, fontFamily: 'OpenSans')),
+              style: TextStyle(
+                color: Colors.white,
+                  fontSize: 15,
+                  fontFamily: 'OpenSans')
+          ),
         ],
       ),
     ),

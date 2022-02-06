@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:talabatak/Componants/componant.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:talabatak/Models/RestaurantModel.dart';
@@ -59,6 +60,11 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
+
+  double xOffect=0;
+  double yOffect=0;
+  double scale=1;
+  bool factor=false;
   bool chosse=true;
   @override
   Widget build(BuildContext context) {
@@ -144,8 +150,25 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 child: Scaffold(
                   backgroundColor: Colors.grey[200],
                   appBar: AppBar(
+                    actions: [
+                      IconButton(
+                        onPressed: (){
+                          setState(() {
+
+                            ZoomDrawer.of(context)!.toggle();
+
+
+                          });
+                        },
+                        icon: const Icon(
+                          Icons.menu,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
 
                     title: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text('اطلب',style: TextStyle(
                           fontSize: 22,
@@ -934,59 +957,59 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       ],
                     ),
                   ),
-                  drawer: Drawer(
-                    child: Container(
-                      color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            color: Color.fromRGBO(58, 86, 156,1),
-                            child: Column(
-                              children: [
-                                SizedBox(height:70 ,),
-                                Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: CircleAvatar(
-                                    radius: 58.0,
-                                    child: CircleAvatar(
-                                      radius: 55.0,
-                                      backgroundImage: NetworkImage(
-                                          'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height:30 ,),
-
-                                SizedBox(width: 4,),
-                                // Text('اطلب',style: TextStyle(
-                                //   fontSize: 20,
-                                //   fontFamily: 'Lemonada',
-                                //
-                                // ))
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 30,),
-                          Expanded(
-                            child: ListView.separated(
-                                itemBuilder: (context, index) =>
-                                    Block_Line_Drawer(Items[index]),
-                                separatorBuilder: (context, index) => SizedBox(
-                                  height: 10,
-                                ),
-                                itemCount: Items.length),
-                          ),
-
-                          SizedBox(height: 70,),
-
-                        ],
-
-                      ),
-                    ),
-                  ),
+                  // drawer: Drawer(
+                  //   child: Container(
+                  //     color: Colors.white,
+                  //     child: Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Container(
+                  //           width: double.infinity,
+                  //           color: Color.fromRGBO(58, 86, 156,1),
+                  //           child: Column(
+                  //             children: [
+                  //               SizedBox(height:70 ,),
+                  //               Padding(
+                  //                 padding: const EdgeInsets.all(15.0),
+                  //                 child: CircleAvatar(
+                  //                   radius: 58.0,
+                  //                   child: CircleAvatar(
+                  //                     radius: 55.0,
+                  //                     backgroundImage: NetworkImage(
+                  //                         'https://image.freepik.com/free-vector/delivery-service-with-mask-concept_23-2148505104.jpg'
+                  //                     ),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //               SizedBox(height:30 ,),
+                  //
+                  //               SizedBox(width: 4,),
+                  //               // Text('اطلب',style: TextStyle(
+                  //               //   fontSize: 20,
+                  //               //   fontFamily: 'Lemonada',
+                  //               //
+                  //               // ))
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         SizedBox(height: 30,),
+                  //         Expanded(
+                  //           child: ListView.separated(
+                  //               itemBuilder: (context, index) =>
+                  //                   Block_Line_Drawer(Items[index]),
+                  //               separatorBuilder: (context, index) => SizedBox(
+                  //                 height: 10,
+                  //               ),
+                  //               itemCount: Items.length),
+                  //         ),
+                  //
+                  //         SizedBox(height: 70,),
+                  //
+                  //       ],
+                  //
+                  //     ),
+                  //   ),
+                  // ),
 
 
                 ),
@@ -1022,11 +1045,14 @@ Widget Block_Item(context,RestaurantModel model){
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
-              child: Image(
-                  height: 110,
-                  width: 150,
-                  fit: BoxFit.fill,
-                  image: NetworkImage((model.image)!)
+              child: Hero(
+                tag: 'test',
+                child: Image(
+                    height: 110,
+                    width: 150,
+                    fit: BoxFit.fill,
+                    image: NetworkImage((model.image)!)
+                ),
               ),
             ),
             SizedBox(

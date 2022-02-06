@@ -42,9 +42,12 @@ class MenuScreen extends StatelessWidget {
                               SizedBox(
                                 height: 30.0,
                               ),
-                              CircleAvatar(
-                                radius: 50.0,
-                                backgroundImage: NetworkImage('${model.image}'
+                              Hero(
+                                tag: 'test',
+                                child: CircleAvatar(
+                                  radius: 50.0,
+                                  backgroundImage: NetworkImage('${model.image}'
+                                  ),
                                 ),
                               ),
                               SizedBox(

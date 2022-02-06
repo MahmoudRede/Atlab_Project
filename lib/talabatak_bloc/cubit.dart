@@ -95,6 +95,9 @@ class AppCubit extends Cubit<AppStates>{
     numberOfItem = 1;
     emit(AppAddItemToUserOredersState());
   }
+
+
+
   void removeItemFromUserOrders (index)
   {
     userOrders.removeAt(index);
@@ -133,7 +136,6 @@ class AppCubit extends Cubit<AppStates>{
          userModel=UserModel.fromFire(value.data()!);
          if(vistorLogin==false){
            navigateTo(context: context, widget: ProfileScreen());
-
          }
          emit(AppGetUserSuccessState());
     }).catchError((error) {

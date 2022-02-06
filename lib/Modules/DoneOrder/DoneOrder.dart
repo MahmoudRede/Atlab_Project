@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 import 'package:talabatak/Componants/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -67,22 +68,27 @@ class _DoneOrderState extends State<DoneOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor:Color.fromRGBO(58, 86, 156,1),
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor:Color.fromRGBO(58, 86, 156,1),
         backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor:Colors.blueAccent,
+          statusBarColor:Color.fromRGBO(58, 86, 156,1),
           statusBarIconBrightness: Brightness.light,
         ),
       ),
       body: Container(
+        width: double.infinity,
+        alignment: Alignment.center,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 150,),
-            Image(
-              image: NetworkImage('https://image.freepik.com/free-vector/delivery-service-with-masks-concept_52683-36955.jpg'),
-            ),
+
+            SizedBox(height: 80,),
+             Lottie.asset('assets/images/done.json',
+             height: 310
+             ),
+
           ],
         )
       ),

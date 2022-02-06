@@ -4,6 +4,8 @@ class UserModel {
   String? phone;
   String? uId;
   String? address;
+  String? image;
+
 
   UserModel({
     this.name,
@@ -11,7 +13,7 @@ class UserModel {
     this.phone,
     this.uId,
     this.address,
-
+    this.image,
   });
 
   UserModel.fromFire(Map <String , dynamic> fire ){
@@ -20,6 +22,8 @@ class UserModel {
     phone = fire['phone'];
     uId = fire['uId'];
     address = fire['address'];
+    image = fire['image'];
+
 
   }
 
@@ -31,6 +35,8 @@ class UserModel {
       'phone' : phone ,
       'uId' : uId ,
       'address': address ,
+      'image': image ,
+
     };
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:talabatak/Models/itemModel.dart';
 import 'package:talabatak/Models/orderModel.dart';
+import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen1.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen10.dart';
 import 'package:talabatak/Modules/MenuScreen/TabScreens/Screen11.dart';
@@ -20,6 +21,8 @@ bool vistorLogin = false;
 double height=100;
 String valueOfOrder='0';
 String valueOfShowOrder='0';
+
+Widget screen2=LoginScreen();
 
 
 List <OrderModel>  userOrders = [];
