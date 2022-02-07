@@ -38,6 +38,7 @@ class ItemScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(30, 30, 20, 20),
                     child: Material(
+                      color:  Color.fromRGBO(58, 86, 156,1),
                       borderRadius: BorderRadius.circular(20),
                       elevation: 5,
                       child: Container(
@@ -48,11 +49,12 @@ class ItemScreen extends StatelessWidget {
                             SizedBox(height: 30,),
                             Row(
                               children: [
-                                Image(
-                                  image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/burger.jpeg?alt=media&token=c3071bd2-692b-4e08-a286-6b11eed46d38',),
-                                  height: 95,
-                                  width: 120,
+                                SizedBox(width: 10,),
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/burger.jpeg?alt=media&token=c3071bd2-692b-4e08-a286-6b11eed46d38',),
                                 ),
+                                SizedBox(width: 20,),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -60,13 +62,14 @@ class ItemScreen extends StatelessWidget {
                                       '${itemModel.name}',
                                       style: TextStyle(
                                         fontSize: 19,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                     ),),
                                     Text(
                                       '${itemModel.category}',
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.grey,
+                                        color: Colors.grey[200],
                                     ),),
                                     Container(
                                       width: 180,
@@ -74,6 +77,7 @@ class ItemScreen extends StatelessWidget {
                                         '${itemModel.details}',
                                         style: TextStyle(
                                             fontSize: 14,
+                                            color: Colors.white,
                                             fontWeight: FontWeight.bold
                                         ),
                                       maxLines: 3,
@@ -92,6 +96,7 @@ class ItemScreen extends StatelessWidget {
                                 children: [
                                   Text('الحجم :',style: TextStyle(
                                       fontSize: 22,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold
                                   ),),
                                   SizedBox(width: 35,),
@@ -99,7 +104,8 @@ class ItemScreen extends StatelessWidget {
                                     'صغير',
                                     style: TextStyle(
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
                                   ),)
                                 ],
                               ),
@@ -110,7 +116,7 @@ class ItemScreen extends StatelessWidget {
                                 'يختلف السعر علي حسب الحجم',
                                 style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.grey
+                                    color: Colors.grey[200]
 
                                 )),
                             ),
@@ -120,6 +126,7 @@ class ItemScreen extends StatelessWidget {
                                 children: [
                                   Text('السعر :',style: TextStyle(
                                       fontSize: 22,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold
                                   ),),
                                   SizedBox(width: 35,),
@@ -127,11 +134,13 @@ class ItemScreen extends StatelessWidget {
                                     'L.E ',
                                     style: TextStyle(
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
                                      ),
                                   ),
                                   Text('${int.parse(itemModel.price!) * AppCubit.get(context).numberOfItem}',style: TextStyle(
                                       fontSize: 18,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold
                                   ),),
                                 ],
@@ -143,28 +152,31 @@ class ItemScreen extends StatelessWidget {
                                 children: [
                                   Text('العدد :',style: TextStyle(
                                       fontSize: 22,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold
                                   ),),
                                   SizedBox(width: 10,),
                                   FloatingActionButton(
-                                    backgroundColor: Colors.grey[50],
+                                    backgroundColor: Color.fromRGBO(58, 86, 156,1),
                                     elevation: 0,
+
                                     onPressed: (){
                                       AppCubit.get(context).plusNumberOfItem();
                                     },
                                     mini:true ,
                                     child:Icon(
                                       Icons.add_circle_outline,
-                                      color: Color.fromRGBO(58, 86, 156,1),
+                                      color: Colors.white,
                                       size: 30,
                                     ) ,
                                   ),
                                   Text('${AppCubit.get(context).numberOfItem}',style: TextStyle(
                                       fontSize: 18,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold
                                   ),),
                                   FloatingActionButton(
-                                    backgroundColor: Colors.grey[50],
+                                    backgroundColor: Color.fromRGBO(58, 86, 156,1),
                                     elevation: 0,
                                     onPressed: (){
                                       AppCubit.get(context).minesNumberOfItem();
@@ -172,7 +184,7 @@ class ItemScreen extends StatelessWidget {
                                     mini:true ,
                                     child:Icon(
                                       Icons.remove_circle_outline,
-                                      color: Color.fromRGBO(58, 86, 156,1),
+                                      color: Colors.white,
                                       size: 30,
                                     ) ,
                                   ),
@@ -188,7 +200,7 @@ class ItemScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                              color: Color.fromRGBO(58, 86, 156,1),
+                              color: Colors.white,
                               onPressed: (){
                                 //
                                 // AlertDialog alert=AlertDialog(
@@ -239,8 +251,9 @@ class ItemScreen extends StatelessWidget {
 
                               },
                               child: Text('اضف الي طلباتك',style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20
+                                  color: Color.fromRGBO(58, 86, 156,1),
+                                  fontSize: 20,
+                                fontWeight: FontWeight.bold
                               ),),
                             ),
                             SizedBox(

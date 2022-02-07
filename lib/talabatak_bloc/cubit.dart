@@ -19846,7 +19846,7 @@ class AppCubit extends Cubit<AppStates>{
 
   void changeItemColor(index,List<Color> cardColor){
 
-    cardColor[index]= cardColor[index]==Colors.white?Colors.greenAccent:Colors.white;
+    cardColor[index]= cardColor[index]==Color.fromRGBO(58, 86, 156,1)?Colors.greenAccent:Color.fromRGBO(58, 86, 156,1);
     emit(AppChangeItemColorState());
   }
 
@@ -19859,7 +19859,7 @@ class AppCubit extends Cubit<AppStates>{
 
     isSelected[index]='1';
     CacheHelper.saveBool(key: 'isDone',value: isSelected );
-    isSelected[index]=='1'?cardColor[index]=Colors.greenAccent:cardColor[index]=Colors.white;
+    isSelected[index]=='1'?cardColor[index]=Colors.greenAccent:cardColor[index]=Color.fromRGBO(58, 86, 156,1);
     emit(SaveDate());
 
   }

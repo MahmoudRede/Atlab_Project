@@ -39,7 +39,7 @@ class adminScreen extends StatelessWidget {
              var order = AppCubit.get(context).items;
              var lenght=  order.length;
              for(int i=0;i<=lenght;i++){
-               cardColor.add(Colors.white);
+               cardColor.add(Color.fromRGBO(58, 86, 156,1));
              }
              for(int i=0;i<=lenght;i++){
                isSelected.add('0');
@@ -49,7 +49,7 @@ class adminScreen extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: Scaffold(
                  appBar: AppBar(
-                   title: Text('الطلبات',style: TextStyle(
+                   title: Text('بيانات العميل',style: TextStyle(
                        color: Colors.white,
                        fontSize: 25,
                        fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class adminScreen extends StatelessWidget {
                        navigateAndRemove(context: context, widget: ItemsAdminScreen());
                      },
                      icon: Icon(
-                       Icons.arrow_forward_outlined,
+                       Icons.arrow_back,
                      ),
                    ),
                  ),
@@ -69,15 +69,16 @@ class adminScreen extends StatelessWidget {
                    builder:(context)=> Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Padding(
-                         padding: const EdgeInsets.fromLTRB(0,10, 20, 0),
-                         child: Text('بيانات العميل',style: TextStyle(
-                             color: Colors.black,
-                             fontSize: 20,
-                             fontWeight: FontWeight.bold,
-                             fontFamily: 'Lemonada'
-                         )),
-                       ),
+                       // Padding(
+                       //   padding: const EdgeInsets.fromLTRB(0,10, 20, 0),
+                       //   child: Text('بيانات العميل',style: TextStyle(
+                       //       color: Colors.black,
+                       //       fontSize: 20,
+                       //       fontWeight: FontWeight.bold,
+                       //       fontFamily: 'Lemonada'
+                       //   )),
+                       // ),
+                       SizedBox(height: 10,),
                        Expanded(
                            child: ListView.separated(
                                itemBuilder: (context , index) => clientItem(order[index].userData! , order[index].orderData! , context,cardColor,index),
@@ -141,6 +142,7 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
     child: Container(
       width: double.infinity,
       height: 270,
+
       padding: EdgeInsets.fromLTRB(15,20, 15, 20),
       child: Stack(
         children: [
@@ -157,10 +159,13 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
                     children: [
                       Text('اسم العميل : ',style: TextStyle(
                           fontSize: 17,
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
+                           color: Colors.white
                       )),
                       Text('${model['name']}',style: TextStyle(
                         fontSize: 17,
+                          color: Colors.white
+
                       )),
                     ],
                   ),
@@ -178,10 +183,14 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
                     children: [
                       Text('رقم الهاتف : ',style: TextStyle(
                           fontSize: 17,
+                          color: Colors.white,
+
                           fontWeight: FontWeight.bold
                       )),
                       Text('${model['number']}',style: TextStyle(
                         fontSize: 17,
+                        color: Colors.white,
+
                       ))
                     ],
 
@@ -200,10 +209,14 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
                     children: [
                       Text('العنوان : ',style: TextStyle(
                           fontSize: 19,
+                          color: Colors.white,
+
                           fontWeight: FontWeight.bold
                       )),
                       Text('${model['address']}',style: TextStyle(
                         fontSize: 17,
+                        color: Colors.white,
+
                       ))
                     ],
                   ),
@@ -216,7 +229,7 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(13),
                       ),
-                      color:  Color.fromRGBO(58, 86, 156,1),
+                      color:  Colors.white,
                       onPressed: (){
 
 
@@ -226,7 +239,7 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
 
                       },
                       child: Text('تم الطلب',style: TextStyle(
-                        color: Colors.white,
+                        color:Color.fromRGBO(58, 86, 156,1),
 
                       ),),
                     ),
@@ -237,6 +250,7 @@ Widget clientItem (Map model , List <dynamic> orders , context,List<Color> color
 
                     }, icon: Icon(
                       Icons.delete,
+                      color: Colors.white,
                     )),
                     SizedBox(width: 10,),
 

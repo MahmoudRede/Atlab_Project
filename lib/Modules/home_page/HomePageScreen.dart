@@ -14,6 +14,7 @@ import 'package:talabatak/Modules/LoginScreen/login_screen.dart';
 import 'package:talabatak/Modules/MenuScreen/MenuScreen.dart';
 import 'package:talabatak/Modules/ProfileScreen/profileScreen.dart';
 import 'package:talabatak/Modules/RegisterScreen/RegisterVistorScreen.dart';
+import 'package:talabatak/Modules/StartScreen/StartScreen.dart';
 import 'package:talabatak/Modules/UserBasket/UserBasket.dart';
 import 'package:talabatak/SharedPreference/CacheHelper.dart';
 import 'package:talabatak/talabatak_bloc/cubit.dart';
@@ -150,6 +151,17 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 child: Scaffold(
                   backgroundColor: Colors.grey[200],
                   appBar: AppBar(
+                    leading: IconButton(
+                      color: Colors.white,
+                      onPressed: (){
+                        navigateAndRemove(context: context, widget: StartScreen());
+                      },
+
+                      icon: Icon(
+                          Icons.logout
+                      ),
+
+                    ),
                     actions: [
                       IconButton(
                         onPressed: (){

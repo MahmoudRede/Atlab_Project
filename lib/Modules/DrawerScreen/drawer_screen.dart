@@ -138,7 +138,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     itemBuilder: (context, index) =>
                         Block_Line_Drawer(Items[index]),
                     separatorBuilder: (context, index) => SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     itemCount: Items.length),
               ),
@@ -164,7 +164,7 @@ Widget Block_Line_Drawer(Items_Drawer model) {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            width: 15,
+            width: 20,
           ),
           Icon(model.icon,color: Colors.white,),
           SizedBox(
