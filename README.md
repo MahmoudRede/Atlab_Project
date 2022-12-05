@@ -3,13 +3,9 @@
 <h1 align="center">Delevery Application</h1>
 <h4 align="left">Delivery app that people using orders anything from app built with Flutter , Bloc , Firebase</h4>
 
-</br>
-
 <h3 align="left">Splash Screen</h3>
 
 <img align="center" width="300" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.43%20PM.jpeg?alt=media&token=6b0457f7-69ac-46c4-b6e8-0c763c7fa621" alt="mahmoudreda" />
-
-</br>
 
 <h3 align="left">OnBoarding Screens</h3>
 
