@@ -6,7 +6,7 @@
 
 <h3 align="left">All Screens</h3>
 
-<img align="left" width="150" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/Talabatak.png?alt=media&token=23bc2546-4f90-46c7-a1ff-86bd208101fe" alt="mahmoudreda" />
+<img align="left" width="1500" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/Talabatak.png?alt=media&token=23bc2546-4f90-46c7-a1ff-86bd208101fe" alt="mahmoudreda" />
 
 
 <h3 align="left">Splash Screen</h3>
