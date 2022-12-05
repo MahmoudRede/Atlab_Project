@@ -31,5 +31,5 @@
 
 <h3 align="left">Start Screen</h3>
 
-<img align="left" width="250" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.39%20PM%20(1).jpeg?alt=media&token=3360d68c-92b2-4732-b1fc-1f82013eb422" alt="mahmoudreda" />
+<img align="center" width="300" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.39%20PM%20(1).jpeg?alt=media&token=3360d68c-92b2-4732-b1fc-1f82013eb422" alt="mahmoudreda" />
 
