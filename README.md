@@ -21,7 +21,8 @@
 
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
-<h3 align="center">Login and Register Screen</h3>
+<h3 align="left">Login and Register Screen</h3>
+</br>
 
 <img align="left" width="250" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.41%20PM%20(2).jpeg?alt=media&token=12e0b144-3782-4a7b-8245-6f4ceb748abb" alt="mahmoudreda" />
 
