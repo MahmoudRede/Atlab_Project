@@ -19,7 +19,7 @@
 
 <img align="left" width="250" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.38%20PM.jpeg?alt=media&token=b4458361-dbbd-4964-ad8d-07b9f27a006f" alt="mahmoudreda" />
 
-</br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
 <h3 align="center">Login and Register Screen</h3>
 
