@@ -23,12 +23,7 @@
 
 <h3 align="left">Login and Register Screen</h3>
 
-<img align="right" width="300" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.41%20PM%20(2).jpeg?alt=media&token=12e0b144-3782-4a7b-8245-6f4ceb748abb" alt="mahmoudreda" />
+<img align="left" width="250" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.41%20PM%20(2).jpeg?alt=media&token=12e0b144-3782-4a7b-8245-6f4ceb748abb" alt="mahmoudreda" />
 
-<img align="left" width="300" src=https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.37%20PM.jpeg?alt=media&token=f39c488e-5433-450d-9471-d4ff53e91b1b" alt="mahmoudreda" />
-
-</br></br>
-
-
-<img align="left" width="350" src="https://firebasestorage.googleapis.com/v0/b/buy-it-736d7.appspot.com/o/WhatsApp%20Image%202022-07-28%20at%205.01.29%20AM.jpeg?alt=media&token=0fb2cb04-d533-4b3a-862f-eebd6a656add" alt="mahmoudreda" />
+<img align="left" width="250" src="https://firebasestorage.googleapis.com/v0/b/talabat-d4b5a.appspot.com/o/WhatsApp%20Image%202022-07-02%20at%202.48.37%20PM.jpeg?alt=media&token=f39c488e-5433-450d-9471-d4ff53e91b1b" alt="mahmoudreda" />
 
